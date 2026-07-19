@@ -1,151 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kebijakan Privasi — BeJo</title>
-  <meta name="description" content="Kebijakan Privasi aplikasi BeJo — bagaimana kami mengumpulkan, menggunakan, dan melindungi data merchant QRIS Indonesia." />
-  <meta name="theme-color" content="#2E7D57" />
-  <link rel="icon" type="image/png" href="assets/bejo-icon-round.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-
-  <header class="site-header scrolled" id="header">
-    <div class="wrap nav">
-      <a href="index.html" class="brand">
-        <img src="assets/bejo-icon-round.png" alt="BeJo" />
-        <span>Be<b>Jo</b></span>
-      </a>
-      <nav class="nav-links" id="navLinks">
-        <a href="index.html#fitur">Fitur</a>
-        <a href="index.html#cara">Cara Kerja</a>
-        <a href="data-deletion.html">Penghapusan Data</a>
-      </nav>
-      <div class="nav-cta">
-        <a href="index.html" class="btn btn-primary">Kembali ke Beranda</a>
-      </div>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </header>
-
-  <section class="legal-hero">
-    <div class="wrap">
-      <span class="eyebrow">Legal</span>
-      <h1>Kebijakan Privasi</h1>
-      <p>Bagaimana BeJo mengumpulkan, menggunakan, dan melindungi informasi Anda. Kami hanya mengumpulkan yang diperlukan untuk menjalankan aplikasi.</p>
-      <p style="margin-top:14px;font-size:0.95rem;color:var(--ink-soft)"><strong>Terakhir diperbarui:</strong> 19 Juli 2026</p>
-    </div>
-  </section>
-
-  <section class="legal-body">
-    <div class="wrap legal-content">
-
-      <div class="legal-toc">
-        <strong>Daftar Isi</strong>
-        <ul>
-          <li><a href="#intro">Pendahuluan</a></li>
-          <li><a href="#data">Data yang Kami Kumpulkan</a></li>
-          <li><a href="#notif">Akses Notifikasi</a></li>
-          <li><a href="#use">Penggunaan Data</a></li>
-          <li><a href="#share">Pembagian Data</a></li>
-          <li><a href="#analytics">Analitik</a></li>
-          <li><a href="#retention">Penyimpanan Data</a></li>
-          <li><a href="#rights">Hak Anda</a></li>
-          <li><a href="#delete">Penghapusan Data</a></li>
-          <li><a href="#security">Keamanan</a></li>
-          <li><a href="#contact">Kontak</a></li>
-        </ul>
-      </div>
-
-      <h2 id="intro">1. Pendahuluan</h2>
-      <p>BeJo ("kami", "aplikasi") adalah aplikasi notifikasi pembayaran untuk merchant QRIS Indonesia. Kebijakan Privasi ini menjelaskan informasi apa yang kami kumpulkan saat Anda menggunakan BeJo, bagaimana kami menggunakannya, dan pilihan yang Anda miliki. Dengan menggunakan BeJo, Anda menyetujui praktik yang dijelaskan di sini.</p>
-
-      <h2 id="data">2. Data yang Kami Kumpulkan</h2>
-      <p>Kami mengumpulkan data berikut untuk menyediakan layanan inti aplikasi:</p>
-      <ul>
-        <li><strong>Data akun:</strong> nama, alamat email, nomor telepon, dan kata sandi (disimpan dalam bentuk terenkripsi).</li>
-        <li><strong>Data usaha:</strong> nama usaha, alamat, industri, ukuran usaha, NMID QRIS, serta informasi rekening bank untuk pencairan.</li>
-        <li><strong>Data transaksi:</strong> catatan pembayaran masuk (nominal, waktu, sumber pembayaran) baik dari QRIS, dicatat manual, maupun dibaca dari notifikasi aplikasi lain.</li>
-        <li><strong>Data lokasi (opsional):</strong> hanya saat anggota tim melakukan clock-in/clock-out kehadiran (absensi). Lokasi diambil di latar depan dan hanya saat fitur digunakan.</li>
-        <li><strong>Gambar (opsional):</strong> foto profil, foto usaha, dan gambar QRIS yang Anda unggah.</li>
-        <li><strong>Data perangkat:</strong> token FCM untuk mengirim notifikasi pembayaran ke perangkat Anda.</li>
-      </ul>
-
-      <h2 id="notif">3. Akses Notifikasi Aplikasi Lain</h2>
-      <p>BeJo dapat meminta izin <em>Notification Listener</em> Android agar bisa membaca notifikasi dari aplikasi bank dan e-wallet lain yang Anda pilih, semata-mata untuk mendeteksi pembayaran masuk dan mengumumkannya. Ketika izin ini aktif:</p>
-      <ul>
-        <li>BeJo hanya membaca notifikasi dari aplikasi yang secara eksplisit ada dalam daftar pantau Anda.</li>
-        <li>Notifikasi dianalisis <strong>di perangkat</strong> untuk mengenali nominal pembayaran; pesan promosi dan non-pembayaran disaring.</li>
-        <li>Isi notifikasi tidak dibagikan ke pihak ketiga untuk tujuan periklanan.</li>
-      </ul>
-      <p>Anda dapat mematikan izin ini kapan saja melalui pengaturan Android atau melalui halaman Profil di dalam aplikasi.</p>
-
-      <h2 id="use">4. Bagaimana Kami Menggunakan Data</h2>
-      <ul>
-        <li>Mengumumkan dan mencatat pembayaran yang masuk.</li>
-        <li>Menampilkan riwayat transaksi serta ringkasan harian dan bulanan.</li>
-        <li>Mengelola kode QRIS, produk, stok, tim, dan kehadiran.</li>
-        <li>Mengirim notifikasi terkait aktivitas akun Anda.</li>
-        <li>Menjaga keamanan, mencegah penyalahgunaan, dan meningkatkan kualitas aplikasi.</li>
-      </ul>
-
-      <h2 id="share">5. Pembagian Data</h2>
-      <p>Kami <strong>tidak menjual</strong> data pribadi Anda. Data hanya dibagikan dalam kondisi terbatas berikut:</p>
-      <ul>
-        <li><strong>Dalam tim Anda:</strong> anggota tim yang sama berbagi data transaksi, produk, dan pengaturan usaha sesuai peran mereka.</li>
-        <li><strong>Penyedia layanan:</strong> layanan infrastruktur seperti Firebase Cloud Messaging (notifikasi) dan penyedia analitik, sesuai perjanjian pemrosesan data.</li>
-        <li><strong>Kewajiban hukum:</strong> bila diwajibkan oleh hukum yang berlaku.</li>
-      </ul>
-
-      <h2 id="analytics">6. Analitik</h2>
-      <p>BeJo dapat menggunakan analitik produk (Amplitude) untuk memahami cara aplikasi digunakan. Kami secara sengaja <strong>tidak pernah</strong> mengirim token autentikasi maupun gambar (foto usaha/profil) ke sistem analitik — hanya penanda ringkas seperti "punya foto profil: ya/tidak". Bila fitur rekam sesi (session replay) aktif, konten sensitif seperti nominal, nomor rekening, dan lokasi <strong>disamarkan</strong> sebelum direkam.</p>
-
-      <h2 id="retention">7. Penyimpanan Data</h2>
-      <p>Kami menyimpan data akun dan transaksi selama akun Anda aktif. Saat Anda <strong>keluar (logout)</strong>, seluruh data lokal di perangkat dihapus — termasuk sesi, gambar QRIS yang disimpan, foto profil, paket suara, dan cache. Data di server disimpan hingga Anda meminta penghapusan akun.</p>
-
-      <h2 id="rights">8. Hak Anda</h2>
-      <ul>
-        <li>Mengakses dan memperbarui informasi akun Anda melalui aplikasi.</li>
-        <li>Menarik izin (mis. akses notifikasi atau lokasi) kapan saja.</li>
-        <li>Meminta penghapusan data dan akun Anda (lihat bagian berikut).</li>
-      </ul>
-
-      <h2 id="delete">9. Penghapusan Data</h2>
-      <div class="callout">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m-9 0v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div class="c-body">
-          <h3>Ingin menghapus data Anda?</h3>
-          <p>Untuk meminta penghapusan akun dan seluruh data terkait, kirim permintaan ke email di bawah ini. Kami akan memproses permintaan Anda.</p>
-          <a class="email-btn" href="mailto:moobejo@gmail.com?subject=Permintaan%20Penghapusan%20Data%20BeJo">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            moobejo@gmail.com
-          </a>
-        </div>
-      </div>
-      <p>Panduan lengkap tersedia di halaman <a href="data-deletion.html">Penghapusan Data</a>.</p>
-
-      <h2 id="security">10. Keamanan</h2>
-      <p>Kami menerapkan langkah teknis dan organisasi yang wajar untuk melindungi data Anda, termasuk enkripsi kata sandi, autentikasi berbasis token, serta opsi kunci sidik jari/wajah untuk membuka aplikasi. Namun, tidak ada metode transmisi atau penyimpanan yang 100% aman.</p>
-
-      <h2 id="contact">11. Kontak</h2>
-      <p>Jika Anda memiliki pertanyaan mengenai Kebijakan Privasi ini atau ingin menggunakan hak Anda, hubungi kami di <a href="mailto:moobejo@gmail.com">moobejo@gmail.com</a>.</p>
-
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    <div class="wrap">
-      <div class="footer-bottom" style="border:none;padding-top:0">
-        <span>© 2026 BeJo. Dibuat untuk warung, kios, dan toko kecil Indonesia.</span>
-        <span><a href="index.html">Beranda</a> &middot; <a href="privacy.html">Privasi</a> &middot; <a href="data-deletion.html">Hapus Data</a></span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kebijakan Privasi — BeJo</title>
+    <meta
+      name="description"
+      content="Kebijakan Privasi aplikasi BeJo. Penjelasan soal data apa yang disimpan, buat apa, dan hak kamu."
+    />
+    <meta name="theme-color" content="#2E7D57" />
+    <link rel="icon" type="image/png" href="/assets/bejo-icon-round.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/entry-privacy.tsx"></script>
+  </body>
 </html>

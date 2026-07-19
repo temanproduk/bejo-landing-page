@@ -1,0 +1,125 @@
+import { useEffect, useState } from "react";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+
+type Link = { href: string; label: string };
+
+const homeLinks: Link[] = [
+  { href: "#fitur", label: "Fitur" },
+  { href: "#cara", label: "Cara Pakai" },
+  { href: "#rekap", label: "Catatan" },
+  { href: "#qris", label: "QRIS & Tim" },
+];
+
+export function Header({
+  links = homeLinks,
+  variant = "home",
+}: {
+  links?: Link[];
+  variant?: "home" | "legal";
+}) {
+  // On legal pages the header starts in its condensed (solid) state.
+  const [scrolled, setScrolled] = useState(variant === "legal");
+
+  useEffect(() => {
+    if (variant === "legal") return;
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [variant]);
+
+  return (
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-40 transition-all duration-300",
+        scrolled
+          ? "bg-background/80 py-2.5 shadow-[0_1px_0_rgba(14,74,46,0.08)] backdrop-blur-md backdrop-saturate-150"
+          : "py-4"
+      )}
+    >
+      <div className="container flex items-center justify-between gap-5">
+        <a href="/" className="flex items-center gap-3 text-xl font-extrabold">
+          <img
+            src="/assets/bejo-icon-round.png"
+            alt="BeJo"
+            className="h-10 w-10 rounded-xl shadow-soft"
+          />
+          <span>
+            Be<span className="text-primary">Jo</span>
+          </span>
+        </a>
+
+        <nav className="hidden items-center gap-8 md:flex">
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="text-[15px] font-semibold text-muted-foreground transition-colors hover:text-primary"
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="hidden items-center gap-3 md:flex">
+          {variant === "legal" ? (
+            <Button asChild>
+              <a href="/">Balik ke Beranda</a>
+            </Button>
+          ) : (
+            <Button asChild>
+              <a href="#unduh">Pasang Gratis</a>
+            </Button>
+          )}
+        </div>
+
+        {/* Mobile menu */}
+        <div className="md:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" aria-label="Buka menu">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent>
+              <a href="/" className="flex items-center gap-3 text-xl font-extrabold">
+                <img
+                  src="/assets/bejo-icon-round.png"
+                  alt="BeJo"
+                  className="h-9 w-9 rounded-lg"
+                />
+                <span>
+                  Be<span className="text-primary">Jo</span>
+                </span>
+              </a>
+              <nav className="mt-10 flex flex-col gap-1">
+                {links.map((l) => (
+                  <SheetClose asChild key={l.href}>
+                    <a
+                      href={l.href}
+                      className="rounded-xl px-3 py-3 text-lg font-semibold text-foreground transition-colors hover:bg-mint hover:text-primary"
+                    >
+                      {l.label}
+                    </a>
+                  </SheetClose>
+                ))}
+              </nav>
+              <div className="mt-6">
+                <SheetClose asChild>
+                  <Button asChild className="w-full" size="lg">
+                    <a href={variant === "legal" ? "/" : "#unduh"}>
+                      {variant === "legal" ? "Balik ke Beranda" : "Pasang Gratis"}
+                    </a>
+                  </Button>
+                </SheetClose>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </div>
+    </header>
+  );
+}
