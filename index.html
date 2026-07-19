@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeJo — Dengar Uang Masuk, Tanpa Lihat Layar</title>
+  <meta name="description" content="BeJo adalah aplikasi notifikasi pembayaran untuk merchant QRIS Indonesia. Setiap pembayaran masuk diumumkan dengan suara dalam Bahasa Indonesia — Anda tidak akan pernah melewatkan satu transaksi pun." />
+  <meta name="theme-color" content="#2E7D57" />
+  <link rel="icon" type="image/png" href="assets/bejo-icon-round.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" id="header">
+    <div class="wrap nav">
+      <a href="#top" class="brand">
+        <img src="assets/bejo-icon-round.png" alt="BeJo" />
+        <span>Be<b>Jo</b></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#fitur">Fitur</a>
+        <a href="#cara">Cara Kerja</a>
+        <a href="#rekap">Rekap</a>
+        <a href="#tim">Tim &amp; QRIS</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#fitur" class="btn btn-ghost">Pelajari</a>
+        <a href="#unduh" class="btn btn-primary">Unduh Gratis</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="top">
+    <div class="hero-bg"></div>
+    <div class="hero-blob blob-1" data-parallax="0.18"></div>
+    <div class="hero-blob blob-2" data-parallax="-0.12"></div>
+
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">📢 Untuk Merchant QRIS Indonesia</span>
+        <h1>Dengar uang masuk, <span class="accent">tanpa lihat layar.</span></h1>
+        <p class="lead">
+          BeJo mengumumkan setiap pembayaran QRIS yang masuk dengan suara dalam
+          Bahasa Indonesia — <em>"dua ratus ribu rupiah"</em> — jadi Anda tetap
+          melayani pelanggan sambil tahu uang sudah mendarat.
+        </p>
+        <div class="hero-actions">
+          <a href="#unduh" class="btn btn-primary">
+            Unduh Gratis
+            <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#cara" class="btn btn-ghost">Lihat Cara Kerja</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Gratis untuk dipakai
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            GoPay, Dana, OVO, BCA, BRI &amp; 35+ lainnya
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Data terkunci sidik jari
+          </div>
+        </div>
+      </div>
+
+      <!-- Layered parallax visual -->
+      <div class="hero-visual">
+        <div class="layer coin coin-1" data-parallax="0.35"></div>
+        <div class="layer coin coin-3" data-parallax="0.55"></div>
+
+        <div class="layer phone" data-parallax="0.06">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-hero-band">
+              <div class="label">Pemasukan Hari Ini</div>
+              <div class="total">Rp 2.480.000</div>
+              <div class="sub">18 transaksi &middot; naik 12% dari kemarin</div>
+            </div>
+            <div class="phone-list">
+              <div class="tx-card">
+                <div class="tx-coin">🪙</div>
+                <div class="tx-info"><div class="amt">Rp 200.000</div><div class="meta">Baru saja &middot; QRIS</div></div>
+                <div class="tx-badge">GoPay</div>
+              </div>
+              <div class="tx-card">
+                <div class="tx-coin">🪙</div>
+                <div class="tx-info"><div class="amt">Rp 45.000</div><div class="meta">2 menit lalu &middot; QRIS</div></div>
+                <div class="tx-badge">Dana</div>
+              </div>
+              <div class="tx-card">
+                <div class="tx-coin">🪙</div>
+                <div class="tx-info"><div class="amt">Rp 128.500</div><div class="meta">5 menit lalu &middot; QRIS</div></div>
+                <div class="tx-badge">BCA</div>
+              </div>
+              <div class="tx-card">
+                <div class="tx-coin">🪙</div>
+                <div class="tx-info"><div class="amt">Rp 15.000</div><div class="meta">Tunai &middot; Dicatat</div></div>
+                <div class="tx-badge">Manual</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="layer voice-bubble" data-parallax="0.28">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="txt">
+            <b>"Dua ratus ribu rupiah"</b>
+            <span class="eq"><i></i><i></i><i></i><i></i></span>
+          </div>
+        </div>
+
+        <div class="layer coin coin-2" data-parallax="0.42"></div>
+      </div>
+    </div>
+
+    <div class="scroll-cue">
+      <div class="mouse"></div>
+      Gulir
+    </div>
+  </section>
+
+  <!-- ===================== MARQUEE ===================== -->
+  <section class="marquee-section">
+    <div class="marquee-label">Mendengar notifikasi dari e-wallet, bank digital &amp; aplikasi merchant</div>
+    <div class="marquee">
+      <div class="marquee-track">
+        <span class="chip-app"><span class="dot"></span>GoPay</span>
+        <span class="chip-app"><span class="dot"></span>Dana</span>
+        <span class="chip-app"><span class="dot"></span>OVO</span>
+        <span class="chip-app"><span class="dot"></span>ShopeePay</span>
+        <span class="chip-app"><span class="dot"></span>BCA mobile</span>
+        <span class="chip-app"><span class="dot"></span>BRImo</span>
+        <span class="chip-app"><span class="dot"></span>Livin' Mandiri</span>
+        <span class="chip-app"><span class="dot"></span>SeaBank</span>
+        <span class="chip-app"><span class="dot"></span>Jenius</span>
+        <span class="chip-app"><span class="dot"></span>LinkAja</span>
+        <!-- duplicate for seamless loop -->
+        <span class="chip-app"><span class="dot"></span>GoPay</span>
+        <span class="chip-app"><span class="dot"></span>Dana</span>
+        <span class="chip-app"><span class="dot"></span>OVO</span>
+        <span class="chip-app"><span class="dot"></span>ShopeePay</span>
+        <span class="chip-app"><span class="dot"></span>BCA mobile</span>
+        <span class="chip-app"><span class="dot"></span>BRImo</span>
+        <span class="chip-app"><span class="dot"></span>Livin' Mandiri</span>
+        <span class="chip-app"><span class="dot"></span>SeaBank</span>
+        <span class="chip-app"><span class="dot"></span>Jenius</span>
+        <span class="chip-app"><span class="dot"></span>LinkAja</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FEATURES ===================== -->
+  <section class="section features" id="fitur">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Kenapa BeJo</span>
+        <h2>Semua yang warung Anda butuhkan, dalam satu aplikasi</h2>
+        <p>Dari mendengar uang masuk sampai merapikan catatan penjualan — BeJo dibuat untuk pemilik usaha yang tangannya selalu sibuk.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card wide reveal">
+          <div class="feature-ico amber">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Diumumkan dengan suara, saat itu juga</h3>
+          <p>Begitu pembayaran masuk, BeJo membunyikan lonceng lalu menyebutkan nominalnya dalam Bahasa Indonesia. Anda mendengar uang mendarat tanpa perlu menyentuh HP — pilih suara favorit, atur kecepatan, bahkan simpan paket suara sendiri.</p>
+        </div>
+
+        <div class="feature-card reveal d1">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 17H4V7h5m0 10V7m0 10 6 3V4L9 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 9a3 3 0 0 1 0 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Dengar app lain juga</h3>
+          <p>BeJo membaca notifikasi dari bank &amp; e-wallet lain, mengumumkannya, dan menyaring promo agar hanya uang masuk yang berbunyi.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Riwayat penjualan rapi</h3>
+          <p>Setiap transaksi tercatat lengkap dengan filter tanggal serta ringkasan hari ini, kemarin, dan bulan ini.</p>
+        </div>
+
+        <div class="feature-card reveal d1">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="6" height="6" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="4" width="6" height="6" rx="1" stroke="currentColor" stroke-width="2"/><rect x="4" y="14" width="6" height="6" rx="1" stroke="currentColor" stroke-width="2"/><path d="M14 14h6v6h-6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Kelola QRIS</h3>
+          <p>Tampilkan, unggah, atau reset QRIS Anda — bahkan buat QR dengan nominal terpasang dan foto usaha di tengahnya.</p>
+        </div>
+
+        <div class="feature-card reveal d2">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="2"/><path d="M4 21a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Akses tim &amp; absensi</h3>
+          <p>Beberapa karyawan bisa berbagi data usaha yang sama, lengkap dengan clock-in/out berlokasi untuk kehadiran harian.</p>
+        </div>
+
+        <div class="feature-card reveal d1">
+          <div class="feature-ico">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M20 7 9 18l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4h16v3H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Catat tunai &amp; kelola stok</h3>
+          <p>Tambah transaksi tunai secara manual, plus modul opsional untuk produk, kategori, pembelian, dan stok opname.</p>
+        </div>
+
+        <div class="feature-card reveal d2">
+          <div class="feature-ico amber">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="2"/><path d="M8 12h8M8 9h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Widget layar utama</h3>
+          <p>Ringkasan harian dan daftar transaksi hari ini langsung di home screen, tanpa perlu membuka aplikasi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="section how" id="cara">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Cara Kerja</span>
+        <h2>Siap dalam tiga langkah</h2>
+        <p>Pasang sekali, lalu biarkan BeJo bekerja di latar belakang sepanjang hari.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">1</div>
+          <h3>Daftar &amp; hubungkan QRIS</h3>
+          <p>Buat akun usaha Anda, lalu tampilkan atau unggah kode QRIS Anda di dalam aplikasi.</p>
+        </div>
+        <div class="step reveal d1">
+          <div class="num">2</div>
+          <h3>Izinkan notifikasi</h3>
+          <p>Panduan berlangkah membantu Anda memberi izin agar BeJo bisa mendengar pembayaran masuk.</p>
+        </div>
+        <div class="step reveal d2">
+          <div class="num">3</div>
+          <h3>Layani &amp; dengarkan</h3>
+          <p>Setiap uang masuk langsung diumumkan dengan suara. Sesederhana itu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SHOWCASE: REKAP ===================== -->
+  <section class="section showcase" id="rekap">
+    <div class="wrap split">
+      <div class="split-copy reveal">
+        <span class="eyebrow">Rekap Penjualan</span>
+        <h2>Tahu persis berapa yang masuk hari ini, kemarin, dan bulan ini</h2>
+        <p>Bukan hanya bunyi — BeJo menyimpan catatan setiap penjualan yang bisa dipercaya. Setiap entri diberi label sesuai asalnya, jadi pembukuan Anda selalu jelas.</p>
+        <ul class="check-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Ringkasan sekilas</b> — total hari ini, kemarin, dan bulan berjalan.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Filter rentang tanggal</b> untuk menelusuri periode apa pun.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Label per sumber</b> — QRIS, dicatat manual, atau dibaca dari app lain.</span></li>
+        </ul>
+      </div>
+      <div class="split-media reveal d1" data-parallax="0.08">
+        <div class="media-glow"></div>
+        <div class="media-card">
+          <div class="summary-row">
+            <div class="summary-box"><div class="k">Hari Ini</div><div class="v">Rp 2,48jt</div></div>
+            <div class="summary-box"><div class="k">Kemarin</div><div class="v">Rp 2,21jt</div></div>
+            <div class="summary-box"><div class="k">Bulan Ini</div><div class="v amber">Rp 58,9jt</div></div>
+          </div>
+          <div class="bar-chart">
+            <div class="bar" style="height:42%"></div>
+            <div class="bar" style="height:65%"></div>
+            <div class="bar" style="height:50%"></div>
+            <div class="bar" style="height:78%"></div>
+            <div class="bar" style="height:60%"></div>
+            <div class="bar" style="height:88%"></div>
+            <div class="bar" style="height:100%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SHOWCASE: TIM & QRIS ===================== -->
+  <section class="section showcase" id="tim" style="background:var(--bg);">
+    <div class="wrap split reverse">
+      <div class="split-media reveal" data-parallax="0.08">
+        <div class="media-glow"></div>
+        <div class="media-card">
+          <div class="qris-visual">
+            <div class="qris-box">
+              <div class="grid"></div>
+              <div class="cat-badge"><img src="assets/bejo-icon-round.png" alt="Logo di tengah QRIS" /></div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-weight:800;font-size:18px;color:var(--primary)">QRIS Warung Bejo</div>
+              <div style="font-size:13px;color:var(--ink-soft)">Nominal Rp 50.000 terpasang</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="split-copy reveal d1">
+        <span class="eyebrow">QRIS &amp; Tim</span>
+        <h2>QRIS pintar dan tim yang tersinkron</h2>
+        <p>Kelola kode QRIS Anda sepenuhnya di dalam aplikasi — bahkan tempel foto usaha di tengahnya, dijamin tetap bisa dipindai. Lalu ajak tim Anda berbagi data yang sama.</p>
+        <ul class="check-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>QR nominal sekali pakai</b> dibuat langsung di HP, tanpa server.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Foto di tengah QRIS</b> — diverifikasi tetap terpindai ke QRIS yang sama.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Absensi tim</b> dengan lokasi clock-in/out untuk super admin.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATS BAND ===================== -->
+  <section class="stats-band">
+    <div class="wrap stats-grid">
+      <div class="stat reveal"><div class="big">40+</div><div class="lbl">app bank &amp; e-wallet didengar</div></div>
+      <div class="stat reveal d1"><div class="big">4</div><div class="lbl">pilihan suara pengumuman</div></div>
+      <div class="stat reveal d2"><div class="big">0 dtk</div><div class="lbl">jeda — dengar saat itu juga</div></div>
+      <div class="stat reveal d3"><div class="big">100%</div><div class="lbl">data terhapus saat logout</div></div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA / DOWNLOAD ===================== -->
+  <section class="cta-section" id="unduh">
+    <div class="wrap">
+      <div class="cta-card reveal">
+        <img src="assets/bejo-icon.png" alt="" class="cat-float a" data-parallax="0.2" />
+        <img src="assets/bejo-icon-round.png" alt="" class="cat-float b" data-parallax="-0.15" />
+        <h2>Jangan pernah lewatkan satu pembayaran pun</h2>
+        <p>Pasang BeJo hari ini dan biarkan si kucing keberuntungan menjaga setiap uang yang masuk ke warung Anda.</p>
+        <div class="cta-actions">
+          <a href="#" class="btn btn-amber">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M3.6 1.8 13 12 3.6 22.2c-.4-.2-.6-.6-.6-1V2.8c0-.4.2-.8.6-1Zm10.8 8.8 2.9-1.7-3.5-2L11 12l2.8 3 3.5-2-2.9-2.4Zm4.9-2.8 2.4 1.4c.9.5.9 1.6 0 2.1l-2.4 1.4L16.4 12l2.9-2.4Z"/></svg>
+            Unduh untuk Android
+          </a>
+          <a href="#fitur" class="btn btn-ghost" style="background:rgba(255,255,255,.14);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)">Lihat semua fitur</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <img src="assets/bejo-icon-round.png" alt="BeJo" />
+            Be<b>Jo</b>
+          </div>
+          <p>Aplikasi notifikasi pembayaran untuk merchant QRIS Indonesia. Dengar uang masuk, tanpa lihat layar.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Produk</h4>
+          <ul>
+            <li><a href="#fitur">Fitur</a></li>
+            <li><a href="#cara">Cara Kerja</a></li>
+            <li><a href="#rekap">Rekap Penjualan</a></li>
+            <li><a href="#unduh">Unduh</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Kebijakan Privasi</a></li>
+            <li><a href="data-deletion.html">Penghapusan Data</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kontak</h4>
+          <ul>
+            <li><a href="mailto:moobejo@gmail.com">moobejo@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 BeJo. Dibuat untuk warung, kios, dan toko kecil Indonesia.</span>
+        <span><a href="privacy.html">Privasi</a> &middot; <a href="data-deletion.html">Hapus Data</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
