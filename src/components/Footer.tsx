@@ -22,11 +22,11 @@ export function Footer() {
                 alt="BeJo"
                 className="h-10 w-10 rounded-xl"
               />
-              Be<span className="text-[#6fc79b]">Jo</span>
+              <span>Be<span className="text-[#6fc79b]">Jo</span></span>
             </div>
-            <p className="max-w-xs text-sm leading-relaxed">
-              Aplikasi buat dengar uang masuk tanpa harus lihat HP. Dibuat untuk
-              pemilik warung dan toko yang pakai QRIS.
+            <p className="max-w-sm text-sm leading-relaxed">
+              Aplikasi untuk membunyikan uang masuk dari QRIS tanpa harus liat HP.
+              Dihadirkan untuk pemilik usaha yang menggunakan pembayaran dengan QRIS.
             </p>
           </div>
 
@@ -40,10 +40,10 @@ export function Footer() {
             <ul className="flex flex-col gap-3">
               <li>
                 <a
-                  href="mailto:moobejo@gmail.com"
+                  href="/contact.html"
                   className="text-[14.5px] transition-colors hover:text-[#6fc79b]"
                 >
-                  moobejo@gmail.com
+                  Kirim pesan ke kami
                 </a>
               </li>
             </ul>
@@ -51,7 +51,7 @@ export function Footer() {
         </div>
 
         <div className="mt-11 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-center text-[13.5px] text-[#8a9990] sm:flex-row sm:text-left">
-          <span>© 2026 BeJo. Dibuat buat warung, kios, dan toko kecil di Indonesia.</span>
+          <span>© 2026 BeJo. Dibuat untuk warung, kios, dan toko kecil di Indonesia.</span>
           <span className="flex gap-2">
             <a href="/" className="hover:text-[#6fc79b]">Beranda</a>
             <span>·</span>
