@@ -9,6 +9,8 @@ import {
   ClipboardList,
   LayoutGrid,
   Mic,
+  Volume2,
+  MapPin,
 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -30,7 +32,7 @@ const features = [
     amber: true,
     wide: true,
     title: "Langsung disebut pakai suara",
-    body: "Begitu ada uang masuk, BeJo bunyikan lonceng lalu sebut jumlahnya dalam Bahasa Indonesia. Kamu nggak perlu pegang HP. Bisa pilih suara, atur cepat lambatnya, bahkan simpan suara sendiri.",
+    body: "Begitu ada uang masuk, BeJo bunyikan lonceng lalu sebut jumlahnya dalam Bahasa Indonesia. Kamu nggak perlu pegang HP. Bisa pilih dari 10+ suara, atur cepat lambatnya, bahkan simpan suara sendiri.",
   },
   {
     icon: Radio,
@@ -83,6 +85,19 @@ const steps = [
   },
 ];
 
+const stats = [
+  ["1000+", "Warung telah bergabung"],
+  ["10+", "Suara unik"],
+  ["Rp 0", "Biaya pakai"],
+  ["40+", "Aplikasi yang didukung"],
+];
+
+const team = [
+  { name: "Sari", initial: "S", status: "Masuk 08:02", in: true },
+  { name: "Budi", initial: "B", status: "Masuk 08:15", in: true },
+  { name: "Rina", initial: "R", status: "Belum absen", in: false },
+];
+
 export default function Home() {
   useReveal();
   useParallax();
@@ -131,7 +146,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
               {[
                 "Gratis dipakai",
-                "Bisa GoPay, Dana, OVO, BCA, BRI, dan 35+ lainnya",
+                "Sudah dipakai 1000+ warung",
                 "Data dikunci sidik jari",
               ].map((t) => (
                 <div
@@ -231,24 +246,134 @@ export default function Home() {
         </div>
       </section>
 
-      {/* REKAP */}
-      <section id="rekap" className="overflow-hidden bg-[#EAF1EA] py-20 md:py-28">
+      {/* UANG MASUK QRIS */}
+      <section id="uang-masuk" className="overflow-hidden bg-[#EAF1EA] py-20 md:py-28">
         <div className="container grid items-center gap-14 lg:grid-cols-2">
           <div className="reveal">
-            <Badge>Catatan Penjualan</Badge>
+            <Badge>Uang Masuk QRIS</Badge>
             <h2 className="mt-4 text-[clamp(1.8rem,3vw,2.5rem)]">
-              Tahu persis berapa yang masuk hari ini
+              Tiap uang masuk, langsung kedengeran
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Bukan cuma bunyi. BeJo simpan catatan tiap penjualan yang bisa kamu
-              percaya. Tiap catatan dikasih tanda dari mana asalnya, jadi pembukuan
-              kamu gampang.
+              Begitu ada pembayaran QRIS masuk, BeJo langsung sebut jumlahnya pakai
+              suara dalam Bahasa Indonesia. Kamu bisa terus layani pembeli tanpa
+              harus bolak-balik ngecek HP.
+            </p>
+            <CheckList
+              items={[
+                ["Disebut kurang dari 1 detik", "pas uang masuk, nggak pakai nunggu."],
+                ["Dengar dari 40+ aplikasi", "bank dan dompet digital, iklan disaring."],
+                ["Pilih 10+ suara unik", "sesuai selera dan atur cepat lambatnya."],
+              ]}
+            />
+          </div>
+          <div className="reveal d1" data-parallax="0.08">
+            <Card className="shadow-card">
+              <CardContent className="p-7">
+                <div className="rounded-2xl bg-gradient-to-br from-primary to-primary-dark p-5 text-white">
+                  <div className="text-[11px] uppercase tracking-[0.08em] opacity-85">
+                    Pembayaran Terdeteksi
+                  </div>
+                  <div className="mt-1 text-3xl font-extrabold">Rp 200.000</div>
+                  <div className="mt-0.5 text-xs opacity-90">GoPay · QRIS · baru aja</div>
+                </div>
+                <div className="mt-4 flex items-center gap-3 rounded-2xl bg-mint p-4">
+                  <div className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary-dark text-white">
+                    <Volume2 className="h-5 w-5" />
+                  </div>
+                  <div className="text-[15px]">
+                    <b className="text-primary-deep">"Dua ratus ribu rupiah"</b>
+                    <span className="ml-1 inline-flex h-3 items-end gap-[2px] align-middle">
+                      <i className="w-[3px] animate-eq rounded bg-primary [height:6px] [animation-delay:0s]" />
+                      <i className="w-[3px] animate-eq rounded bg-primary [height:13px] [animation-delay:0.15s]" />
+                      <i className="w-[3px] animate-eq rounded bg-primary [height:8px] [animation-delay:0.3s]" />
+                      <i className="w-[3px] animate-eq rounded bg-primary [height:14px] [animation-delay:0.45s]" />
+                    </span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* KELOLA TIM & ABSENSI */}
+      <section id="tim" className="overflow-hidden py-20 md:py-28">
+        <div className="container grid items-center gap-14 lg:grid-cols-2">
+          <div className="reveal order-last lg:order-first" data-parallax="0.08">
+            <Card className="shadow-card">
+              <CardContent className="p-7">
+                <div className="mb-4 text-sm font-bold uppercase tracking-[0.06em] text-muted-foreground">
+                  Absensi Hari Ini
+                </div>
+                <div className="flex flex-col gap-2.5">
+                  {team.map((m) => (
+                    <div
+                      key={m.name}
+                      className="flex items-center gap-3 rounded-2xl bg-background p-3"
+                    >
+                      <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-mint font-extrabold text-primary">
+                        {m.initial}
+                      </div>
+                      <div className="flex-1 font-bold">{m.name}</div>
+                      <div
+                        className={`rounded-full px-3 py-1 text-xs font-bold ${
+                          m.in
+                            ? "bg-mint text-primary-deep"
+                            : "bg-[#f1e2c4] text-amber-dark"
+                        }`}
+                      >
+                        {m.status}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 flex items-center gap-2 rounded-2xl bg-primary/10 p-3 text-sm font-semibold text-primary-deep">
+                  <MapPin className="h-5 w-5 flex-none text-primary" />
+                  Toko Utama · Jl. Merdeka No. 12
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          <div className="reveal d1">
+            <Badge>Kelola Tim & Absensi</Badge>
+            <h2 className="mt-4 text-[clamp(1.8rem,3vw,2.5rem)]">
+              Satu tim, satu data, kehadiran kepantau
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Ajak karyawan pakai data usaha yang sama. Pantau kehadiran lewat absen
+              masuk dan pulang yang dilengkapi lokasi, jadi kamu tahu siapa yang jaga
+              dan di mana.
+            </p>
+            <CheckList
+              items={[
+                ["Beberapa karyawan", "berbagi transaksi, produk, dan pengaturan yang sama."],
+                ["Absen masuk & pulang", "lengkap dengan lokasi tempat absennya."],
+                ["Ringkasan kehadiran", "per tanggal, khusus buat pemilik usaha."],
+              ]}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* CATATAN TRANSAKSI */}
+      <section id="catatan" className="overflow-hidden bg-[#EAF1EA] py-20 md:py-28">
+        <div className="container grid items-center gap-14 lg:grid-cols-2">
+          <div className="reveal">
+            <Badge>Catatan Transaksi</Badge>
+            <h2 className="mt-4 text-[clamp(1.8rem,3vw,2.5rem)]">
+              Catatan rapi yang bisa kamu percaya
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Semua transaksi tercatat otomatis. Ada ringkasan harian dan bulanan,
+              plus saringan per tanggal. Tiap catatan dikasih tanda dari mana asalnya,
+              jadi pembukuan kamu gampang.
             </p>
             <CheckList
               items={[
                 ["Ringkasan cepat", "total hari ini, kemarin, dan bulan ini."],
                 ["Saring per tanggal", "buat lihat periode apa pun."],
-                ["Ada tanda sumbernya", "QRIS, dicatat tangan, atau dari aplikasi lain."],
+                ["Ada tanda sumbernya", "QRIS, tunai yang dicatat, atau dari aplikasi lain."],
               ]}
             />
           </div>
@@ -275,46 +400,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* QRIS & TIM */}
-      <section id="qris" className="overflow-hidden py-20 md:py-28">
-        <div className="container grid items-center gap-14 lg:grid-cols-2">
-          <div className="reveal order-last lg:order-first" data-parallax="0.08">
-            <Card className="shadow-card">
-              <CardContent className="flex flex-col items-center gap-5 p-7">
-                <div className="relative h-44 w-44 rounded-2xl bg-white p-4 shadow-[inset_0_0_0_2px_hsl(var(--border))]">
-                  <div className="h-full w-full rounded bg-[linear-gradient(90deg,#16201a_25%,transparent_25%,transparent_50%,#16201a_50%,#16201a_60%,transparent_60%),linear-gradient(#16201a_25%,transparent_25%,transparent_50%,#16201a_50%,#16201a_75%,transparent_75%)] bg-[length:18px_18px] opacity-85" />
-                  <div className="absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-white shadow-[0_0_0_5px_#fff]">
-                    <img
-                      src="/assets/bejo-icon-round.png"
-                      alt="Logo di tengah QRIS"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
+      {/* BRAND TEASER */}
+      <section id="brand" className="py-20 md:py-24">
+        <div className="container">
+          <div className="reveal relative overflow-hidden rounded-[32px] bg-[linear-gradient(135deg,#3a2a05_0%,#8a5f10_45%,#C4881C_100%)] px-6 py-14 shadow-big md:px-12 md:py-16">
+            <div className="grid items-center gap-8 md:grid-cols-[1.4fr_1fr]">
+              <div className="text-white">
+                <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em]">
+                  <Megaphone className="h-4 w-4" /> Untuk Brand & Pengiklan
                 </div>
-                <div className="text-center">
-                  <div className="text-lg font-extrabold text-primary">QRIS Warung Bejo</div>
-                  <div className="text-sm text-muted-foreground">Jumlah Rp 50.000 sudah terisi</div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-          <div className="reveal d1">
-            <Badge>QRIS & Tim</Badge>
-            <h2 className="mt-4 text-[clamp(1.8rem,3vw,2.5rem)]">
-              QRIS gampang diatur, tim ikut nyambung
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Atur QRIS kamu langsung di aplikasi. Bisa tempel foto usaha di
-              tengahnya, sudah dicek tetap bisa discan. Ajak juga karyawan pakai
-              data yang sama.
-            </p>
-            <CheckList
-              items={[
-                ["Bikin QR dengan jumlah tertentu", "langsung dari HP, tanpa ribet."],
-                ["Foto di tengah QRIS", "sudah dicek tetap kebaca ke QRIS yang sama."],
-                ["Absen tim pakai lokasi", "buat pemilik usaha memantau kehadiran."],
-              ]}
-            />
+                <h2 className="mt-4 text-[clamp(1.8rem,3vw,2.6rem)]">
+                  Punya brand? Sapa ribuan warung lewat iklan suara.
+                </h2>
+                <p className="mt-3 max-w-xl text-lg text-white/90">
+                  BeJo bisa memutar iklan suara singkat di HP para pedagang yang
+                  setuju menerimanya, tepat sasaran sesuai lokasi dan audiens. Suara
+                  brand kamu benar-benar terdengar di lapak akar rumput.
+                </p>
+              </div>
+              <div className="flex md:justify-end">
+                <Button asChild size="lg" variant="amber">
+                  <a href="/brand.html">
+                    Pelajari untuk Brand <ArrowRight />
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -323,12 +434,7 @@ export default function Home() {
       <section className="relative overflow-hidden bg-gradient-to-br from-primary to-primary-dark py-20 text-white">
         <div className="absolute inset-0 bg-[radial-gradient(600px_300px_at_85%_20%,rgba(224,163,46,0.25),transparent_60%)]" />
         <div className="container relative grid grid-cols-2 gap-8 text-center lg:grid-cols-4">
-          {[
-            ["40+", "aplikasi bank & dompet didengar"],
-            ["4", "pilihan suara"],
-            ["0 dtk", "jeda, langsung kedengeran"],
-            ["100%", "data hilang pas kamu keluar"],
-          ].map(([big, lbl], i) => (
+          {stats.map(([big, lbl], i) => (
             <div key={i} className={`reveal ${i ? `d${i}` : ""}`}>
               <div className="text-[clamp(2.2rem,4vw,3.2rem)] font-extrabold tracking-tight">
                 {big}

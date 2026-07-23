@@ -18,6 +18,7 @@ export default defineConfig({
         privacy: resolve(__dirname, "privacy.html"),
         dataDeletion: resolve(__dirname, "data-deletion.html"),
         contact: resolve(__dirname, "contact.html"),
+        brand: resolve(__dirname, "brand.html"),
       },
     },
   },

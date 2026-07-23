@@ -1,8 +1,8 @@
 const productLinks = [
-  { href: "/#fitur", label: "Fitur" },
-  { href: "/#cara", label: "Cara Pakai" },
-  { href: "/#rekap", label: "Catatan Penjualan" },
-  { href: "/#unduh", label: "Pasang" },
+  { href: "/#uang-masuk", label: "Uang Masuk QRIS" },
+  { href: "/#tim", label: "Kelola Tim & Absensi" },
+  { href: "/#catatan", label: "Catatan Transaksi" },
+  { href: "/brand.html", label: "Untuk Brand" },
 ];
 
 const legalLinks = [

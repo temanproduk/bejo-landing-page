@@ -7,20 +7,24 @@ import { cn } from "@/lib/utils";
 type Link = { href: string; label: string };
 
 const homeLinks: Link[] = [
-  { href: "#fitur", label: "Fitur" },
-  { href: "#cara", label: "Cara Pakai" },
-  { href: "#rekap", label: "Catatan" },
-  { href: "#qris", label: "QRIS & Tim" },
+  { href: "#uang-masuk", label: "Uang Masuk QRIS" },
+  { href: "#tim", label: "Kelola Tim & Absensi" },
+  { href: "#catatan", label: "Catatan Transaksi" },
+  { href: "/brand.html", label: "Untuk Brand" },
 ];
 
 export function Header({
   links = homeLinks,
   variant = "home",
+  ctaLabel,
+  ctaHref,
 }: {
   links?: Link[];
   variant?: "home" | "legal";
+  ctaLabel?: string;
+  ctaHref?: string;
 }) {
-  // On legal pages the header starts in its condensed (solid) state.
+  // On legal / standalone pages the header starts in its condensed (solid) state.
   const [scrolled, setScrolled] = useState(variant === "legal");
 
   useEffect(() => {
@@ -30,6 +34,11 @@ export function Header({
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [variant]);
+
+  const cta = {
+    label: ctaLabel ?? (variant === "legal" ? "Balik ke Beranda" : "Pasang Gratis"),
+    href: ctaHref ?? (variant === "legal" ? "/" : "#unduh"),
+  };
 
   return (
     <header
@@ -47,12 +56,10 @@ export function Header({
             alt="BeJo"
             className="h-10 w-10 rounded-xl shadow-soft"
           />
-          <span>
-            Be<span className="text-primary">Jo</span>
-          </span>
+          <span>Be<span className="text-primary">Jo</span></span>
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex">
           {links.map((l) => (
             <a
               key={l.href}
@@ -64,20 +71,14 @@ export function Header({
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
-          {variant === "legal" ? (
-            <Button asChild>
-              <a href="/">Balik ke Beranda</a>
-            </Button>
-          ) : (
-            <Button asChild>
-              <a href="#unduh">Pasang Gratis</a>
-            </Button>
-          )}
+        <div className="hidden items-center gap-3 lg:flex">
+          <Button asChild>
+            <a href={cta.href}>{cta.label}</a>
+          </Button>
         </div>
 
         {/* Mobile menu */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" aria-label="Buka menu">
@@ -91,9 +92,7 @@ export function Header({
                   alt="BeJo"
                   className="h-9 w-9 rounded-lg"
                 />
-                <span>
-                  Be<span className="text-primary">Jo</span>
-                </span>
+                <span>Be<span className="text-primary">Jo</span></span>
               </a>
               <nav className="mt-10 flex flex-col gap-1">
                 {links.map((l) => (
@@ -110,9 +109,7 @@ export function Header({
               <div className="mt-6">
                 <SheetClose asChild>
                   <Button asChild className="w-full" size="lg">
-                    <a href={variant === "legal" ? "/" : "#unduh"}>
-                      {variant === "legal" ? "Balik ke Beranda" : "Pasang Gratis"}
-                    </a>
+                    <a href={cta.href}>{cta.label}</a>
                   </Button>
                 </SheetClose>
               </div>
