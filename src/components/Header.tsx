@@ -3,6 +3,12 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { PLAY_URL } from "@/lib/constants";
+
+const externalProps = (href: string) =>
+  /^https?:\/\//.test(href)
+    ? { target: "_blank", rel: "noopener noreferrer" }
+    : {};
 
 type Link = { href: string; label: string };
 
@@ -37,7 +43,7 @@ export function Header({
 
   const cta = {
     label: ctaLabel ?? (variant === "legal" ? "Balik ke Beranda" : "Pasang Gratis"),
-    href: ctaHref ?? (variant === "legal" ? "/" : "#unduh"),
+    href: ctaHref ?? (variant === "legal" ? "/" : PLAY_URL),
   };
 
   return (
@@ -73,7 +79,9 @@ export function Header({
 
         <div className="hidden items-center gap-3 lg:flex">
           <Button asChild>
-            <a href={cta.href}>{cta.label}</a>
+            <a href={cta.href} {...externalProps(cta.href)}>
+              {cta.label}
+            </a>
           </Button>
         </div>
 
@@ -109,7 +117,9 @@ export function Header({
               <div className="mt-6">
                 <SheetClose asChild>
                   <Button asChild className="w-full" size="lg">
-                    <a href={cta.href}>{cta.label}</a>
+                    <a href={cta.href} {...externalProps(cta.href)}>
+                      {cta.label}
+                    </a>
                   </Button>
                 </SheetClose>
               </div>

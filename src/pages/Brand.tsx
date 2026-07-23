@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useReveal } from "@/hooks/useReveal";
+import { BRAND_CTA_URL } from "@/lib/constants";
 
 const brandLinks = [
   { href: "#kenapa", label: "Kenapa Iklan Suara" },
@@ -30,7 +31,7 @@ const reasons = [
   {
     icon: Volume2,
     title: "Benar-benar didengar",
-    body: "Iklan diputar keras lewat HP yang sama yang membunyikan uang masuk. Bukan iklan yang di-scroll lewat, tapi yang beneran terdengar.",
+    body: "Iklan diputar keras lewat HP yang sama yang membunyikan uang masuk. Bukan iklan yang cuma numpang lewat, tapi yang beneran terdengar.",
   },
   {
     icon: MapPin,
@@ -60,7 +61,7 @@ export default function Brand() {
         links={brandLinks}
         variant="legal"
         ctaLabel="Mulai Kampanye"
-        ctaHref="/contact.html"
+        ctaHref={BRAND_CTA_URL}
       />
 
       {/* HERO */}
@@ -82,7 +83,7 @@ export default function Brand() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3.5">
               <Button asChild size="lg" variant="amber">
-                <a href="/contact.html">
+                <a href={BRAND_CTA_URL} target="_blank" rel="noopener noreferrer">
                   Mulai Kampanye <ArrowRight />
                 </a>
               </Button>
@@ -249,7 +250,7 @@ export default function Brand() {
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3.5">
               <Button asChild size="lg" variant="light">
-                <a href="/contact.html">
+                <a href={BRAND_CTA_URL} target="_blank" rel="noopener noreferrer">
                   Mulai Kampanye <ArrowRight />
                 </a>
               </Button>

@@ -20,6 +20,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useParallax } from "@/hooks/useParallax";
 import { useReveal } from "@/hooks/useReveal";
+import { PLAY_URL } from "@/lib/constants";
 
 const supportedApps = [
   "GoPay", "Dana", "OVO", "ShopeePay", "BCA mobile",
@@ -135,7 +136,7 @@ export default function Home() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3.5">
               <Button asChild size="lg">
-                <a href="#unduh">
+                <a href={PLAY_URL} target="_blank" rel="noopener noreferrer">
                   Pasang Gratis <ArrowRight />
                 </a>
               </Button>
@@ -338,12 +339,12 @@ export default function Home() {
           <div className="reveal d1">
             <Badge>Kelola Tim & Absensi</Badge>
             <h2 className="mt-4 text-[clamp(1.8rem,3vw,2.5rem)]">
-              Satu tim, satu data, kehadiran kepantau
+              Satu tim, satu data, kehadiran terpantau
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Ajak karyawan pakai data usaha yang sama. Pantau kehadiran lewat absen
-              masuk dan pulang yang dilengkapi lokasi, jadi kamu tahu siapa yang jaga
-              dan di mana.
+              masuk dan pulang yang dilengkapi lokasi, jadi kamu selalu tahu siapa
+              yang jaga dan di mana.
             </p>
             <CheckList
               items={[
@@ -470,8 +471,8 @@ export default function Home() {
             </p>
             <div className="relative mt-8 flex flex-wrap justify-center gap-3.5">
               <Button asChild size="lg" variant="amber">
-                <a href="#">
-                  <Mic /> Pasang buat Android
+                <a href={PLAY_URL} target="_blank" rel="noopener noreferrer">
+                  <Mic /> Pasang di Google Play
                 </a>
               </Button>
               <Button asChild size="lg" variant="light">
