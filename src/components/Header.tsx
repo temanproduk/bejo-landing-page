@@ -9,6 +9,7 @@ type NavLink = { href: string; label: string };
 
 const homeLinks: NavLink[] = [
   { href: "#uang-masuk", label: "Uang Masuk QRIS" },
+  { href: "#kirim-qris", label: "Kirim QRIS" },
   { href: "#tim", label: "Kelola Tim & Absensi" },
   { href: "#catatan", label: "Catatan Transaksi" },
   { href: "/brand.html", label: "Untuk Brand" },

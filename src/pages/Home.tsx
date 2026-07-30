@@ -17,8 +17,9 @@ import {
 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { PhoneMockup } from "@/components/PhoneMockup";
-import { VoiceDemo } from "@/components/VoiceDemo";
+import { HeroDemo } from "@/components/HeroDemo";
+import { PhoneFrame } from "@/components/phone/PhoneFrame";
+import { AppQrisScreen } from "@/components/phone/AppQrisScreen";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { useParallax } from "@/hooks/useParallax";
@@ -52,6 +53,12 @@ const voiceDetails = [
   },
 ];
 
+const qrisPoints = [
+  ["Jumlahnya sudah terisi", "Ketik nominal pesanan, QRIS-nya langsung dibuat dengan jumlah itu. Pembeli tidak bisa salah ketik."],
+  ["Kirim ke chat mana saja", "WhatsApp, Telegram, atau aplikasi chat lain, lewat tombol bagikan yang biasa kamu pakai."],
+  ["Sekalian nomor rekening", "Kalau pembeli mau transfer bank, data rekening usahamu ikut terkirim."],
+];
+
 const teamPoints = [
   ["QRIS sendiri per karyawan", "Tiap karyawan bisa dikasih QRIS masing-masing, jadi kamu tahu setoran datang dari lapak siapa."],
   ["Absen pakai lokasi", "Karyawan absen masuk dan pulang, lengkap dengan titik lokasinya."],
@@ -78,7 +85,7 @@ const stats = [
 ];
 
 const extras = [
-  { icon: QrCode, title: "QRIS dengan nominal", body: "Buat QR yang jumlahnya sudah terisi, tinggal discan pembeli." },
+  { icon: QrCode, title: "Foto usaha di tengah QRIS", body: "QRIS-mu bisa dikasih foto usaha, dan tetap aman discan." },
   { icon: Tags, title: "Produk dan stok", body: "Catat barang, kategori, tambah stok, dan stok opname." },
   { icon: LayoutGrid, title: "Widget di layar HP", body: "Lihat setoran hari ini tanpa buka aplikasi." },
   { icon: Fingerprint, title: "Kunci sidik jari", body: "Cuma kamu yang bisa buka catatan usahamu." },
@@ -100,7 +107,7 @@ export default function Home() {
       <Header />
 
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-line pb-16 pt-28 md:pb-24 md:pt-36">
+      <section className="relative overflow-hidden border-b border-line pb-14 pt-24 md:pb-16 md:pt-28">
         {/* Flat field instead of a soft gradient wash */}
         <div
           className="absolute inset-y-0 right-0 -z-10 hidden w-1/3 bg-paper-warm lg:block"
@@ -129,7 +136,7 @@ export default function Home() {
               </Button>
             </div>
 
-            <dl className="mt-10 grid max-w-lg grid-cols-3 border-t border-line pt-5">
+            <dl className="mt-8 grid max-w-lg grid-cols-3 border-t border-line pt-4">
               {[
                 ["1000+", "warung pakai"],
                 ["Rp 0", "biaya"],
@@ -143,8 +150,8 @@ export default function Home() {
             </dl>
           </div>
 
-          <div className="lg:col-span-5" data-parallax="0.05">
-            <VoiceDemo />
+          <div className="lg:col-span-5">
+            <HeroDemo />
           </div>
         </div>
       </section>
@@ -200,9 +207,40 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="lg:col-span-5" data-parallax="0.06">
-              <PhoneMockup />
+            <div className="lg:col-span-5 lg:pl-4">
+              <VoiceSettings />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── KIRIM QRIS ───────────────────────────────────────── */}
+      <section id="kirim-qris" className="border-b border-line bg-paper-warm py-20 md:py-28">
+        <div className="container grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
+          <div className="order-last lg:order-first lg:col-span-5">
+            <PhoneFrame className="mx-auto w-[252px]" time="14.06">
+              <AppQrisScreen />
+            </PhoneFrame>
+          </div>
+
+          <div className="lg:col-span-7">
+            <Eyebrow>Kirim QRIS</Eyebrow>
+            <h2 className="mt-4 font-display text-[clamp(2rem,4.4vw,3.2rem)] uppercase">
+              Tagih pesanan lewat WhatsApp
+            </h2>
+            <p className="mt-5 max-w-xl text-[17px] text-ink-soft">
+              Pembeli pesan dari rumah? Ketik jumlahnya, lalu kirim QRIS-nya
+              langsung lewat WhatsApp atau aplikasi chat lain. Pembeli tinggal
+              scan dan bayar, tidak perlu datang dulu ke warung.
+            </p>
+            <dl className="mt-9 space-y-6">
+              {qrisPoints.map(([t, b]) => (
+                <div key={t} className="border-l-2 border-green pl-5">
+                  <dt className="text-[17px] font-bold">{t}</dt>
+                  <dd className="mt-1 text-ink-soft">{b}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </section>
@@ -457,5 +495,75 @@ export default function Home() {
 
       <Footer />
     </>
+  );
+}
+
+/** The sound settings a merchant actually controls, drawn as the app panel. */
+function VoiceSettings() {
+  return (
+    <div className="border border-line-strong bg-white">
+      <p className="border-b border-line px-4 py-2.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-ink-faint">
+        Kelola Suara Uang Masuk
+      </p>
+
+      <div className="divide-y divide-line">
+        <div className="px-4 py-3.5">
+          <p className="text-[11px] font-bold uppercase tracking-wider text-green">
+            Suara terpilih
+          </p>
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {["Iwan", "Anita", "Dhea", "Hendro"].map((v, i) => (
+              <span
+                key={v}
+                className={`rounded-control border px-2.5 py-1 text-[12px] font-semibold ${
+                  i === 0
+                    ? "border-green bg-mint text-green-deep"
+                    : "border-line text-ink-soft"
+                }`}
+              >
+                {v}
+              </span>
+            ))}
+            <span className="rounded-control border border-dashed border-line-strong px-2.5 py-1 text-[12px] text-ink-faint">
+              + suaramu
+            </span>
+          </div>
+        </div>
+
+        <div className="px-4 py-3.5">
+          <p className="text-[11px] font-bold uppercase tracking-wider text-green">
+            Kecepatan
+          </p>
+          <div className="mt-2 grid grid-cols-3 divide-x divide-line overflow-hidden rounded-control border border-line">
+            {["Pelan", "Normal", "Cepat"].map((s, i) => (
+              <span
+                key={s}
+                className={`py-1.5 text-center text-[12px] font-semibold ${
+                  i === 1 ? "bg-green text-white" : "text-ink-soft"
+                }`}
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {[
+          "Volume penuh saat bunyi",
+          "Ikut dengar aplikasi lain",
+          "Saring iklan dan promo",
+        ].map((label) => (
+          <div key={label} className="flex items-center gap-3 px-4 py-3">
+            <span className="flex-1 text-[13.5px]">{label}</span>
+            <span
+              className="flex h-5 w-9 flex-none items-center justify-end rounded-full bg-green px-0.5"
+              aria-hidden="true"
+            >
+              <span className="h-4 w-4 rounded-full bg-white" />
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
