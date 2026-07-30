@@ -3,7 +3,7 @@ const columns = [
     title: "Produk",
     links: [
       { href: "/#uang-masuk", label: "Uang Masuk QRIS" },
-      { href: "/#kirim-qris", label: "Kirim QRIS" },
+      { href: "/#kirim-qris", label: "Tagih Lewat QRIS" },
       { href: "/#tim", label: "Kelola Tim & Absensi" },
       { href: "/#catatan", label: "Catatan Transaksi" },
       { href: "/#cara", label: "Cara Pakai" },

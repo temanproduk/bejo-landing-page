@@ -3,13 +3,13 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { PLAY_URL } from "@/lib/constants";
+import { playUrl } from "@/lib/constants";
 
 type NavLink = { href: string; label: string };
 
 const homeLinks: NavLink[] = [
   { href: "#uang-masuk", label: "Uang Masuk QRIS" },
-  { href: "#kirim-qris", label: "Kirim QRIS" },
+  { href: "#kirim-qris", label: "Tagih Lewat QRIS" },
   { href: "#tim", label: "Kelola Tim & Absensi" },
   { href: "#catatan", label: "Catatan Transaksi" },
   { href: "/brand.html", label: "Untuk Brand" },
@@ -45,7 +45,7 @@ export function Header({
 
   const cta = {
     label: ctaLabel ?? (variant === "inner" ? "Beranda" : "Pasang Gratis"),
-    href: ctaHref ?? (variant === "inner" ? "/" : PLAY_URL),
+    href: ctaHref ?? (variant === "inner" ? "/" : playUrl("header")),
   };
 
   return (

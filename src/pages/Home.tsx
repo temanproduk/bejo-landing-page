@@ -23,7 +23,7 @@ import { AppQrisScreen } from "@/components/phone/AppQrisScreen";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { useParallax } from "@/hooks/useParallax";
-import { PLAY_URL } from "@/lib/constants";
+import { playUrl } from "@/lib/constants";
 
 const apps = [
   "GoPay", "Dana", "OVO", "ShopeePay", "BCA mobile", "BRImo",
@@ -127,7 +127,7 @@ export default function Home() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg">
-                <a href={PLAY_URL} target="_blank" rel="noopener noreferrer">
+                <a href={playUrl("hero")} target="_blank" rel="noopener noreferrer">
                   Pasang Gratis <ArrowRight />
                 </a>
               </Button>
@@ -485,7 +485,7 @@ export default function Home() {
           </div>
           <div className="lg:col-span-4 lg:justify-self-end">
             <Button asChild size="lg" variant="gold">
-              <a href={PLAY_URL} target="_blank" rel="noopener noreferrer">
+              <a href={playUrl("penutup")} target="_blank" rel="noopener noreferrer">
                 Pasang di Google Play <ArrowRight />
               </a>
             </Button>
