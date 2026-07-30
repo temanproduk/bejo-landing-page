@@ -73,7 +73,7 @@ export function Footer() {
             kecil di Indonesia.
           </span>
           <a href="/contact.html" className="transition-colors hover:text-gold">
-            moobejo [at] gmail.com
+            Ada yang mau ditanyakan?
           </a>
         </div>
       </div>
