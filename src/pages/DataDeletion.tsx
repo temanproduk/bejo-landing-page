@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer";
 import { LegalHero, EmailCallout, H2, Prose } from "@/components/Legal";
 
 const legalLinks = [
-  { href: "/#fitur", label: "Fitur" },
+  { href: "/#uang-masuk", label: "Uang Masuk QRIS" },
   { href: "/#cara", label: "Cara Pakai" },
   { href: "/privacy.html", label: "Kebijakan Privasi" },
 ];
@@ -28,11 +28,11 @@ const steps = [
 export default function DataDeletion() {
   return (
     <>
-      <Header links={legalLinks} variant="legal" />
+      <Header links={legalLinks} variant="inner" />
       <LegalHero
         title="Hapus Data"
-        desc="Data kamu, kamu yang pegang. Halaman ini menjelaskan cara minta akun dan semua data kamu dihapus dari BeJo."
-        updated="19 Juli 2026"
+        desc="Data kamu, kamu yang pegang. Halaman ini menjelaskan cara meminta akun dan semua datamu dihapus dari BeJo."
+        updated="30 Juli 2026"
       />
 
       <section className="py-14 md:py-16">
@@ -54,16 +54,15 @@ export default function DataDeletion() {
             </EmailCallout>
 
             <H2>Langkah demi Langkah</H2>
-            <ol className="my-5 flex list-none flex-col gap-4 p-0">
+            <ol className="my-6 list-none divide-y divide-line border-y border-line p-0">
               {steps.map(([bold, rest], i) => (
-                <li
-                  key={i}
-                  className="relative rounded-2xl bg-card py-4 pl-16 pr-5 shadow-soft"
-                >
-                  <span className="absolute left-4 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-sm font-extrabold text-white">
-                    {i + 1}
+                <li key={i} className="flex gap-4 py-4">
+                  <span className="font-mono text-sm text-gold-dark">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                  <strong>{bold}</strong> {rest}
+                  <span>
+                    <strong>{bold}</strong> {rest}
+                  </span>
                 </li>
               ))}
             </ol>

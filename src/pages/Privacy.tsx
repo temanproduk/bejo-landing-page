@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer";
 import { LegalHero, EmailCallout, H2, Prose } from "@/components/Legal";
 
 const legalLinks = [
-  { href: "/#fitur", label: "Fitur" },
+  { href: "/#uang-masuk", label: "Uang Masuk QRIS" },
   { href: "/#cara", label: "Cara Pakai" },
   { href: "/data-deletion.html", label: "Hapus Data" },
 ];
@@ -11,11 +11,11 @@ const legalLinks = [
 export default function Privacy() {
   return (
     <>
-      <Header links={legalLinks} variant="legal" />
+      <Header links={legalLinks} variant="inner" />
       <LegalHero
         title="Kebijakan Privasi"
-        desc="Ini penjelasan soal data apa yang BeJo simpan, buat apa, dan hak kamu. Kami cuma ambil yang memang perlu supaya aplikasi jalan."
-        updated="19 Juli 2026"
+        desc="Penjelasan soal data apa yang BeJo simpan, dipakai untuk apa, dan hak kamu. Kami hanya mengambil yang memang perlu supaya aplikasinya jalan."
+        updated="30 Juli 2026"
       />
 
       <section className="py-14 md:py-16">
@@ -36,7 +36,7 @@ export default function Privacy() {
               <li><strong>Data akun:</strong> nama, email, nomor HP, dan kata sandi (disimpan dalam bentuk teracak).</li>
               <li><strong>Data usaha:</strong> nama toko, alamat, jenis usaha, ukuran usaha, NMID QRIS, dan data rekening bank buat pencairan.</li>
               <li><strong>Data transaksi:</strong> catatan uang masuk (jumlah, waktu, sumbernya), baik dari QRIS, dicatat sendiri, atau dibaca dari notifikasi aplikasi lain.</li>
-              <li><strong>Lokasi (kalau dipakai):</strong> hanya saat karyawan absen masuk atau pulang. Lokasi diambil pas fitur ini dipakai saja.</li>
+              <li><strong>Lokasi (kalau dipakai):</strong> saat karyawan absen masuk atau pulang, dan saat iklan suara diputar bila kamu menyalakan fitur itu. Lokasi hanya diambil ketika fitur tersebut dipakai.</li>
               <li><strong>Gambar (kalau dipakai):</strong> foto profil, foto usaha, dan gambar QRIS yang kamu unggah.</li>
               <li><strong>Data perangkat:</strong> token notifikasi (FCM) buat mengirim pesan pembayaran ke HP kamu.</li>
             </ul>
@@ -54,7 +54,21 @@ export default function Privacy() {
             </ul>
             <p>Kamu bisa matikan izin ini kapan saja lewat pengaturan HP atau halaman Profil di aplikasi.</p>
 
-            <H2>4. Kami Pakai Data Buat Apa</H2>
+            <H2>4. Iklan Suara (Pilihan)</H2>
+            <p>
+              BeJo punya fitur <strong>Terima Iklan Suara</strong> yang{" "}
+              <strong>mati secara bawaan</strong>. Fitur ini hanya jalan kalau pemilik
+              usaha menyalakannya sendiri dari pengaturan aplikasi. Kalau kamu
+              menyalakannya:
+            </p>
+            <ul>
+              <li>Iklan suara singkat, paling lama sekitar 20 detik, bisa diputar di HP kamu.</li>
+              <li>Kami mencatat bahwa iklan itu sudah diputar, kapan, dan di lokasi mana. Lokasi dipakai untuk laporan kampanye ke pemilik brand.</li>
+              <li>Laporan ke pemilik brand berbentuk rangkuman. Kami <strong>tidak</strong> memberikan nama, nomor HP, atau data transaksi kamu ke pemilik brand.</li>
+              <li>Kamu bisa mematikan fitur ini kapan saja, dan iklan berhenti dikirim.</li>
+            </ul>
+
+            <H2>5. Kami Pakai Data Buat Apa</H2>
             <ul>
               <li>Menyebutkan dan mencatat uang yang masuk.</li>
               <li>Menampilkan riwayat transaksi serta ringkasan harian dan bulanan.</li>
@@ -63,7 +77,7 @@ export default function Privacy() {
               <li>Menjaga keamanan, mencegah penyalahgunaan, dan memperbaiki aplikasi.</li>
             </ul>
 
-            <H2>5. Berbagi Data</H2>
+            <H2>6. Berbagi Data</H2>
             <p>Kami <strong>tidak menjual</strong> data pribadi kamu. Data cuma dibagikan dalam hal berikut:</p>
             <ul>
               <li><strong>Ke tim kamu:</strong> karyawan dalam satu usaha berbagi data transaksi, produk, dan pengaturan sesuai perannya.</li>
@@ -71,7 +85,7 @@ export default function Privacy() {
               <li><strong>Kalau diminta hukum:</strong> bila diwajibkan oleh aturan yang berlaku.</li>
             </ul>
 
-            <H2>6. Analitik</H2>
+            <H2>7. Analitik</H2>
             <p>
               BeJo bisa memakai alat analitik (Amplitude) buat memahami cara aplikasi
               dipakai. Kami sengaja <strong>tidak pernah</strong> mengirim token masuk
@@ -81,7 +95,7 @@ export default function Privacy() {
               lokasi <strong>ditutupi</strong> dulu sebelum direkam.
             </p>
 
-            <H2>7. Berapa Lama Data Disimpan</H2>
+            <H2>8. Berapa Lama Data Disimpan</H2>
             <p>
               Kami menyimpan data akun dan transaksi selama akun kamu aktif. Saat kamu{" "}
               <strong>keluar (logout)</strong>, semua data di HP dihapus, termasuk sesi,
@@ -89,14 +103,14 @@ export default function Privacy() {
               sampai kamu minta akunnya dihapus.
             </p>
 
-            <H2>8. Hak Kamu</H2>
+            <H2>9. Hak Kamu</H2>
             <ul>
               <li>Melihat dan mengubah data akun lewat aplikasi.</li>
               <li>Menarik izin (misalnya akses notifikasi atau lokasi) kapan saja.</li>
               <li>Minta data dan akun kamu dihapus (lihat bagian di bawah).</li>
             </ul>
 
-            <H2>9. Hapus Data</H2>
+            <H2>10. Hapus Data</H2>
             <EmailCallout
               title="Mau hapus data kamu?"
               subject="Permintaan Hapus Data BeJo"
@@ -109,7 +123,7 @@ export default function Privacy() {
               <a href="/data-deletion.html">Hapus Data</a>.
             </p>
 
-            <H2>10. Keamanan</H2>
+            <H2>11. Keamanan</H2>
             <p>
               Kami berusaha menjaga data kamu dengan cara yang wajar, seperti mengacak
               kata sandi, memakai token buat masuk, dan pilihan kunci sidik jari atau
@@ -117,7 +131,7 @@ export default function Privacy() {
               penyimpanan yang benar-benar 100% aman.
             </p>
 
-            <H2>11. Hubungi Kami</H2>
+            <H2>12. Hubungi Kami</H2>
             <p>
               Kalau ada pertanyaan soal privasi ini atau mau memakai hak kamu, hubungi
               kami di <a href="mailto:moobejo@gmail.com">moobejo@gmail.com</a>.

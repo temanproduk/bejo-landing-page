@@ -1,94 +1,81 @@
-const productLinks = [
-  { href: "/#uang-masuk", label: "Uang Masuk QRIS" },
-  { href: "/#tim", label: "Kelola Tim & Absensi" },
-  { href: "/#catatan", label: "Catatan Transaksi" },
-  { href: "/brand.html", label: "Untuk Brand" },
-];
-
-const legalLinks = [
-  { href: "/privacy.html", label: "Kebijakan Privasi" },
-  { href: "/data-deletion.html", label: "Hapus Data" },
+const columns = [
+  {
+    title: "Produk",
+    links: [
+      { href: "/#uang-masuk", label: "Uang Masuk QRIS" },
+      { href: "/#tim", label: "Kelola Tim & Absensi" },
+      { href: "/#catatan", label: "Catatan Transaksi" },
+      { href: "/#cara", label: "Cara Pakai" },
+    ],
+  },
+  {
+    title: "Kerja Sama",
+    links: [
+      { href: "/brand.html", label: "Untuk Brand" },
+      { href: "/contact.html", label: "Hubungi Kami" },
+    ],
+  },
+  {
+    title: "Ketentuan",
+    links: [
+      { href: "/privacy.html", label: "Kebijakan Privasi" },
+      { href: "/data-deletion.html", label: "Hapus Data" },
+    ],
+  },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-[#10201a] py-16 text-[#c7d3cb]">
+    <footer className="border-t border-white/10 bg-ink pb-10 pt-16 text-white">
       <div className="container">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
-            <div className="mb-4 flex items-center gap-3 text-xl font-extrabold text-white">
+            <div className="flex items-center gap-2.5">
               <img
                 src="/assets/bejo-icon-round.png"
-                alt="BeJo"
-                className="h-10 w-10 rounded-xl"
+                alt=""
+                className="h-9 w-9"
+                aria-hidden="true"
               />
-              <span>Be<span className="text-[#6fc79b]">Jo</span></span>
+              <span className="font-display text-2xl leading-none">
+                Be<span className="text-gold">Jo</span>
+              </span>
             </div>
-            <p className="max-w-sm text-sm leading-relaxed">
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
               Aplikasi untuk membunyikan uang masuk dari QRIS tanpa harus liat HP.
               Dihadirkan untuk pemilik usaha yang menggunakan pembayaran dengan QRIS.
             </p>
           </div>
 
-          <FooterCol title="Produk" links={productLinks} />
-          <FooterCol title="Ketentuan" links={legalLinks} />
-
-          <div>
-            <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.08em] text-white">
-              Hubungi Kami
-            </h4>
-            <ul className="flex flex-col gap-3">
-              <li>
-                <a
-                  href="/contact.html"
-                  className="text-[14.5px] transition-colors hover:text-[#6fc79b]"
-                >
-                  Kirim pesan ke kami
-                </a>
-              </li>
-            </ul>
-          </div>
+          {columns.map((col) => (
+            <div key={col.title}>
+              <h4 className="eyebrow text-white/40">{col.title}</h4>
+              <ul className="mt-4 space-y-2.5">
+                {col.links.map((l) => (
+                  <li key={l.href}>
+                    <a
+                      href={l.href}
+                      className="text-sm text-white/75 transition-colors hover:text-gold"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        <div className="mt-11 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-center text-[13.5px] text-[#8a9990] sm:flex-row sm:text-left">
-          <span>© 2026 BeJo. Dibuat untuk warung, kios, dan toko kecil di Indonesia.</span>
-          <span className="flex gap-2">
-            <a href="/" className="hover:text-[#6fc79b]">Beranda</a>
-            <span>·</span>
-            <a href="/privacy.html" className="hover:text-[#6fc79b]">Privasi</a>
-            <span>·</span>
-            <a href="/data-deletion.html" className="hover:text-[#6fc79b]">Hapus Data</a>
+        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+          <span>
+            © {new Date().getFullYear()} BeJo. Dibuat untuk warung, kios, dan toko
+            kecil di Indonesia.
           </span>
+          <a href="/contact.html" className="transition-colors hover:text-gold">
+            moobejo [at] gmail.com
+          </a>
         </div>
       </div>
     </footer>
-  );
-}
-
-function FooterCol({
-  title,
-  links,
-}: {
-  title: string;
-  links: { href: string; label: string }[];
-}) {
-  return (
-    <div>
-      <h4 className="mb-4 text-sm font-bold uppercase tracking-[0.08em] text-white">
-        {title}
-      </h4>
-      <ul className="flex flex-col gap-3">
-        {links.map((l) => (
-          <li key={l.href}>
-            <a
-              href={l.href}
-              className="text-[14.5px] transition-colors hover:text-[#6fc79b]"
-            >
-              {l.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }

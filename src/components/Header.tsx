@@ -5,118 +5,118 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 import { cn } from "@/lib/utils";
 import { PLAY_URL } from "@/lib/constants";
 
-const externalProps = (href: string) =>
-  /^https?:\/\//.test(href)
-    ? { target: "_blank", rel: "noopener noreferrer" }
-    : {};
+type NavLink = { href: string; label: string };
 
-type Link = { href: string; label: string };
-
-const homeLinks: Link[] = [
+const homeLinks: NavLink[] = [
   { href: "#uang-masuk", label: "Uang Masuk QRIS" },
   { href: "#tim", label: "Kelola Tim & Absensi" },
   { href: "#catatan", label: "Catatan Transaksi" },
   { href: "/brand.html", label: "Untuk Brand" },
 ];
 
+const isExternal = (href: string) => /^https?:\/\//.test(href);
+const externalProps = (href: string) =>
+  isExternal(href) ? { target: "_blank", rel: "noopener noreferrer" } : {};
+
 export function Header({
   links = homeLinks,
   variant = "home",
   ctaLabel,
   ctaHref,
+  ctaVariant = "solid",
 }: {
-  links?: Link[];
-  variant?: "home" | "legal";
+  links?: NavLink[];
+  variant?: "home" | "inner";
   ctaLabel?: string;
   ctaHref?: string;
+  /** Keep the header CTA matching the page's own accent. */
+  ctaVariant?: "solid" | "gold";
 }) {
-  // On legal / standalone pages the header starts in its condensed (solid) state.
-  const [scrolled, setScrolled] = useState(variant === "legal");
+  const [scrolled, setScrolled] = useState(variant === "inner");
 
   useEffect(() => {
-    if (variant === "legal") return;
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    if (variant === "inner") return;
+    const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [variant]);
 
   const cta = {
-    label: ctaLabel ?? (variant === "legal" ? "Balik ke Beranda" : "Pasang Gratis"),
-    href: ctaHref ?? (variant === "legal" ? "/" : PLAY_URL),
+    label: ctaLabel ?? (variant === "inner" ? "Beranda" : "Pasang Gratis"),
+    href: ctaHref ?? (variant === "inner" ? "/" : PLAY_URL),
   };
 
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-40 transition-all duration-300",
-        scrolled
-          ? "bg-background/80 py-2.5 shadow-[0_1px_0_rgba(14,74,46,0.08)] backdrop-blur-md backdrop-saturate-150"
-          : "py-4"
+        "fixed inset-x-0 top-0 z-40 transition-colors duration-300",
+        scrolled ? "border-b border-line bg-paper/95 backdrop-blur-sm" : "border-b border-transparent"
       )}
     >
-      <div className="container flex items-center justify-between gap-5">
-        <a href="/" className="flex items-center gap-3 text-xl font-extrabold">
+      <div className="container flex h-16 items-center justify-between gap-6">
+        <a href="/" className="flex items-center gap-2.5">
           <img
             src="/assets/bejo-icon-round.png"
-            alt="BeJo"
-            className="h-10 w-10 rounded-xl shadow-soft"
+            alt=""
+            className="h-9 w-9"
+            aria-hidden="true"
           />
-          <span>Be<span className="text-primary">Jo</span></span>
+          <span className="font-display text-2xl leading-none">
+            Be<span className="text-green">Jo</span>
+          </span>
         </a>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-[15px] font-semibold text-muted-foreground transition-colors hover:text-primary"
+              className="text-[14px] font-semibold text-ink-soft transition-colors hover:text-green"
             >
               {l.label}
             </a>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <Button asChild>
+        <div className="hidden lg:block">
+          <Button asChild variant={ctaVariant}>
             <a href={cta.href} {...externalProps(cta.href)}>
               {cta.label}
             </a>
           </Button>
         </div>
 
-        {/* Mobile menu */}
         <div className="lg:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Buka menu">
-                <Menu className="h-6 w-6" />
-              </Button>
+              <button
+                type="button"
+                aria-label="Buka menu"
+                className="rounded-control border border-line-strong p-2.5 text-ink"
+              >
+                <Menu className="h-5 w-5" />
+              </button>
             </SheetTrigger>
             <SheetContent>
-              <a href="/" className="flex items-center gap-3 text-xl font-extrabold">
-                <img
-                  src="/assets/bejo-icon-round.png"
-                  alt="BeJo"
-                  className="h-9 w-9 rounded-lg"
-                />
-                <span>Be<span className="text-primary">Jo</span></span>
-              </a>
-              <nav className="mt-10 flex flex-col gap-1">
+              <span className="font-display text-2xl">
+                Be<span className="text-green">Jo</span>
+              </span>
+              <nav className="mt-8 flex flex-col">
                 {links.map((l) => (
                   <SheetClose asChild key={l.href}>
                     <a
                       href={l.href}
-                      className="rounded-xl px-3 py-3 text-lg font-semibold text-foreground transition-colors hover:bg-mint hover:text-primary"
+                      className="border-b border-line py-4 text-lg font-bold text-ink transition-colors hover:text-green"
                     >
                       {l.label}
                     </a>
                   </SheetClose>
                 ))}
               </nav>
-              <div className="mt-6">
+              <div className="mt-7">
                 <SheetClose asChild>
-                  <Button asChild className="w-full" size="lg">
+                  <Button asChild size="lg" variant={ctaVariant} className="w-full">
                     <a href={cta.href} {...externalProps(cta.href)}>
                       {cta.label}
                     </a>

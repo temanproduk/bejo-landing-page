@@ -13,10 +13,7 @@ const SheetOverlay = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
-    className={cn(
-      "fixed inset-0 z-50 bg-primary-deep/40 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-      className
-    )}
+    className={cn("fixed inset-0 z-50 animate-overlay-in bg-ink/50", className)}
     {...props}
     ref={ref}
   />
@@ -32,15 +29,17 @@ const SheetContent = React.forwardRef<
     <SheetPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed inset-y-0 right-0 z-50 h-full w-4/5 max-w-sm border-l bg-background p-6 shadow-big transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right data-[state=closed]:duration-300 data-[state=open]:duration-300",
+        "fixed inset-y-0 right-0 z-50 h-full w-[86%] max-w-sm animate-sheet-in border-l border-line-strong bg-paper p-6",
         className
       )}
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="absolute right-5 top-5 rounded-full p-1 text-muted-foreground transition-colors hover:text-primary focus:outline-none">
-        <X className="h-6 w-6" />
-        <span className="sr-only">Tutup</span>
+      <SheetPrimitive.Close
+        aria-label="Tutup menu"
+        className="absolute right-5 top-5 p-1 text-ink-faint transition-colors hover:text-green"
+      >
+        <X className="h-6 w-6" aria-hidden="true" />
       </SheetPrimitive.Close>
     </SheetPrimitive.Content>
   </SheetPortal>

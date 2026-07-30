@@ -1,89 +1,73 @@
 import {
   ArrowRight,
-  Check,
-  Megaphone,
-  Radio,
-  ListChecks,
-  QrCode,
-  Users,
-  ClipboardList,
-  LayoutGrid,
-  Mic,
   Volume2,
+  Gauge,
+  Radio,
+  MicVocal,
   MapPin,
+  QrCode,
+  Calculator,
+  CalendarRange,
+  Tags,
+  LayoutGrid,
+  Fingerprint,
+  Smartphone,
+  Megaphone,
+  Check,
 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PhoneMockup } from "@/components/PhoneMockup";
+import { VoiceDemo } from "@/components/VoiceDemo";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { useParallax } from "@/hooks/useParallax";
-import { useReveal } from "@/hooks/useReveal";
 import { PLAY_URL } from "@/lib/constants";
 
-const supportedApps = [
-  "GoPay", "Dana", "OVO", "ShopeePay", "BCA mobile",
-  "BRImo", "Livin' Mandiri", "SeaBank", "Jenius", "LinkAja",
+const apps = [
+  "GoPay", "Dana", "OVO", "ShopeePay", "BCA mobile", "BRImo",
+  "Livin' Mandiri", "SeaBank", "Jenius", "LinkAja", "Blu", "Neo",
 ];
 
-const features = [
+const voiceDetails = [
   {
-    icon: Megaphone,
-    amber: true,
-    wide: true,
-    title: "Langsung disebut pakai suara",
-    body: "Begitu ada uang masuk, BeJo bunyikan lonceng lalu sebut jumlahnya dalam Bahasa Indonesia. Kamu nggak perlu pegang HP. Bisa pilih dari 10+ suara, atur cepat lambatnya, bahkan simpan suara sendiri.",
+    icon: Volume2,
+    title: "Suaranya dibikin kencang",
+    body: "Rekamannya sudah disetel biar tetap kedengeran di warung yang ramai. Ada juga pilihan supaya volume otomatis penuh tiap kali uang masuk.",
+  },
+  {
+    icon: MicVocal,
+    title: "Lebih dari 10 pilihan suara",
+    body: "Pilih suara yang paling enak didengar, atau rekam suaramu sendiri dan simpan jadi paket suara.",
+  },
+  {
+    icon: Gauge,
+    title: "Atur cepat lambatnya",
+    body: "Mau pelan biar jelas atau cepat biar ringkas, suaranya tetap terdengar wajar.",
   },
   {
     icon: Radio,
-    title: "Dengar dari aplikasi lain juga",
-    body: "BeJo bisa baca notifikasi dari bank dan dompet digital lain, lalu sebutkan. Iklan dan promo disaring, jadi cuma uang masuk yang bunyi.",
-  },
-  {
-    icon: ListChecks,
-    title: "Catatan penjualan rapi",
-    body: "Semua transaksi tercatat. Ada ringkasan hari ini, kemarin, dan bulan ini, plus saringan per tanggal.",
-  },
-  {
-    icon: QrCode,
-    title: "Atur QRIS kamu",
-    body: "Tampilkan, ganti, atau atur ulang QRIS. Bisa juga bikin QR dengan jumlah yang sudah diisi dan foto usaha di tengahnya.",
-  },
-  {
-    icon: Users,
-    title: "Bisa buat tim",
-    body: "Beberapa karyawan pakai data usaha yang sama. Ada juga absen masuk dan pulang lengkap dengan lokasi.",
-  },
-  {
-    icon: ClipboardList,
-    title: "Catat tunai & stok",
-    body: "Tambah penjualan tunai sendiri. Ada juga fitur pilihan buat kelola produk, kategori, dan stok.",
-  },
-  {
-    icon: LayoutGrid,
-    amber: true,
-    title: "Widget di layar HP",
-    body: "Lihat ringkasan hari ini dan daftar transaksi langsung dari layar depan, tanpa buka aplikasi.",
+    title: "Ikut dengar aplikasi lain",
+    body: "BeJo bisa baca notifikasi dari 40+ aplikasi bank dan dompet digital. Promo dan iklan disaring, jadi cuma uang masuk yang bunyi.",
   },
 ];
 
-const steps = [
-  {
-    n: 1,
-    title: "Daftar & pasang QRIS",
-    body: "Bikin akun usaha kamu, lalu tampilkan atau unggah kode QRIS di aplikasi.",
-  },
-  {
-    n: 2,
-    title: "Kasih izin notifikasi",
-    body: "Ada panduan langkah demi langkah biar BeJo bisa dengar uang yang masuk.",
-  },
-  {
-    n: 3,
-    title: "Layani & dengarkan",
-    body: "Tiap uang masuk langsung disebut pakai suara. Segitu aja, gampang.",
-  },
+const teamPoints = [
+  ["QRIS sendiri per karyawan", "Tiap karyawan bisa dikasih QRIS masing-masing, jadi kamu tahu setoran datang dari lapak siapa."],
+  ["Absen pakai lokasi", "Karyawan absen masuk dan pulang, lengkap dengan titik lokasinya."],
+  ["Rekap kehadiran", "Lihat siapa yang masuk, siapa yang belum, dirapikan per tanggal."],
+];
+
+const recordPoints = [
+  ["Total yang gampang dibaca", "Hari ini, kemarin, dan bulan ini langsung kelihatan."],
+  ["Catat penjualan tunai", "Ada tombol angka seperti kalkulator, jadi cepat waktu tangan sibuk."],
+  ["Tahu asal tiap catatan", "Dari QRIS, dicatat sendiri, atau kebaca dari aplikasi lain."],
+];
+
+const attendance = [
+  { name: "Sari", initial: "S", note: "Masuk 08.02", present: true },
+  { name: "Budi", initial: "B", note: "Masuk 08.15", present: true },
+  { name: "Rina", initial: "R", note: "Belum absen", present: false },
 ];
 
 const stats = [
@@ -93,451 +77,385 @@ const stats = [
   ["40+", "Aplikasi yang didukung"],
 ];
 
-const team = [
-  { name: "Sari", initial: "S", status: "Masuk 08:02", in: true },
-  { name: "Budi", initial: "B", status: "Masuk 08:15", in: true },
-  { name: "Rina", initial: "R", status: "Belum absen", in: false },
+const extras = [
+  { icon: QrCode, title: "QRIS dengan nominal", body: "Buat QR yang jumlahnya sudah terisi, tinggal discan pembeli." },
+  { icon: Tags, title: "Produk dan stok", body: "Catat barang, kategori, tambah stok, dan stok opname." },
+  { icon: LayoutGrid, title: "Widget di layar HP", body: "Lihat setoran hari ini tanpa buka aplikasi." },
+  { icon: Fingerprint, title: "Kunci sidik jari", body: "Cuma kamu yang bisa buka catatan usahamu." },
+  { icon: Calculator, title: "Tombol angka cepat", body: "Masukkan nominal seperti pakai kalkulator." },
+  { icon: Smartphone, title: "Jalan di HP lama", body: "Bisa dipakai mulai Android 7, tidak harus HP baru." },
+];
+
+const steps = [
+  ["Daftar dan pasang QRIS", "Bikin akun usahamu, lalu tampilkan atau unggah kode QRIS."],
+  ["Kasih izin notifikasi", "Ada tuntunan bergambar, ikuti saja langkahnya sampai selesai."],
+  ["Layani pembeli, dengarkan", "Tiap uang masuk langsung dibunyikan. Sudah, begitu saja."],
 ];
 
 export default function Home() {
-  useReveal();
   useParallax();
 
   return (
     <>
       <Header />
 
-      {/* HERO */}
-      <section
-        id="top"
-        className="relative flex min-h-screen items-center overflow-hidden pb-20 pt-32 md:pt-36"
-      >
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(1000px_600px_at_78%_12%,rgba(224,163,46,0.14),transparent_60%),radial-gradient(1200px_700px_at_12%_88%,rgba(46,125,87,0.16),transparent_55%),linear-gradient(170deg,#F5F8F4_0%,#E7F1EA_100%)]" />
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden border-b border-line pb-16 pt-28 md:pb-24 md:pt-36">
+        {/* Flat field instead of a soft gradient wash */}
         <div
-          data-parallax="0.18"
-          className="absolute -right-20 -top-28 -z-10 h-[520px] w-[520px] rounded-full bg-primary/20 blur-[60px]"
+          className="absolute inset-y-0 right-0 -z-10 hidden w-1/3 bg-paper-warm lg:block"
+          aria-hidden="true"
         />
-        <div
-          data-parallax="-0.12"
-          className="absolute -bottom-32 -left-24 -z-10 h-[420px] w-[420px] rounded-full bg-amber/20 blur-[60px]"
-        />
-
-        <div className="container grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="max-w-2xl">
-            <Badge>📢 Buat Pedagang QRIS</Badge>
-            <h1 className="mt-5 text-[clamp(2.5rem,5.2vw,4.15rem)] leading-[1.08]">
-              Dengar uang masuk,{" "}
-              <span className="text-gradient-amber">tanpa lihat HP.</span>
+        <div className="container grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-7">
+            <Eyebrow>Untuk pemilik warung, kios, dan toko</Eyebrow>
+            <h1 className="mt-5 font-display text-[clamp(2.4rem,8.5vw,4.6rem)] uppercase">
+              Uang masuk, langsung <span className="struck">kedengeran</span>
             </h1>
-            <p className="mt-5 max-w-xl text-[clamp(1.05rem,1.7vw,1.28rem)] text-muted-foreground">
-              Tiap ada pembayaran QRIS masuk, BeJo langsung sebut jumlahnya pakai
-              suara, misalnya <em>"dua ratus ribu rupiah"</em>. Jadi kamu bisa terus
-              layani pembeli sambil tetap tahu uang sudah masuk.
+            <p className="mt-6 max-w-xl text-[17px] text-ink-soft md:text-lg">
+              Setiap pembayaran QRIS yang masuk langsung dibunyikan dan disebut
+              jumlahnya dalam Bahasa Indonesia. Tangan tetap sibuk melayani
+              pembeli, uangnya tetap kedengeran.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3.5">
+
+            <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg">
                 <a href={PLAY_URL} target="_blank" rel="noopener noreferrer">
                   Pasang Gratis <ArrowRight />
                 </a>
               </Button>
-              <Button asChild size="lg" variant="ghost">
-                <a href="#cara">Lihat Cara Pakai</a>
+              <Button asChild size="lg" variant="outline">
+                <a href="#cara">Lihat cara pakainya</a>
               </Button>
             </div>
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
+
+            <dl className="mt-10 grid max-w-lg grid-cols-3 border-t border-line pt-5">
               {[
-                "Gratis dipakai",
-                "Sudah dipakai 1000+ warung",
-                "Data dikunci sidik jari",
-              ].map((t) => (
-                <div
-                  key={t}
-                  className="flex items-center gap-2 text-sm font-semibold text-muted-foreground"
-                >
-                  <Check className="h-5 w-5 flex-none text-primary" />
-                  {t}
+                ["1000+", "warung pakai"],
+                ["Rp 0", "biaya"],
+                ["40+", "aplikasi"],
+              ].map(([v, k]) => (
+                <div key={k}>
+                  <dt className="tnum font-display text-2xl md:text-3xl">{v}</dt>
+                  <dd className="eyebrow mt-1 text-ink-faint">{k}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
           </div>
 
-          <div className="order-first lg:order-none">
-            <PhoneMockup />
+          <div className="lg:col-span-5" data-parallax="0.05">
+            <VoiceDemo />
           </div>
         </div>
       </section>
 
-      {/* SUPPORTED APPS MARQUEE */}
-      <section className="border-y border-border bg-card py-11">
-        <div className="mb-6 text-center text-[13px] font-bold uppercase tracking-[0.1em] text-muted-foreground">
-          Dengar notifikasi dari dompet digital, bank, dan aplikasi kasir
+      {/* ── APP TICKER ───────────────────────────────────────── */}
+      <section className="border-b border-line bg-ink py-5 text-white">
+        <div className="container mb-4">
+          <p className="eyebrow text-white/50">
+            Ikut mendengar notifikasi dari aplikasi ini
+          </p>
         </div>
         <div className="mask-fade-x overflow-hidden">
-          <div className="flex w-max animate-marquee gap-5">
-            {[...supportedApps, ...supportedApps].map((name, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-border bg-background px-5 py-2.5 text-[15px] font-bold text-muted-foreground"
-              >
-                <span className="h-2 w-2 rounded-full bg-primary" />
-                {name}
+          <div className="flex w-max animate-marquee items-center">
+            {[...apps, ...apps].map((name, i) => (
+              <span key={i} className="flex items-center">
+                <span className="whitespace-nowrap px-5 font-mono text-sm text-white/85">
+                  {name}
+                </span>
+                <span className="h-1 w-1 bg-gold" aria-hidden="true" />
               </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FEATURES */}
-      <section id="fitur" className="py-20 md:py-28">
+      {/* ── UANG MASUK QRIS ──────────────────────────────────── */}
+      <section id="uang-masuk" className="border-b border-line py-20 md:py-28">
         <div className="container">
-          <SectionHead
-            eyebrow="Kenapa BeJo"
-            title="Semua yang warung kamu butuh, jadi satu"
-            desc="Dari dengar uang masuk sampai rapikan catatan penjualan. Dibuat buat pemilik usaha yang tangannya selalu sibuk."
-          />
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((f, i) => (
-              <Card
-                key={f.title}
-                className={`reveal ${i % 3 === 1 ? "d1" : i % 3 === 2 ? "d2" : ""} ${
-                  f.wide ? "lg:col-span-2" : ""
-                } transition-all duration-300 hover:-translate-y-2 hover:shadow-card`}
-              >
-                <CardContent className="p-8">
-                  <div
-                    className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl ${
-                      f.amber ? "bg-[#fbeecb] text-amber-dark" : "bg-mint text-primary"
-                    }`}
-                  >
-                    <f.icon className="h-7 w-7" />
-                  </div>
-                  <h3 className="mb-2.5 text-xl">{f.title}</h3>
-                  <p className="text-muted-foreground">{f.body}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section id="cara" className="bg-gradient-to-b from-background to-[#EAF1EA] py-20 md:py-28">
-        <div className="container">
-          <SectionHead
-            eyebrow="Cara Pakai"
-            title="Siap dalam tiga langkah"
-            desc="Pasang sekali, biarkan BeJo kerja di belakang layar seharian."
-          />
-          <div className="grid gap-6 md:grid-cols-3">
-            {steps.map((s, i) => (
-              <Card
-                key={s.n}
-                className={`reveal ${i === 1 ? "d1" : i === 2 ? "d2" : ""} text-center`}
-              >
-                <CardContent className="px-8 pb-8 pt-10">
-                  <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary-dark text-2xl font-extrabold text-white shadow-[0_10px_24px_rgba(46,125,87,0.35)]">
-                    {s.n}
-                  </div>
-                  <h3 className="mb-2.5 text-xl">{s.title}</h3>
-                  <p className="text-muted-foreground">{s.body}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* UANG MASUK QRIS */}
-      <section id="uang-masuk" className="overflow-hidden bg-[#EAF1EA] py-20 md:py-28">
-        <div className="container grid items-center gap-14 lg:grid-cols-2">
-          <div className="reveal">
-            <Badge>Uang Masuk QRIS</Badge>
-            <h2 className="mt-4 text-[clamp(1.8rem,3vw,2.5rem)]">
-              Tiap uang masuk, langsung kedengeran
+          <div className="max-w-3xl">
+            <Eyebrow>Uang masuk QRIS</Eyebrow>
+            <h2 className="mt-4 font-display text-[clamp(2rem,4.4vw,3.2rem)] uppercase">
+              Tidak perlu bolak-balik lihat HP
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Begitu ada pembayaran QRIS masuk, BeJo langsung sebut jumlahnya pakai
-              suara dalam Bahasa Indonesia. Kamu bisa terus layani pembeli tanpa
-              harus bolak-balik ngecek HP.
+            <p className="mt-5 text-[17px] text-ink-soft">
+              Begitu pembayaran masuk, BeJo membunyikan lonceng lalu menyebut
+              jumlahnya. Kamu tahu uangnya sudah sampai tanpa berhenti melayani.
             </p>
-            <CheckList
-              items={[
-                ["Disebut kurang dari 1 detik", "pas uang masuk, nggak pakai nunggu."],
-                ["Dengar dari 40+ aplikasi", "bank dan dompet digital, iklan disaring."],
-                ["Pilih 10+ suara unik", "sesuai selera dan atur cepat lambatnya."],
-              ]}
-            />
           </div>
-          <div className="reveal d1" data-parallax="0.08">
-            <Card className="shadow-card">
-              <CardContent className="p-7">
-                <div className="rounded-2xl bg-gradient-to-br from-primary to-primary-dark p-5 text-white">
-                  <div className="text-[11px] uppercase tracking-[0.08em] opacity-85">
-                    Pembayaran Terdeteksi
-                  </div>
-                  <div className="mt-1 text-3xl font-extrabold">Rp 200.000</div>
-                  <div className="mt-0.5 text-xs opacity-90">GoPay · QRIS · baru aja</div>
-                </div>
-                <div className="mt-4 flex items-center gap-3 rounded-2xl bg-mint p-4">
-                  <div className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary-dark text-white">
-                    <Volume2 className="h-5 w-5" />
-                  </div>
-                  <div className="text-[15px]">
-                    <b className="text-primary-deep">"Dua ratus ribu rupiah"</b>
-                    <span className="ml-1 inline-flex h-3 items-end gap-[2px] align-middle">
-                      <i className="w-[3px] animate-eq rounded bg-primary [height:6px] [animation-delay:0s]" />
-                      <i className="w-[3px] animate-eq rounded bg-primary [height:13px] [animation-delay:0.15s]" />
-                      <i className="w-[3px] animate-eq rounded bg-primary [height:8px] [animation-delay:0.3s]" />
-                      <i className="w-[3px] animate-eq rounded bg-primary [height:14px] [animation-delay:0.45s]" />
+
+          <div className="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-7">
+              <ul className="divide-y divide-line border-y border-line">
+                {voiceDetails.map((d) => (
+                  <li key={d.title} className="flex gap-5 py-6">
+                    <span className="flex h-10 w-10 flex-none items-center justify-center border border-line-strong text-green">
+                      <d.icon className="h-5 w-5" aria-hidden="true" />
                     </span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* KELOLA TIM & ABSENSI */}
-      <section id="tim" className="overflow-hidden py-20 md:py-28">
-        <div className="container grid items-center gap-14 lg:grid-cols-2">
-          <div className="reveal order-last lg:order-first" data-parallax="0.08">
-            <Card className="shadow-card">
-              <CardContent className="p-7">
-                <div className="mb-4 text-sm font-bold uppercase tracking-[0.06em] text-muted-foreground">
-                  Absensi Hari Ini
-                </div>
-                <div className="flex flex-col gap-2.5">
-                  {team.map((m) => (
-                    <div
-                      key={m.name}
-                      className="flex items-center gap-3 rounded-2xl bg-background p-3"
-                    >
-                      <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-mint font-extrabold text-primary">
-                        {m.initial}
-                      </div>
-                      <div className="flex-1 font-bold">{m.name}</div>
-                      <div
-                        className={`rounded-full px-3 py-1 text-xs font-bold ${
-                          m.in
-                            ? "bg-mint text-primary-deep"
-                            : "bg-[#f1e2c4] text-amber-dark"
-                        }`}
-                      >
-                        {m.status}
-                      </div>
+                    <div>
+                      <h3 className="text-[17px] font-bold">{d.title}</h3>
+                      <p className="mt-1.5 text-ink-soft">{d.body}</p>
                     </div>
-                  ))}
-                </div>
-                <div className="mt-4 flex items-center gap-2 rounded-2xl bg-primary/10 p-3 text-sm font-semibold text-primary-deep">
-                  <MapPin className="h-5 w-5 flex-none text-primary" />
-                  Toko Utama · Jl. Merdeka No. 12
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-          <div className="reveal d1">
-            <Badge>Kelola Tim & Absensi</Badge>
-            <h2 className="mt-4 text-[clamp(1.8rem,3vw,2.5rem)]">
-              Satu tim, satu data, kehadiran terpantau
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Ajak karyawan pakai data usaha yang sama. Pantau kehadiran lewat absen
-              masuk dan pulang yang dilengkapi lokasi, jadi kamu selalu tahu siapa
-              yang jaga dan di mana.
-            </p>
-            <CheckList
-              items={[
-                ["Beberapa karyawan", "berbagi transaksi, produk, dan pengaturan yang sama."],
-                ["Absen masuk & pulang", "lengkap dengan lokasi tempat absennya."],
-                ["Ringkasan kehadiran", "per tanggal, khusus buat pemilik usaha."],
-              ]}
-            />
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="lg:col-span-5" data-parallax="0.06">
+              <PhoneMockup />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CATATAN TRANSAKSI */}
-      <section id="catatan" className="overflow-hidden bg-[#EAF1EA] py-20 md:py-28">
-        <div className="container grid items-center gap-14 lg:grid-cols-2">
-          <div className="reveal">
-            <Badge>Catatan Transaksi</Badge>
-            <h2 className="mt-4 text-[clamp(1.8rem,3vw,2.5rem)]">
-              Catatan rapi yang bisa kamu percaya
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Semua transaksi tercatat otomatis. Ada ringkasan harian dan bulanan,
-              plus saringan per tanggal. Tiap catatan dikasih tanda dari mana asalnya,
-              jadi pembukuan kamu gampang.
-            </p>
-            <CheckList
-              items={[
-                ["Ringkasan cepat", "total hari ini, kemarin, dan bulan ini."],
-                ["Saring per tanggal", "buat lihat periode apa pun."],
-                ["Ada tanda sumbernya", "QRIS, tunai yang dicatat, atau dari aplikasi lain."],
-              ]}
-            />
+      {/* ── KELOLA TIM & ABSENSI ─────────────────────────────── */}
+      <section id="tim" className="border-b border-line bg-paper-warm py-20 md:py-28">
+        <div className="container grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
+          {/* Attendance board */}
+          <div className="order-last lg:order-first lg:col-span-5" data-parallax="0.05">
+            <div className="border border-line-strong bg-white">
+              <div className="flex items-center justify-between border-b border-line px-5 py-3">
+                <span className="eyebrow text-ink-faint">Absensi hari ini</span>
+                <span className="eyebrow text-green">2 dari 3 masuk</span>
+              </div>
+              <ul className="divide-y divide-line">
+                {attendance.map((m) => (
+                  <li key={m.name} className="flex items-center gap-3 px-5 py-4">
+                    <span className="flex h-9 w-9 flex-none items-center justify-center bg-mint font-display text-lg text-green-deep">
+                      {m.initial}
+                    </span>
+                    <span className="flex-1 font-bold">{m.name}</span>
+                    <span
+                      className={[
+                        "font-mono text-[11px] uppercase tracking-wider",
+                        m.present ? "text-green" : "text-gold-dark",
+                      ].join(" ")}
+                    >
+                      {m.note}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className="flex items-center gap-2 border-t border-line bg-paper px-5 py-3.5 text-xs text-ink-soft">
+                <MapPin className="h-4 w-4 flex-none text-green" aria-hidden="true" />
+                Toko Utama, Jl. Merdeka No. 12
+              </p>
+            </div>
           </div>
-          <div className="reveal d1" data-parallax="0.08">
-            <Card className="shadow-card">
-              <CardContent className="p-7">
-                <div className="mb-5 flex gap-3.5">
-                  <SummaryBox k="Hari Ini" v="Rp 2,48jt" />
-                  <SummaryBox k="Kemarin" v="Rp 2,21jt" />
-                  <SummaryBox k="Bulan Ini" v="Rp 58,9jt" amber />
+
+          <div className="lg:col-span-7">
+            <div>
+              <Eyebrow>Kelola tim &amp; absensi</Eyebrow>
+              <h2 className="mt-4 font-display text-[clamp(2rem,4.4vw,3.2rem)] uppercase">
+                Satu usaha, semua karyawan ikut rapi
+              </h2>
+              <p className="mt-5 max-w-xl text-[17px] text-ink-soft">
+                Ajak karyawan pakai data usaha yang sama, dan pantau siapa yang
+                sedang jaga. Kamu yang punya usaha tetap pegang kendali.
+              </p>
+            </div>
+            <dl className="mt-9 space-y-6">
+              {teamPoints.map(([t, b]) => (
+                <div key={t} className="border-l-2 border-green pl-5">
+                  <dt className="text-[17px] font-bold">{t}</dt>
+                  <dd className="mt-1 text-ink-soft">{b}</dd>
                 </div>
-                <div className="flex h-32 items-end gap-2.5 pt-2">
+              ))}
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CATATAN TRANSAKSI ────────────────────────────────── */}
+      <section id="catatan" className="border-b border-line py-20 md:py-28">
+        <div className="container grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-7">
+            <div>
+              <Eyebrow>Catatan transaksi</Eyebrow>
+              <h2 className="mt-4 font-display text-[clamp(2rem,4.4vw,3.2rem)] uppercase">
+                Catatan penjualan yang bisa dipegang
+              </h2>
+              <p className="mt-5 max-w-xl text-[17px] text-ink-soft">
+                Semua yang masuk tercatat sendiri. Mau lihat penjualan minggu lalu
+                atau bulan ini, tinggal pilih tanggalnya.
+              </p>
+            </div>
+            <dl className="mt-9 space-y-6">
+              {recordPoints.map(([t, b]) => (
+                <div key={t} className="border-l-2 border-gold pl-5">
+                  <dt className="text-[17px] font-bold">{t}</dt>
+                  <dd className="mt-1 text-ink-soft">{b}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          {/* Ledger card */}
+          <div className="lg:col-span-5" data-parallax="0.05">
+            <div className="border border-line-strong bg-white">
+              <div className="flex items-center justify-between border-b border-line px-5 py-3">
+                <span className="eyebrow text-ink-faint">Ringkasan</span>
+                <span className="eyebrow flex items-center gap-1.5 text-ink-faint">
+                  <CalendarRange className="h-3.5 w-3.5" aria-hidden="true" />
+                  Juli
+                </span>
+              </div>
+              <dl className="grid grid-cols-3 divide-x divide-line border-b border-line">
+                {[
+                  ["Hari ini", "2,48jt"],
+                  ["Kemarin", "2,21jt"],
+                  ["Bulan ini", "58,9jt"],
+                ].map(([k, v], i) => (
+                  <div key={k} className="px-4 py-4">
+                    <dt className="eyebrow text-ink-faint">{k}</dt>
+                    <dd
+                      className={[
+                        "tnum mt-1.5 font-display text-xl",
+                        i === 2 ? "text-gold-dark" : "text-green",
+                      ].join(" ")}
+                    >
+                      {v}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <div className="px-5 py-6">
+                <p className="eyebrow text-ink-faint">7 hari terakhir</p>
+                <div className="mt-4 flex h-28 items-end gap-2">
                   {[42, 65, 50, 78, 60, 88, 100].map((h, i) => (
                     <div
                       key={i}
                       style={{ height: `${h}%` }}
-                      className="flex-1 rounded-t-lg bg-gradient-to-b from-mint to-primary"
+                      className={i === 6 ? "flex-1 bg-green" : "flex-1 bg-mint"}
                     />
                   ))}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* BRAND TEASER */}
-      <section id="brand" className="py-20 md:py-24">
+      {/* ── NUMBERS BOARD ────────────────────────────────────── */}
+      <section className="bg-green-deep py-16 text-white md:py-20">
         <div className="container">
-          <div className="reveal relative overflow-hidden rounded-[32px] bg-[linear-gradient(135deg,#3a2a05_0%,#8a5f10_45%,#C4881C_100%)] px-6 py-14 shadow-big md:px-12 md:py-16">
-            <div className="grid items-center gap-8 md:grid-cols-[1.4fr_1fr]">
-              <div className="text-white">
-                <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em]">
-                  <Megaphone className="h-4 w-4" /> Untuk Brand & Pengiklan
+          <dl className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:divide-x md:divide-white/15">
+            {stats.map(([v, k], i) => (
+              <div key={k} className={i > 0 ? "md:pl-8" : ""}>
+                <dt className="tnum font-display text-[clamp(2.4rem,5vw,3.6rem)]">{v}</dt>
+                <dd className="mt-2 text-sm text-white/70">{k}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* ── EXTRAS ───────────────────────────────────────────── */}
+      <section className="border-b border-line py-20 md:py-28">
+        <div className="container">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-xl">
+              <Eyebrow>Yang lain</Eyebrow>
+              <h2 className="mt-4 font-display text-[clamp(1.9rem,4vw,2.8rem)] uppercase">
+                Hal kecil yang bikin dagang lebih enteng
+              </h2>
+            </div>
+          </div>
+
+          <ul className="mt-12 grid gap-x-12 gap-y-1 sm:grid-cols-2">
+            {extras.map((e) => (
+              <li key={e.title} className="flex gap-4 border-b border-line py-5">
+                <e.icon className="mt-0.5 h-5 w-5 flex-none text-green" aria-hidden="true" />
+                <div>
+                  <h3 className="font-bold">{e.title}</h3>
+                  <p className="mt-1 text-[15px] text-ink-soft">{e.body}</p>
                 </div>
-                <h2 className="mt-4 text-[clamp(1.8rem,3vw,2.6rem)]">
-                  Punya brand? Sapa ribuan warung lewat iklan suara.
-                </h2>
-                <p className="mt-3 max-w-xl text-lg text-white/90">
-                  BeJo bisa memutar iklan suara singkat di HP para pedagang yang
-                  setuju menerimanya, tepat sasaran sesuai lokasi dan audiens. Suara
-                  brand kamu benar-benar terdengar di lapak akar rumput.
-                </p>
-              </div>
-              <div className="flex md:justify-end">
-                <Button asChild size="lg" variant="amber">
-                  <a href="/brand.html">
-                    Pelajari untuk Brand <ArrowRight />
-                  </a>
-                </Button>
-              </div>
-            </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ── CARA PAKAI (a real sequence, so it is numbered) ──── */}
+      <section id="cara" className="border-b border-line bg-paper-warm py-20 md:py-28">
+        <div className="container">
+          <div className="max-w-xl">
+            <Eyebrow>Cara pakai</Eyebrow>
+            <h2 className="mt-4 font-display text-[clamp(2rem,4.4vw,3.2rem)] uppercase">
+              Pasang sekali, tinggal pakai
+            </h2>
+          </div>
+          <ol className="mt-12 grid gap-px border border-line bg-line md:grid-cols-3">
+            {steps.map(([t, b], i) => (
+              <li key={t} className="bg-paper-warm p-7 md:p-8">
+                <span className="font-mono text-sm text-gold-dark">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-4 text-xl font-bold">{t}</h3>
+                <p className="mt-2 text-ink-soft">{b}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ── BRAND ────────────────────────────────────────────── */}
+      <section className="border-b border-line bg-gold py-16 md:py-20">
+        <div className="container grid items-center gap-8 lg:grid-cols-12">
+          <div className="lg:col-span-8">
+            <Eyebrow tone="gold" className="!text-ink/60">
+              <Megaphone className="h-3.5 w-3.5" aria-hidden="true" /> Untuk brand
+            </Eyebrow>
+            <h2 className="mt-4 font-display text-[clamp(1.9rem,4vw,2.9rem)] uppercase text-ink">
+              Punya brand? Sapa ribuan warung lewat iklan suara
+            </h2>
+            <p className="mt-4 max-w-2xl text-[17px] text-ink/80">
+              BeJo bisa memutar iklan suara singkat di HP pedagang yang bersedia
+              menerimanya, dipilih sesuai lokasi dan jenis usahanya.
+            </p>
+          </div>
+          <div className="lg:col-span-4 lg:justify-self-end">
+            <Button asChild size="lg" variant="outline" className="!border-ink hover:!bg-ink">
+              <a href="/brand.html">
+                Lihat untuk brand <ArrowRight />
+              </a>
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary to-primary-dark py-20 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(600px_300px_at_85%_20%,rgba(224,163,46,0.25),transparent_60%)]" />
-        <div className="container relative grid grid-cols-2 gap-8 text-center lg:grid-cols-4">
-          {stats.map(([big, lbl], i) => (
-            <div key={i} className={`reveal ${i ? `d${i}` : ""}`}>
-              <div className="text-[clamp(2.2rem,4vw,3.2rem)] font-extrabold tracking-tight">
-                {big}
-              </div>
-              <div className="mt-1.5 text-[0.98rem] opacity-90">{lbl}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section id="unduh" className="py-24">
-        <div className="container">
-          <div className="reveal relative overflow-hidden rounded-[32px] bg-[linear-gradient(150deg,#17402c_0%,#256B49_55%,#2E7D57_100%)] px-6 py-16 text-center text-white shadow-big md:px-10 md:py-20">
-            <img
-              src="/assets/bejo-icon.png"
-              alt=""
-              data-parallax="0.2"
-              className="pointer-events-none absolute -top-5 left-10 hidden w-28 opacity-90 md:block"
-            />
-            <img
-              src="/assets/bejo-icon-round.png"
-              alt=""
-              data-parallax="-0.15"
-              className="pointer-events-none absolute -bottom-7 right-10 hidden w-24 opacity-90 md:block"
-            />
-            <h2 className="relative text-[clamp(2rem,3.6vw,2.9rem)]">
-              Jangan sampai ada uang masuk yang kelewat
+      {/* ── CLOSING ──────────────────────────────────────────── */}
+      <section className="bg-ink py-20 text-white md:py-28">
+        <div className="container grid items-center gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-8">
+            <h2 className="font-display text-[clamp(2.2rem,5vw,3.6rem)] uppercase">
+              Jangan ada uang masuk yang kelewat
             </h2>
-            <p className="relative mx-auto mt-4 max-w-xl text-lg opacity-90">
-              Pasang BeJo sekarang, biar si kucing hoki jagain tiap uang yang masuk
-              ke warung kamu.
+            <p className="mt-5 max-w-xl text-lg text-white/70">
+              Pasang BeJo hari ini. Gratis, dan langsung bisa dipakai di HP yang
+              sekarang ada di tanganmu.
             </p>
-            <div className="relative mt-8 flex flex-wrap justify-center gap-3.5">
-              <Button asChild size="lg" variant="amber">
-                <a href={PLAY_URL} target="_blank" rel="noopener noreferrer">
-                  <Mic /> Pasang di Google Play
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="light">
-                <a href="#fitur">Lihat semua fitur</a>
-              </Button>
-            </div>
+            <ul className="mt-7 flex flex-wrap gap-x-7 gap-y-3">
+              {["Gratis, tanpa biaya bulanan", "Jalan mulai Android 7", "Dipakai 1000+ warung"].map(
+                (t) => (
+                  <li key={t} className="flex items-center gap-2 text-sm text-white/80">
+                    <Check className="h-4 w-4 flex-none text-gold" aria-hidden="true" />
+                    {t}
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+          <div className="lg:col-span-4 lg:justify-self-end">
+            <Button asChild size="lg" variant="gold">
+              <a href={PLAY_URL} target="_blank" rel="noopener noreferrer">
+                Pasang di Google Play <ArrowRight />
+              </a>
+            </Button>
           </div>
         </div>
       </section>
 
       <Footer />
     </>
-  );
-}
-
-function SectionHead({
-  eyebrow,
-  title,
-  desc,
-}: {
-  eyebrow: string;
-  title: string;
-  desc: string;
-}) {
-  return (
-    <div className="reveal mx-auto mb-14 max-w-2xl text-center">
-      <Badge>{eyebrow}</Badge>
-      <h2 className="mt-4 text-[clamp(2rem,3.6vw,2.9rem)]">{title}</h2>
-      <p className="mt-4 text-lg text-muted-foreground">{desc}</p>
-    </div>
-  );
-}
-
-function CheckList({ items }: { items: [string, string][] }) {
-  return (
-    <ul className="mt-6 flex flex-col gap-3.5">
-      {items.map(([bold, rest]) => (
-        <li key={bold} className="flex items-start gap-3 text-[1.02rem]">
-          <Check className="mt-0.5 h-5 w-5 flex-none text-primary" />
-          <span>
-            <b>{bold}</b> {rest}
-          </span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function SummaryBox({
-  k,
-  v,
-  amber,
-}: {
-  k: string;
-  v: string;
-  amber?: boolean;
-}) {
-  return (
-    <div className="flex-1 rounded-2xl bg-background p-4">
-      <div className="text-[11px] font-bold uppercase tracking-[0.06em] text-muted-foreground">
-        {k}
-      </div>
-      <div className={`mt-1 text-[22px] font-extrabold ${amber ? "text-amber-dark" : "text-primary"}`}>
-        {v}
-      </div>
-    </div>
   );
 }

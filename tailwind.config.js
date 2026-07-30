@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ["class"],
   content: [
     "./index.html",
     "./privacy.html",
@@ -12,97 +11,79 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
-      screens: { "2xl": "1160px" },
+      padding: { DEFAULT: "1.25rem", md: "2rem" },
+      screens: { "2xl": "1240px" },
     },
     extend: {
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        // Condensed poster face, the voice of Indonesian shop signage.
+        display: ["Anton", "Impact", "sans-serif"],
+        // Commissioned for Jakarta's city identity; the right body voice here.
+        sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+        // Receipt / terminal register for labels and amounts.
+        mono: ['"Space Mono"', "ui-monospace", "monospace"],
       },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-          dark: "hsl(var(--primary-dark))",
-          deep: "hsl(var(--primary-deep))",
+        ink: {
+          DEFAULT: "#0A1710",
+          soft: "#46534A",
+          faint: "#7C877F",
         },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+        paper: {
+          DEFAULT: "#F2F5EF",
+          warm: "#E8EDE4",
         },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+        green: {
+          DEFAULT: "#2E7D57",
+          dark: "#1F6244",
+          deep: "#12402A",
         },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+        gold: {
+          DEFAULT: "#E0A32E",
+          dark: "#B57C0F",
         },
-        amber: {
-          DEFAULT: "hsl(var(--amber))",
-          dark: "hsl(var(--amber-dark))",
-        },
-        mint: "hsl(var(--mint))",
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
+        mint: "#DCEEE2",
+        line: "rgba(10, 23, 16, 0.12)",
+        "line-strong": "rgba(10, 23, 16, 0.28)",
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 4px)",
-        sm: "calc(var(--radius) - 8px)",
+        panel: "14px",
+        control: "10px",
       },
       boxShadow: {
-        soft: "0 2px 8px rgba(14, 74, 46, 0.06)",
-        card: "0 12px 40px rgba(14, 74, 46, 0.12)",
-        big: "0 30px 80px rgba(14, 74, 46, 0.18)",
+        lift: "0 18px 44px rgba(10, 23, 16, 0.12)",
+        press: "0 2px 0 rgba(10, 23, 16, 0.18)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-14px)" },
-        },
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
-        eq: {
-          "0%, 100%": { transform: "scaleY(0.4)" },
+        bar: {
+          "0%, 100%": { transform: "scaleY(0.25)" },
           "50%": { transform: "scaleY(1)" },
         },
-        wheel: {
-          "0%": { opacity: "0", transform: "translate(-50%, 0)" },
-          "40%": { opacity: "1" },
-          "100%": { opacity: "0", transform: "translate(-50%, 10px)" },
+        "rise-in": {
+          from: { opacity: "0", transform: "translateY(14px)" },
+          to: { opacity: "1", transform: "none" },
+        },
+        "overlay-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "sheet-in": {
+          from: { transform: "translateX(100%)" },
+          to: { transform: "translateX(0)" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        float: "float 6s ease-in-out infinite",
-        marquee: "marquee 32s linear infinite",
-        eq: "eq 1s ease-in-out infinite",
-        wheel: "wheel 1.6s ease-in-out infinite",
+        marquee: "marquee 38s linear infinite",
+        bar: "bar 0.7s ease-in-out infinite",
+        "rise-in": "rise-in 0.5s cubic-bezier(0.22,1,0.36,1) both",
+        "overlay-in": "overlay-in 0.2s ease-out",
+        "sheet-in": "sheet-in 0.28s cubic-bezier(0.22,1,0.36,1)",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [],
 };

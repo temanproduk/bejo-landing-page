@@ -1,280 +1,260 @@
 import {
+  ArrowRight,
   Megaphone,
-  MapPin,
   Volume2,
+  MapPin,
   BarChart3,
   ShieldCheck,
   Store,
-  ArrowRight,
   Check,
+  Clock,
 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { useReveal } from "@/hooks/useReveal";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { BRAND_CTA_URL } from "@/lib/constants";
 
 const brandLinks = [
   { href: "#kenapa", label: "Kenapa Iklan Suara" },
-  { href: "#cara-brand", label: "Cara Kerja" },
+  { href: "#cara-kerja", label: "Cara Kerja" },
   { href: "/", label: "Tentang BeJo" },
 ];
 
 const reasons = [
   {
     icon: Store,
-    title: "Sampai ke akar rumput",
-    body: "Warung, kios, dan toko kecil dari kota besar sampai pelosok. Audiens yang selama ini sulit dijangkau iklan biasa.",
+    title: "Sampai ke pedagang kecil",
+    body: "Warung, kios, dan toko kelontong dari kota besar sampai daerah. Audiens yang biasanya sulit dijangkau iklan digital.",
   },
   {
     icon: Volume2,
-    title: "Benar-benar didengar",
-    body: "Iklan diputar keras lewat HP yang sama yang membunyikan uang masuk. Bukan iklan yang cuma numpang lewat, tapi yang beneran terdengar.",
+    title: "Terdengar, bukan terlewat",
+    body: "Iklan diputar bersuara lewat HP yang sama yang membunyikan uang masuk, dan tetap jalan walau aplikasinya sedang tertutup.",
   },
   {
     icon: MapPin,
-    title: "Tepat sasaran",
-    body: "Targetkan kampanye berdasarkan lokasi dan jenis audiens, jadi pesan brand kamu muncul di tempat yang paling pas.",
+    title: "Bisa dipilih sasarannya",
+    body: "Atur kampanye berdasarkan lokasi dan jenis usaha, jadi pesanmu sampai ke pedagang yang paling relevan.",
   },
   {
     icon: BarChart3,
-    title: "Terukur",
-    body: "Tiap pemutaran dilaporkan: terkirim, diputar, dan di mana. Kamu tahu persis kampanye kamu sampai ke mana.",
+    title: "Ada laporannya",
+    body: "Tiap pemutaran tercatat: terkirim, diputar, dan di daerah mana. Kamu tahu kampanyemu sampai ke mana.",
   },
 ];
 
 const steps = [
-  ["Tentukan target", "Pilih lokasi dan jenis audiens yang mau kamu jangkau."],
-  ["Siapkan iklan suara", "Rekaman singkat, sekitar 20 detik, yang jelas dan mudah diingat."],
-  ["BeJo putar ke pedagang", "Iklan dikirim ke HP pedagang yang setuju menerimanya, lalu diputar dengan suara."],
-  ["Lihat laporannya", "Pantau berapa yang terkirim, diputar, dan di lokasi mana."],
+  ["Tentukan sasaran", "Pilih daerah dan jenis pedagang yang mau kamu sapa."],
+  ["Siapkan rekaman", "Iklan suara singkat, maksimal 20 detik, yang jelas dan mudah diingat."],
+  ["Kami putar", "Iklan dikirim ke HP pedagang yang sudah bersedia menerimanya."],
+  ["Terima laporan", "Lihat jumlah yang terkirim, diputar, dan sebarannya."],
 ];
 
+const timeline = [
+  ["Terkirim ke HP pedagang", true],
+  ["Diputar bersuara", true],
+  ["Tercatat: Bandung, Jawa Barat", true],
+] as const;
+
 export default function Brand() {
-  useReveal();
 
   return (
     <>
       <Header
         links={brandLinks}
-        variant="legal"
+        variant="inner"
         ctaLabel="Mulai Kampanye"
         ctaHref={BRAND_CTA_URL}
+        ctaVariant="gold"
       />
 
-      {/* HERO */}
-      <section className="relative overflow-hidden pb-16 pt-36 md:pt-40">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(900px_500px_at_80%_0%,rgba(224,163,46,0.16),transparent_60%),linear-gradient(170deg,#F5F8F4,#E7F1EA)]" />
-        <div className="container grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="reveal max-w-2xl">
-            <Badge>
-              <Megaphone className="h-3.5 w-3.5" /> Untuk Brand & Pengiklan
-            </Badge>
-            <h1 className="mt-5 text-[clamp(2.3rem,4.6vw,3.6rem)] leading-[1.1]">
-              Suara brand kamu, terdengar di{" "}
-              <span className="text-gradient-amber">ribuan warung.</span>
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="border-b border-line pb-16 pt-28 md:pb-24 md:pt-36">
+        <div className="container grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-7">
+            <Eyebrow tone="gold">
+              <Megaphone className="h-3.5 w-3.5" aria-hidden="true" /> Untuk brand &amp; pengiklan
+            </Eyebrow>
+            <h1 className="mt-5 font-display text-[clamp(2.4rem,8vw,4.2rem)] uppercase">
+              Suara brandmu, terdengar di <span className="struck">warung</span>
             </h1>
-            <p className="mt-5 max-w-xl text-[clamp(1.05rem,1.7vw,1.25rem)] text-muted-foreground">
-              BeJo memutar iklan suara singkat lewat HP para pedagang di seluruh
-              Indonesia. Jangkau audiens akar rumput dengan pesan yang benar-benar
-              didengar, tepat sesuai lokasi dan audiens yang kamu tuju.
+            <p className="mt-6 max-w-xl text-[17px] text-ink-soft md:text-lg">
+              BeJo memutar iklan suara singkat di HP para pedagang di seluruh
+              Indonesia. Bukan banner yang dilewati, tapi pesan yang benar-benar
+              terdengar di tengah kesibukan berjualan.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3.5">
-              <Button asChild size="lg" variant="amber">
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg" variant="gold">
                 <a href={BRAND_CTA_URL} target="_blank" rel="noopener noreferrer">
                   Mulai Kampanye <ArrowRight />
                 </a>
               </Button>
-              <Button asChild size="lg" variant="ghost">
-                <a href="#cara-brand">Lihat Cara Kerja</a>
+              <Button asChild size="lg" variant="outline">
+                <a href="#cara-kerja">Lihat cara kerjanya</a>
               </Button>
             </div>
           </div>
 
-          {/* Visual: a voice-ad delivery card */}
-          <div className="reveal d1 flex justify-center lg:justify-end">
-            <Card className="w-full max-w-sm shadow-card">
-              <CardContent className="p-7">
-                <div className="rounded-2xl bg-gradient-to-br from-[#8a5f10] to-amber-dark p-5 text-white">
-                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.08em] opacity-90">
-                    <Megaphone className="h-4 w-4" /> Iklan Suara
-                  </div>
-                  <div className="mt-2 text-xl font-extrabold leading-snug">
-                    "Kopi Nusantara, temani harimu. Beli 2 gratis 1 hari ini!"
-                  </div>
-                  <div className="mt-3 flex items-center gap-2 text-xs opacity-90">
-                    <Volume2 className="h-4 w-4" /> 18 detik · diputar keras
-                    <span className="ml-1 inline-flex h-3 items-end gap-[2px]">
-                      <i className="w-[3px] animate-eq rounded bg-white [height:6px] [animation-delay:0s]" />
-                      <i className="w-[3px] animate-eq rounded bg-white [height:13px] [animation-delay:0.15s]" />
-                      <i className="w-[3px] animate-eq rounded bg-white [height:8px] [animation-delay:0.3s]" />
-                      <i className="w-[3px] animate-eq rounded bg-white [height:14px] [animation-delay:0.45s]" />
+          {/* Delivery record */}
+          <div className="lg:col-span-5">
+            <div className="border border-line-strong bg-white">
+              <div className="flex items-center justify-between border-b border-line bg-ink px-4 py-2.5 text-white">
+                <span className="eyebrow flex items-center gap-2">
+                  <Megaphone className="h-3.5 w-3.5" aria-hidden="true" /> Iklan suara
+                </span>
+                <span className="eyebrow flex items-center gap-1.5 text-white/60">
+                  <Clock className="h-3.5 w-3.5" aria-hidden="true" /> 18 detik
+                </span>
+              </div>
+              <div className="border-b border-line bg-gold px-5 py-6">
+                <p className="font-display text-2xl uppercase leading-tight text-ink">
+                  “Kopi Nusantara, temani harimu. Beli dua gratis satu hari ini.”
+                </p>
+              </div>
+              <ul className="divide-y divide-line">
+                {timeline.map(([label, done]) => (
+                  <li key={label} className="flex items-center gap-3 px-5 py-3.5">
+                    <span
+                      className={[
+                        "flex h-5 w-5 flex-none items-center justify-center",
+                        done ? "bg-green text-white" : "bg-paper-warm text-ink-faint",
+                      ].join(" ")}
+                    >
+                      <Check className="h-3 w-3" aria-hidden="true" />
                     </span>
-                  </div>
-                </div>
-                <div className="mt-4 space-y-2.5">
-                  <DeliveryRow label="Terkirim ke perangkat" done />
-                  <DeliveryRow label="Diputar dengan suara" done />
-                  <DeliveryRow label="Lokasi: Bandung, Jawa Barat" done />
-                </div>
-              </CardContent>
-            </Card>
+                    <span className="text-sm font-semibold">{label}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* REASONS */}
-      <section id="kenapa" className="py-20 md:py-28">
+      {/* ── REASONS ──────────────────────────────────────────── */}
+      <section id="kenapa" className="border-b border-line py-20 md:py-28">
         <div className="container">
-          <div className="reveal mx-auto mb-14 max-w-2xl text-center">
-            <Badge>Kenapa Iklan Suara BeJo</Badge>
-            <h2 className="mt-4 text-[clamp(2rem,3.6vw,2.9rem)]">
+          <div className="max-w-2xl">
+            <Eyebrow tone="gold">Kenapa iklan suara</Eyebrow>
+            <h2 className="mt-4 font-display text-[clamp(2rem,4.4vw,3.2rem)] uppercase">
               Cara baru menyapa pedagang kecil
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Bukan banner yang terlewat, tapi suara yang hadir di tengah kesibukan
-              berdagang.
-            </p>
           </div>
-          <div className="grid gap-5 md:grid-cols-2">
-            {reasons.map((r, i) => (
-              <Card
-                key={r.title}
-                className={`reveal ${i % 2 === 1 ? "d1" : ""} transition-all duration-300 hover:-translate-y-2 hover:shadow-card`}
-              >
-                <CardContent className="flex gap-5 p-8">
-                  <div className="flex h-14 w-14 flex-none items-center justify-center rounded-2xl bg-[#fbeecb] text-amber-dark">
-                    <r.icon className="h-7 w-7" />
-                  </div>
-                  <div>
-                    <h3 className="mb-2 text-xl">{r.title}</h3>
-                    <p className="text-muted-foreground">{r.body}</p>
-                  </div>
-                </CardContent>
-              </Card>
+          <ul className="mt-12 grid gap-x-14 gap-y-1 md:grid-cols-2">
+            {reasons.map((r) => (
+              <li key={r.title} className="flex gap-5 border-b border-line py-7">
+                <span className="flex h-11 w-11 flex-none items-center justify-center border border-line-strong text-gold-dark">
+                  <r.icon className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 className="text-[17px] font-bold">{r.title}</h3>
+                  <p className="mt-1.5 text-ink-soft">{r.body}</p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
-      <section id="cara-brand" className="bg-[#EAF1EA] py-20 md:py-28">
+      {/* ── HOW IT WORKS (ordered, so numbered) ──────────────── */}
+      <section id="cara-kerja" className="border-b border-line bg-paper-warm py-20 md:py-28">
         <div className="container">
-          <div className="reveal mx-auto mb-14 max-w-2xl text-center">
-            <Badge>Cara Kerja Kampanye</Badge>
-            <h2 className="mt-4 text-[clamp(2rem,3.6vw,2.9rem)]">
-              Dari ide sampai terdengar, empat langkah
+          <div className="max-w-xl">
+            <Eyebrow tone="gold">Cara kerja kampanye</Eyebrow>
+            <h2 className="mt-4 font-display text-[clamp(2rem,4.4vw,3.2rem)] uppercase">
+              Dari rekaman sampai terdengar
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {steps.map(([title, body], i) => (
-              <Card key={title} className={`reveal ${i ? `d${i > 3 ? 3 : i}` : ""}`}>
-                <CardContent className="px-7 pb-7 pt-8">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber to-amber-dark text-xl font-extrabold text-[#3a2a05]">
-                    {i + 1}
-                  </div>
-                  <h3 className="mb-2 text-lg">{title}</h3>
-                  <p className="text-sm text-muted-foreground">{body}</p>
-                </CardContent>
-              </Card>
+          <ol className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map(([t, b], i) => (
+              <li key={t} className="bg-paper-warm p-7">
+                <span className="font-mono text-sm text-gold-dark">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-4 text-lg font-bold">{t}</h3>
+                <p className="mt-2 text-[15px] text-ink-soft">{b}</p>
+              </li>
             ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ── PERMISSION ───────────────────────────────────────── */}
+      <section className="border-b border-line py-20 md:py-24">
+        <div className="container grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <span className="flex h-14 w-14 items-center justify-center bg-mint text-green">
+              <ShieldCheck className="h-7 w-7" aria-hidden="true" />
+            </span>
+            <h2 className="mt-6 font-display text-[clamp(1.9rem,4vw,2.7rem)] uppercase">
+              Pedagang yang memilih, bukan dikirimi paksa
+            </h2>
+          </div>
+          <div className="lg:col-span-7 lg:pt-4">
+            <p className="text-[17px] text-ink-soft">
+              Iklan hanya diputar di HP pedagang yang lebih dulu menyalakannya
+              sendiri dari pengaturan aplikasi. Brandmu hadir di tempat yang mau
+              menerimanya, jadi kesannya baik dan tidak mengganggu.
+            </p>
+            <ul className="mt-7 space-y-4">
+              {[
+                "Pedagang menyalakan sendiri pilihan terima iklan suara.",
+                "Durasinya singkat, tidak menghambat pedagang melayani pembeli.",
+                "Setiap pemutaran tercatat dan bisa dipertanggungjawabkan.",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-3 border-b border-line pb-4">
+                  <Check className="mt-1 h-4 w-4 flex-none text-green" aria-hidden="true" />
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* PERMISSION / TRUST */}
-      <section className="py-20 md:py-24">
-        <div className="container max-w-4xl">
-          <Card className="reveal shadow-card">
-            <CardContent className="flex flex-col items-start gap-6 p-8 md:flex-row md:items-center md:p-10">
-              <div className="flex h-16 w-16 flex-none items-center justify-center rounded-2xl bg-mint text-primary">
-                <ShieldCheck className="h-8 w-8" />
-              </div>
-              <div>
-                <h3 className="text-2xl">Berbasis izin, bukan spam</h3>
-                <p className="mt-2 text-muted-foreground">
-                  Iklan cuma diputar di HP pedagang yang sudah setuju menerimanya
-                  lewat pengaturan di aplikasi. Jadi brand kamu hadir di lingkungan
-                  yang tepat dan diterima dengan baik, bukan mengganggu.
-                </p>
-                <ul className="mt-4 flex flex-col gap-2.5">
-                  {[
-                    "Pedagang memilih sendiri untuk menerima iklan suara.",
-                    "Iklan singkat, tidak mengganggu jalannya jualan.",
-                    "Setiap pemutaran tercatat dan bisa dipertanggungjawabkan.",
-                  ].map((t) => (
-                    <li key={t} className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 flex-none text-primary" />
-                      <span>{t}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* REACH STATS */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary to-primary-dark py-20 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(600px_300px_at_85%_20%,rgba(224,163,46,0.25),transparent_60%)]" />
-        <div className="container relative grid grid-cols-2 gap-8 text-center lg:grid-cols-4">
-          {[
-            ["1000+", "Warung telah bergabung"],
-            ["Nasional", "Jangkauan seluruh Indonesia"],
-            ["≤ 20 dtk", "Durasi iklan suara"],
-            ["Terukur", "Laporan tiap pemutaran"],
-          ].map(([big, lbl], i) => (
-            <div key={i} className={`reveal ${i ? `d${i}` : ""}`}>
-              <div className="text-[clamp(1.8rem,3.4vw,2.8rem)] font-extrabold tracking-tight">
-                {big}
-              </div>
-              <div className="mt-1.5 text-[0.98rem] opacity-90">{lbl}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24">
+      {/* ── REACH ────────────────────────────────────────────── */}
+      <section className="bg-green-deep py-16 text-white md:py-20">
         <div className="container">
-          <div className="reveal relative overflow-hidden rounded-[32px] bg-[linear-gradient(150deg,#3a2a05_0%,#8a5f10_50%,#C4881C_100%)] px-6 py-16 text-center text-white shadow-big md:px-10 md:py-20">
-            <h2 className="text-[clamp(2rem,3.6vw,2.9rem)]">
+          <dl className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:divide-x md:divide-white/15">
+            {[
+              ["1000+", "Warung telah bergabung"],
+              ["Nasional", "Sebaran seluruh Indonesia"],
+              ["20 detik", "Durasi maksimal iklan"],
+              ["Terlapor", "Tiap pemutaran tercatat"],
+            ].map(([v, k], i) => (
+              <div key={k} className={i > 0 ? "md:pl-8" : ""}>
+                <dt className="font-display text-[clamp(2rem,4.4vw,3.2rem)]">{v}</dt>
+                <dd className="mt-2 text-sm text-white/70">{k}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* ── CLOSING ──────────────────────────────────────────── */}
+      <section className="bg-ink py-20 text-white md:py-24">
+        <div className="container grid items-center gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-8">
+            <h2 className="font-display text-[clamp(2.1rem,4.6vw,3.4rem)] uppercase">
               Siap menyapa ribuan pedagang?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-lg opacity-90">
-              Ceritakan brand dan targetmu, tim kami bantu susun kampanye iklan
+            <p className="mt-5 max-w-xl text-lg text-white/70">
+              Ceritakan brand dan sasaranmu, tim kami bantu susun kampanye iklan
               suara yang pas.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-              <Button asChild size="lg" variant="light">
-                <a href={BRAND_CTA_URL} target="_blank" rel="noopener noreferrer">
-                  Mulai Kampanye <ArrowRight />
-                </a>
-              </Button>
-            </div>
+          </div>
+          <div className="lg:col-span-4 lg:justify-self-end">
+            <Button asChild size="lg" variant="gold">
+              <a href={BRAND_CTA_URL} target="_blank" rel="noopener noreferrer">
+                Mulai Kampanye <ArrowRight />
+              </a>
+            </Button>
           </div>
         </div>
       </section>
 
       <Footer />
     </>
-  );
-}
-
-function DeliveryRow({ label, done }: { label: string; done?: boolean }) {
-  return (
-    <div className="flex items-center gap-3 rounded-xl bg-background px-3.5 py-2.5 text-sm font-semibold">
-      <div
-        className={`flex h-6 w-6 flex-none items-center justify-center rounded-full ${
-          done ? "bg-primary text-white" : "bg-muted text-muted-foreground"
-        }`}
-      >
-        <Check className="h-3.5 w-3.5" />
-      </div>
-      {label}
-    </div>
   );
 }
