@@ -13,6 +13,7 @@ import {
   Fingerprint,
   Smartphone,
   Megaphone,
+  PiggyBank,
   Check,
 } from "lucide-react";
 import { Header } from "@/components/Header";
@@ -189,6 +190,24 @@ export default function Home() {
               Begitu pembayaran masuk, BeJo membunyikan lonceng lalu menyebut
               jumlahnya. Kamu tahu uangnya sudah sampai tanpa berhenti melayani.
             </p>
+          </div>
+
+          {/* The cost most QRIS merchants are already paying, removed. */}
+          <div className="mt-10 flex flex-col gap-5 border-l-4 border-gold bg-white p-6 sm:flex-row sm:items-center sm:gap-7 sm:p-7">
+            <PiggyBank
+              className="h-10 w-10 flex-none text-gold-dark"
+              aria-hidden="true"
+            />
+            <div>
+              <h3 className="font-display text-[clamp(1.4rem,2.6vw,1.9rem)] uppercase">
+                HP kamu sudah jadi soundbox
+              </h3>
+              <p className="mt-2 max-w-2xl text-ink-soft">
+                Tidak perlu sewa soundbox atau bayar langganan tiap bulan. Suara
+                uang masuk keluar dari HP yang sudah ada di tanganmu, dan tidak
+                ada biaya bulanan sama sekali.
+              </p>
+            </div>
           </div>
 
           <div className="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-14">
@@ -473,7 +492,7 @@ export default function Home() {
               sekarang ada di tanganmu.
             </p>
             <ul className="mt-7 flex flex-wrap gap-x-7 gap-y-3">
-              {["Gratis, tanpa biaya bulanan", "Jalan mulai Android 7", "Dipakai 1000+ warung"].map(
+              {["Tanpa sewa soundbox", "Jalan mulai Android 7", "Dipakai 1000+ warung"].map(
                 (t) => (
                   <li key={t} className="flex items-center gap-2 text-sm text-white/80">
                     <Check className="h-4 w-4 flex-none text-gold" aria-hidden="true" />

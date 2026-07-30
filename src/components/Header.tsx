@@ -25,6 +25,7 @@ export function Header({
   ctaLabel,
   ctaHref,
   ctaVariant = "solid",
+  ctaSlot,
 }: {
   links?: NavLink[];
   variant?: "home" | "inner";
@@ -32,6 +33,8 @@ export function Header({
   ctaHref?: string;
   /** Keep the header CTA matching the page's own accent. */
   ctaVariant?: "solid" | "gold";
+  /** Replaces the link button when the CTA needs its own behaviour. */
+  ctaSlot?: React.ReactNode;
 }) {
   const [scrolled, setScrolled] = useState(variant === "inner");
 
@@ -81,11 +84,13 @@ export function Header({
         </nav>
 
         <div className="hidden lg:block">
-          <Button asChild variant={ctaVariant}>
-            <a href={cta.href} {...externalProps(cta.href)}>
-              {cta.label}
-            </a>
-          </Button>
+          {ctaSlot ?? (
+            <Button asChild variant={ctaVariant}>
+              <a href={cta.href} {...externalProps(cta.href)}>
+                {cta.label}
+              </a>
+            </Button>
+          )}
         </div>
 
         <div className="lg:hidden">
@@ -116,13 +121,17 @@ export function Header({
                 ))}
               </nav>
               <div className="mt-7">
-                <SheetClose asChild>
-                  <Button asChild size="lg" variant={ctaVariant} className="w-full">
-                    <a href={cta.href} {...externalProps(cta.href)}>
-                      {cta.label}
-                    </a>
-                  </Button>
-                </SheetClose>
+                {ctaSlot ? (
+                  <SheetClose asChild>{ctaSlot}</SheetClose>
+                ) : (
+                  <SheetClose asChild>
+                    <Button asChild size="lg" variant={ctaVariant} className="w-full">
+                      <a href={cta.href} {...externalProps(cta.href)}>
+                        {cta.label}
+                      </a>
+                    </Button>
+                  </SheetClose>
+                )}
               </div>
             </SheetContent>
           </Sheet>

@@ -13,7 +13,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { BRAND_CTA_URL } from "@/lib/constants";
+import { useState } from "react";
+import { WaitlistDialog } from "@/components/WaitlistDialog";
 
 const brandLinks = [
   { href: "#kenapa", label: "Kenapa Iklan Suara" },
@@ -58,15 +59,19 @@ const timeline = [
 ] as const;
 
 export default function Brand() {
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
+  const openWaitlist = () => setWaitlistOpen(true);
 
   return (
     <>
       <Header
         links={brandLinks}
         variant="inner"
-        ctaLabel="Mulai Kampanye"
-        ctaHref={BRAND_CTA_URL}
-        ctaVariant="gold"
+        ctaSlot={
+          <Button variant="gold" onClick={openWaitlist}>
+            Mulai Kampanye
+          </Button>
+        }
       />
 
       {/* ── HERO ─────────────────────────────────────────────── */}
@@ -85,10 +90,8 @@ export default function Brand() {
               terdengar di tengah kesibukan berjualan.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg" variant="gold">
-                <a href={BRAND_CTA_URL} target="_blank" rel="noopener noreferrer">
-                  Mulai Kampanye <ArrowRight />
-                </a>
+              <Button size="lg" variant="gold" onClick={openWaitlist}>
+                Mulai Kampanye <ArrowRight />
               </Button>
               <Button asChild size="lg" variant="outline">
                 <a href="#cara-kerja">Lihat cara kerjanya</a>
@@ -245,16 +248,15 @@ export default function Brand() {
             </p>
           </div>
           <div className="lg:col-span-4 lg:justify-self-end">
-            <Button asChild size="lg" variant="gold">
-              <a href={BRAND_CTA_URL} target="_blank" rel="noopener noreferrer">
-                Mulai Kampanye <ArrowRight />
-              </a>
+            <Button size="lg" variant="gold" onClick={openWaitlist}>
+              Mulai Kampanye <ArrowRight />
             </Button>
           </div>
         </div>
       </section>
 
       <Footer />
+      <WaitlistDialog open={waitlistOpen} onOpenChange={setWaitlistOpen} />
     </>
   );
 }

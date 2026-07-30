@@ -24,5 +24,3 @@ export function playUrl(placement: string): string {
 /** Default install link, used where no more specific placement applies. */
 export const PLAY_URL = playUrl("umum");
 
-/** Where brands start a voice-ad campaign. */
-export const BRAND_CTA_URL = "https://jo.temanproduk.com";

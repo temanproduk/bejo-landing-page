@@ -7,6 +7,7 @@ const columns = [
       { href: "/#tim", label: "Kelola Tim & Absensi" },
       { href: "/#catatan", label: "Catatan Transaksi" },
       { href: "/#cara", label: "Cara Pakai" },
+      { href: "/perbandingan.html", label: "Banding Harga" },
     ],
   },
   {

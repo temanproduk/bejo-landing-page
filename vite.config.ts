@@ -19,6 +19,7 @@ export default defineConfig({
         dataDeletion: resolve(__dirname, "data-deletion.html"),
         contact: resolve(__dirname, "contact.html"),
         brand: resolve(__dirname, "brand.html"),
+        compare: resolve(__dirname, "perbandingan.html"),
       },
     },
   },

@@ -6,6 +6,7 @@ export default {
     "./data-deletion.html",
     "./contact.html",
     "./brand.html",
+    "./perbandingan.html",
     "./src/**/*.{ts,tsx}",
   ],
   theme: {

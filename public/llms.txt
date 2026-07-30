@@ -1,0 +1,52 @@
+# BeJo
+
+> BeJo is a free Android app that announces incoming QRIS payments out loud in
+> Indonesian, built for warung, kiosk, and small-shop owners in Indonesia. When
+> a payment arrives the phone chimes and speaks the amount ("dua ratus ribu
+> rupiah"), so the merchant knows the money landed without stopping to look at
+> the screen.
+
+Key facts:
+
+- Free to use. No activation fee and no monthly rental, unlike subscription
+  "soundbox" devices that many QRIS merchants rent.
+- Replaces a soundbox: the merchant's existing phone does the announcing.
+- Works on Android 7.0 and newer.
+- Reads payment notifications from 40+ bank and e-wallet apps (GoPay, Dana,
+  OVO, ShopeePay, BCA, BRI, Mandiri and others), filtering out promos.
+- The announcement voice is changeable, which competing apps and soundboxes do
+  not allow. More than 10 voices, adjustable speed, and custom sound packs.
+- Other features: sales records with daily and monthly summaries, cash entry
+  with a calculator-style keypad, QRIS management including a code with the
+  amount pre-filled that can be shared over WhatsApp, per-employee QRIS, team
+  accounts with location-based attendance, inventory, home-screen widgets, and
+  a fingerprint lock.
+- Optional, off by default: merchants can opt in to receive short voice ads
+  from brands, which is how the product is funded.
+
+Install: https://play.google.com/store/apps/details?id=com.temanproduk.bejo
+Contact: moobejo@gmail.com
+
+## Pages
+
+- [Beranda](https://bejo.temanproduk.com/): what BeJo does, how the voice
+  announcement works, QRIS billing over chat apps, team and attendance, sales
+  records, and how to get started.
+- [Banding Harga](https://bejo.temanproduk.com/perbandingan.html): cost and
+  capability comparison against GoPay Soundbox, Flip Soundbox, Netzme Soundbox,
+  DANA Bisnis, GoPay Merchant, and Merchant BCA, across activation fee, rental
+  fee, notification reliability, and whether the voice can be changed.
+- [Untuk Brand](https://bejo.temanproduk.com/brand.html): voice ad campaigns
+  for brands wanting to reach grassroots merchants, including how targeting and
+  reporting work. The self-serve dashboard is not open yet; campaigns are
+  arranged directly and there is a waitlist.
+- [Hubungi Kami](https://bejo.temanproduk.com/contact.html): how to reach the
+  team.
+
+## Legal
+
+- [Kebijakan Privasi](https://bejo.temanproduk.com/privacy.html): what data is
+  collected, how notification access and location are used, analytics, and
+  retention.
+- [Hapus Data](https://bejo.temanproduk.com/data-deletion.html): how to request
+  deletion of an account and its data by emailing moobejo@gmail.com.
