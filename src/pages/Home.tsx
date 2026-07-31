@@ -12,13 +12,13 @@ import {
   LayoutGrid,
   Fingerprint,
   Smartphone,
+  Feather,
   Megaphone,
   Check,
 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { HeroDemo } from "@/components/HeroDemo";
-import { CelenganAyam } from "@/components/icons/CelenganAyam";
 import { PhoneFrame } from "@/components/phone/PhoneFrame";
 import { AppQrisScreen } from "@/components/phone/AppQrisScreen";
 import { Button } from "@/components/ui/button";
@@ -91,22 +91,22 @@ const extras = [
   { icon: LayoutGrid, title: "Widget di layar HP", body: "Lihat setoran hari ini tanpa buka aplikasi." },
   { icon: Fingerprint, title: "Kunci sidik jari", body: "Cuma kamu yang bisa buka catatan usahamu." },
   { icon: Calculator, title: "Tombol angka cepat", body: "Masukkan nominal seperti pakai kalkulator." },
-  { icon: Smartphone, title: "Jalan di HP lama", body: "Bisa dipakai mulai Android 7, tidak harus HP baru." },
+  { icon: Feather, title: "Ringan, jalan di HP lama", body: "Aplikasinya ringan, tidak harus pakai HP baru." },
 ];
 
 const steps: { title: string; body: string; cta?: string }[] = [
   {
-    title: "Pasang BeJo di HP Android",
-    body: "Unduh gratis dari Google Play, lalu bikin akun usahamu dan pasang kode QRIS. Jalan mulai Android 7, HP lama pun bisa.",
+    title: "Install BeJo",
+    body: "Unduh gratis dari Google Play. Aplikasinya ringan, HP lama pun tetap bisa.",
     cta: "Buka Google Play",
   },
   {
-    title: "Kasih izin notifikasi",
-    body: "Ada tuntunan bergambar di dalam aplikasi, ikuti saja langkahnya sampai selesai.",
+    title: "Pasang QRIS & kasih izin",
+    body: "Bikin akun usahamu, tampilkan atau unggah kode QRIS, lalu kasih izin notifikasi. Ada tuntunan bergambar di dalam aplikasi, ikuti saja sampai selesai.",
   },
   {
     title: "Layani pembeli, dengarkan",
-    body: "Tiap uang masuk langsung dibunyikan. Sudah, begitu saja.",
+    body: "Tiap uang masuk langsung dibunyikan dan jarang meleset. Suaranya pun bisa kamu ganti sesuka hati.",
   },
 ];
 
@@ -207,7 +207,7 @@ export default function Home() {
 
           {/* The cost most QRIS merchants are already paying, removed. */}
           <div className="mt-10 flex flex-col gap-5 border-l-4 border-gold bg-white p-6 sm:flex-row sm:items-center sm:gap-7 sm:p-7">
-            <CelenganAyam className="h-11 w-11 flex-none text-gold-dark" />
+            <Smartphone className="h-11 w-11 flex-none text-gold-dark" aria-hidden="true" />
             <div>
               <h3 className="font-display text-[clamp(1.4rem,2.6vw,1.9rem)] uppercase">
                 HP kamu sudah jadi soundbox
@@ -512,7 +512,7 @@ export default function Home() {
               sekarang ada di tanganmu.
             </p>
             <ul className="mt-7 flex flex-wrap gap-x-7 gap-y-3">
-              {["Tanpa sewa soundbox", "Jalan mulai Android 7", "Dipakai 1000+ warung"].map(
+              {["Tanpa sewa soundbox", "Jalan di HP lama", "Dipakai 1000+ warung"].map(
                 (t) => (
                   <li key={t} className="flex items-center gap-2 text-sm text-white/80">
                     <Check className="h-4 w-4 flex-none text-gold" aria-hidden="true" />

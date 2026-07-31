@@ -6,13 +6,13 @@ const columns = [
       { href: "/#kirim-qris", label: "Tagih Lewat QRIS" },
       { href: "/#tim", label: "Kelola Tim & Absensi" },
       { href: "/#catatan", label: "Catatan Transaksi" },
-      { href: "/#cara", label: "Cara Pakai" },
-      { href: "/perbandingan.html", label: "Banding Harga" },
     ],
   },
   {
-    title: "Kerja Sama",
+    title: "Informasi",
     links: [
+      { href: "/#cara", label: "Cara Pakai" },
+      { href: "/perbandingan.html", label: "Banding Harga" },
       { href: "/brand.html", label: "Untuk Brand" },
       { href: "/contact.html", label: "Hubungi Kami" },
     ],
