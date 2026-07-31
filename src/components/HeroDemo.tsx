@@ -4,7 +4,7 @@ import { PhoneFrame } from "@/components/phone/PhoneFrame";
 import { AppHomeScreen, type Entry } from "@/components/phone/AppHomeScreen";
 import { amountToWords, formatRupiah } from "@/lib/rupiah";
 
-const AMOUNTS = [15_000, 45_000, 200_000, 1_250_000];
+const AMOUNTS = [15_000, 22_500, 220_000];
 const ISSUERS = ["GoPay", "OVO", "Dana", "BRI"];
 const WORD_MS = 300;
 
@@ -13,7 +13,7 @@ const WORD_MS = 300;
  * in Indonesian, so visitors see the product and hear what it does at once.
  */
 export function HeroDemo() {
-  const [amount, setAmount] = useState(200_000);
+  const [amount, setAmount] = useState(22_500);
   const [playing, setPlaying] = useState(false);
   const [spokenIndex, setSpokenIndex] = useState(-1);
   const [received, setReceived] = useState<Entry[]>([]);

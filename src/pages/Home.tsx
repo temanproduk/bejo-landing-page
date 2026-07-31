@@ -13,12 +13,12 @@ import {
   Fingerprint,
   Smartphone,
   Megaphone,
-  PiggyBank,
   Check,
 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { HeroDemo } from "@/components/HeroDemo";
+import { CelenganAyam } from "@/components/icons/CelenganAyam";
 import { PhoneFrame } from "@/components/phone/PhoneFrame";
 import { AppQrisScreen } from "@/components/phone/AppQrisScreen";
 import { Button } from "@/components/ui/button";
@@ -94,10 +94,20 @@ const extras = [
   { icon: Smartphone, title: "Jalan di HP lama", body: "Bisa dipakai mulai Android 7, tidak harus HP baru." },
 ];
 
-const steps = [
-  ["Daftar dan pasang QRIS", "Bikin akun usahamu, lalu tampilkan atau unggah kode QRIS."],
-  ["Kasih izin notifikasi", "Ada tuntunan bergambar, ikuti saja langkahnya sampai selesai."],
-  ["Layani pembeli, dengarkan", "Tiap uang masuk langsung dibunyikan. Sudah, begitu saja."],
+const steps: { title: string; body: string; cta?: string }[] = [
+  {
+    title: "Pasang BeJo di HP Android",
+    body: "Unduh gratis dari Google Play, lalu bikin akun usahamu dan pasang kode QRIS. Jalan mulai Android 7, HP lama pun bisa.",
+    cta: "Buka Google Play",
+  },
+  {
+    title: "Kasih izin notifikasi",
+    body: "Ada tuntunan bergambar di dalam aplikasi, ikuti saja langkahnya sampai selesai.",
+  },
+  {
+    title: "Layani pembeli, dengarkan",
+    body: "Tiap uang masuk langsung dibunyikan. Sudah, begitu saja.",
+  },
 ];
 
 export default function Home() {
@@ -109,13 +119,16 @@ export default function Home() {
 
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden border-b border-line pb-14 pt-24 md:pb-16 md:pt-28">
-        {/* Flat field instead of a soft gradient wash */}
-        <div
-          className="absolute inset-y-0 right-0 -z-10 hidden w-1/3 bg-paper-warm lg:block"
-          aria-hidden="true"
-        />
         <div className="container grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-7">
+          {/* Colour field placed in the same grid cell as the device, so its
+              edge lines up with the column instead of the viewport. Negative
+              margins cancel the section padding to run its full height. */}
+          <div
+            aria-hidden="true"
+            className="hidden self-stretch border-l border-line bg-paper-warm lg:col-start-8 lg:col-span-5 lg:row-start-1 lg:-mb-16 lg:-mt-28 lg:block"
+          />
+
+          <div className="relative lg:col-start-1 lg:col-span-7 lg:row-start-1">
             <Eyebrow>Untuk pemilik warung, kios, dan toko</Eyebrow>
             <h1 className="mt-5 font-display text-[clamp(2.4rem,8.5vw,4.6rem)] uppercase">
               Uang masuk, langsung <span className="struck">kedengeran</span>
@@ -151,7 +164,7 @@ export default function Home() {
             </dl>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="relative lg:col-start-8 lg:col-span-5 lg:row-start-1">
             <HeroDemo />
           </div>
         </div>
@@ -184,7 +197,7 @@ export default function Home() {
           <div className="max-w-3xl">
             <Eyebrow>Uang masuk QRIS</Eyebrow>
             <h2 className="mt-4 font-display text-[clamp(2rem,4.4vw,3.2rem)] uppercase">
-              Tidak perlu bolak-balik lihat HP
+              Ga' perlu bolak-balik lihat HP
             </h2>
             <p className="mt-5 text-[17px] text-ink-soft">
               Begitu pembayaran masuk, BeJo membunyikan lonceng lalu menyebut
@@ -194,10 +207,7 @@ export default function Home() {
 
           {/* The cost most QRIS merchants are already paying, removed. */}
           <div className="mt-10 flex flex-col gap-5 border-l-4 border-gold bg-white p-6 sm:flex-row sm:items-center sm:gap-7 sm:p-7">
-            <PiggyBank
-              className="h-10 w-10 flex-none text-gold-dark"
-              aria-hidden="true"
-            />
+            <CelenganAyam className="h-11 w-11 flex-none text-gold-dark" />
             <div>
               <h3 className="font-display text-[clamp(1.4rem,2.6vw,1.9rem)] uppercase">
                 HP kamu sudah jadi soundbox
@@ -442,13 +452,23 @@ export default function Home() {
             </h2>
           </div>
           <ol className="mt-12 grid gap-px border border-line bg-line md:grid-cols-3">
-            {steps.map(([t, b], i) => (
-              <li key={t} className="bg-paper-warm p-7 md:p-8">
+            {steps.map((s, i) => (
+              <li key={s.title} className="bg-paper-warm p-7 md:p-8">
                 <span className="font-mono text-sm text-gold-dark">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-4 text-xl font-bold">{t}</h3>
-                <p className="mt-2 text-ink-soft">{b}</p>
+                <h3 className="mt-4 text-xl font-bold">{s.title}</h3>
+                <p className="mt-2 text-ink-soft">{s.body}</p>
+                {s.cta && (
+                  <a
+                    href={playUrl("cara-pakai")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1.5 font-bold text-green underline underline-offset-4 transition-colors hover:text-green-dark"
+                  >
+                    {s.cta} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                )}
               </li>
             ))}
           </ol>

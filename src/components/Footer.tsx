@@ -32,14 +32,14 @@ export function Footer() {
       <div className="container">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-3">
               <img
                 src="/assets/bejo-icon-round.png"
                 alt=""
-                className="h-9 w-9"
+                className="h-12 w-12"
                 aria-hidden="true"
               />
-              <span className="font-display text-2xl leading-none">
+              <span className="font-display text-[28px] leading-none">
                 Be<span className="text-gold">Jo</span>
               </span>
             </div>

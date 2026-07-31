@@ -58,15 +58,15 @@ export function Header({
         scrolled ? "border-b border-line bg-paper/95 backdrop-blur-sm" : "border-b border-transparent"
       )}
     >
-      <div className="container flex h-16 items-center justify-between gap-6">
-        <a href="/" className="flex items-center gap-2.5">
+      <div className="container flex h-[76px] items-center justify-between gap-6">
+        <a href="/" className="group flex items-center gap-3">
           <img
             src="/assets/bejo-icon-round.png"
             alt=""
-            className="h-9 w-9"
+            className="h-12 w-12 transition-transform duration-300 group-hover:-rotate-6"
             aria-hidden="true"
           />
-          <span className="font-display text-2xl leading-none">
+          <span className="font-display text-[28px] leading-none">
             Be<span className="text-green">Jo</span>
           </span>
         </a>
@@ -76,9 +76,13 @@ export function Header({
             <a
               key={l.href}
               href={l.href}
-              className="text-[14px] font-semibold text-ink-soft transition-colors hover:text-green"
+              className="group relative text-[14px] font-semibold text-ink-soft transition-colors hover:text-green"
             >
               {l.label}
+              <span
+                className="absolute -bottom-1.5 left-0 h-[2px] w-0 bg-gold transition-all duration-300 group-hover:w-full"
+                aria-hidden="true"
+              />
             </a>
           ))}
         </nav>
@@ -105,8 +109,11 @@ export function Header({
               </button>
             </SheetTrigger>
             <SheetContent>
-              <span className="font-display text-2xl">
-                Be<span className="text-green">Jo</span>
+              <span className="flex items-center gap-2.5">
+                <img src="/assets/bejo-icon-round.png" alt="" className="h-10 w-10" aria-hidden="true" />
+                <span className="font-display text-2xl">
+                  Be<span className="text-green">Jo</span>
+                </span>
               </span>
               <nav className="mt-8 flex flex-col">
                 {links.map((l) => (
