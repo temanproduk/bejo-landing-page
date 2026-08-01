@@ -13,9 +13,12 @@ const BASE: Entry[] = [
 export function AppHomeScreen({
   incoming = [],
   announcing = false,
+  soundLabel,
 }: {
   incoming?: Entry[];
   announcing?: boolean;
+  /** Which sound pack is speaking, named on the notification as the app does. */
+  soundLabel?: string;
 }) {
   const rows = [...incoming, ...BASE].slice(0, 3);
   const total = 2_480_000 + incoming.reduce((sum, r) => sum + r.amount, 0);
@@ -37,7 +40,9 @@ export function AppHomeScreen({
             <p className="text-[10.5px] font-bold leading-tight text-ink">
               Pembayaran Terdeteksi
             </p>
-            <p className="text-[9px] leading-tight text-ink-soft">Sedang dibunyikan</p>
+            <p className="truncate text-[9px] leading-tight text-ink-soft">
+              {soundLabel ? `Dibunyikan · ${soundLabel}` : "Sedang dibunyikan"}
+            </p>
           </div>
           <span className="ml-auto flex h-3.5 items-end gap-[2px]" aria-hidden="true">
             {[5, 10, 6, 11].map((h, i) => (

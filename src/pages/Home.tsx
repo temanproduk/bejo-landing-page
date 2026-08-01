@@ -106,7 +106,7 @@ const steps: { title: string; body: string; cta?: string }[] = [
   },
   {
     title: "Layani pembeli, dengarkan",
-    body: "Tiap uang masuk langsung dibunyikan dan jarang meleset. Suaranya pun bisa kamu ganti sesuka hati.",
+    body: "Tiap uang masuk langsung dibunyikan. Sat Set! Suaranya pun bisa kamu ganti sesuka hati.",
   },
 ];
 
@@ -131,12 +131,16 @@ export default function Home() {
           <div className="relative lg:col-start-1 lg:col-span-7 lg:row-start-1">
             <Eyebrow>Untuk pemilik warung, kios, dan toko</Eyebrow>
             <h1 className="mt-5 font-display text-[clamp(2.4rem,8.5vw,4.6rem)] uppercase">
-              Uang masuk, langsung <span className="struck">kedengeran</span>
+              Uang Masuk, Warungmu Jadi <span className="struck">Viral!</span>
             </h1>
             <p className="mt-6 max-w-xl text-[17px] text-ink-soft md:text-lg">
-              Setiap pembayaran QRIS yang masuk langsung dibunyikan dan disebut
-              jumlahnya dalam Bahasa Indonesia. Tangan tetap sibuk melayani
-              pembeli, uangnya tetap kedengeran.
+              Setiap pembayaran QRIS yang masuk, langsung dibunyikan bunyinya, berikut dengan suara Jingle. Tangan tetap sibuk melayani
+              pembeli, ga' bakal kena penipuan lagi!
+            </p>
+            <p className="mt-4 max-w-xl text-[17px] text-ink-soft md:text-lg">
+              Suaranya bisa kamu ganti sesuka hati: pilih dari 10+ suara, rekam
+              suaramu sendiri, atau bikin jingle khas warungmu. Bunyi yang beda
+              bikin pembeli hafal, ikut merekam, dan Warungmu jadi terkenal dan makin laris!
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">

@@ -1,25 +1,50 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Play, Square } from "lucide-react";
+import { MessageCircle, Play, Square } from "lucide-react";
 import { PhoneFrame } from "@/components/phone/PhoneFrame";
 import { AppHomeScreen, type Entry } from "@/components/phone/AppHomeScreen";
 import { amountToWords, formatRupiah } from "@/lib/rupiah";
 
-const AMOUNTS = [15_000, 22_500, 220_000];
+const AMOUNTS = [15_000, 20_500, 220_000];
 const ISSUERS = ["GoPay", "OVO", "Dana", "BRI"];
 const WORD_MS = 300;
+
+/**
+ * An announcement is a sound pack followed by the amount. Swapping the pack is
+ * what turns a plain notice into a sound a warung gets known for, so visitors
+ * get to hear the difference rather than read about it.
+ */
+const PACKS = [
+  {
+    label: "Jingle warung",
+    intro: ["Warung", "Bejo", "rezeki", "datang"],
+    note: "Nada khas warungmu. Pembeli hafal, lalu cerita ke temannya.",
+  },
+  {
+    label: "Suara kamu",
+    intro: ["Hei", "bos", "uang", "masuk"],
+    note: "Rekam suaramu sendiri, simpan jadi paket suara.",
+  },
+  {
+    label: "Suara asli",
+    intro: [],
+    note: "Cuma nominalnya. Jelas, cepat, tanpa basa-basi.",
+  },
+];
 
 /**
  * The hero: a real payment lands on the app screen while the amount is spoken
  * in Indonesian, so visitors see the product and hear what it does at once.
  */
 export function HeroDemo() {
-  const [amount, setAmount] = useState(22_500);
+  const [amount, setAmount] = useState(20_500);
+  const [packIndex, setPackIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [spokenIndex, setSpokenIndex] = useState(-1);
   const [received, setReceived] = useState<Entry[]>([]);
   const timers = useRef<number[]>([]);
 
-  const words = amountToWords(amount);
+  const pack = PACKS[packIndex];
+  const words = [...pack.intro, ...amountToWords(amount)];
 
   const stop = useCallback(() => {
     timers.current.forEach(clearTimeout);
@@ -75,30 +100,59 @@ export function HeroDemo() {
 
   return (
     <div className="flex flex-col items-center">
-      <PhoneFrame className="w-[250px] shrink-0">
-        <AppHomeScreen incoming={received} announcing={playing} />
-      </PhoneFrame>
+      <div className="relative w-[250px]">
+        <PhoneFrame className="w-[250px] shrink-0">
+          <AppHomeScreen
+            incoming={received}
+            announcing={playing}
+            soundLabel={pack.label}
+          />
+        </PhoneFrame>
 
-      {/* Try-it control, docked under the device */}
-      <div className="mt-4 w-full max-w-[360px] border border-line-strong bg-white">
+        {/* A shop with a sound of its own gets talked about. Pinned across the
+            foot of the device like a note stuck on the counter, kept inside the
+            phone's own width so it never crowds the headline column. */}
+        <figure
+          className={`absolute -bottom-6 left-1/2 z-10 w-[236px] -translate-x-1/2 -rotate-1 border bg-white p-2.5 shadow-lift transition-colors duration-300 ${
+            playing ? "border-gold" : "border-line-strong"
+          }`}
+        >
+          <figcaption className="flex items-center gap-1.5 font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-ink-faint">
+            <MessageCircle className="h-3 w-3 text-gold-dark" aria-hidden="true" />
+            Pembeli
+          </figcaption>
+          <p className="mt-1 text-[12.5px] font-bold leading-snug text-ink">
+            &ldquo;Suaranya lucu! Rekam ah, buat story.&rdquo;
+          </p>
+        </figure>
+      </div>
+
+      {/* Try-it control, clear of the note pinned to the device */}
+      <div className="mt-10 w-full max-w-[360px] border border-line-strong bg-white">
         <p className="border-b border-line px-3.5 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-ink-faint">
           Coba dengar sendiri
         </p>
 
         <div className="p-3">
           <div className="flex flex-wrap gap-1.5" aria-live="polite">
-            {words.map((w, i) => (
-              <span
-                key={`${w}-${i}`}
-                className={`border px-2 py-0.5 font-mono text-[11.5px] transition-colors duration-150 ${
-                  playing && i <= spokenIndex
-                    ? "border-green bg-green text-white"
-                    : "border-line bg-paper text-ink-soft"
-                }`}
-              >
-                {w}
-              </span>
-            ))}
+            {words.map((w, i) => {
+              const spoken = playing && i <= spokenIndex;
+              // The jingle reads gold, the amount green: two halves of one
+              // announcement, told apart while it plays.
+              const tone = spoken
+                ? i < pack.intro.length
+                  ? "border-gold bg-gold text-ink"
+                  : "border-green bg-green text-white"
+                : "border-line bg-paper text-ink-soft";
+              return (
+                <span
+                  key={`${w}-${i}`}
+                  className={`border px-2 py-0.5 font-mono text-[11.5px] transition-colors duration-150 ${tone}`}
+                >
+                  {w}
+                </span>
+              );
+            })}
           </div>
 
           <div className="mt-3 flex items-center gap-2">
@@ -123,6 +177,7 @@ export function HeroDemo() {
                 <button
                   key={a}
                   type="button"
+                  aria-pressed={a === amount}
                   onClick={() => {
                     stop();
                     setAmount(a);
@@ -138,6 +193,35 @@ export function HeroDemo() {
               ))}
             </div>
           </div>
+        </div>
+
+        <div className="border-t border-line p-3">
+          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-ink-faint">
+            Ganti suaranya
+          </p>
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {PACKS.map((p, i) => (
+              <button
+                key={p.label}
+                type="button"
+                aria-pressed={i === packIndex}
+                onClick={() => {
+                  stop();
+                  setPackIndex(i);
+                }}
+                className={`rounded-control border px-2.5 py-1 font-mono text-[11px] transition-colors ${
+                  i === packIndex
+                    ? "border-green bg-mint text-green-deep"
+                    : "border-line-strong text-ink-soft hover:border-ink hover:text-ink"
+                }`}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+          <p className="mt-2 text-[12px] leading-snug text-ink-soft">
+            {pack.note}
+          </p>
         </div>
       </div>
     </div>
