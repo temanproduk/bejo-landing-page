@@ -5,12 +5,6 @@ import { Footer } from "@/components/Footer";
 import { LegalHero } from "@/components/Legal";
 import { Button } from "@/components/ui/button";
 
-const links = [
-  { href: "/#uang-masuk", label: "Uang Masuk QRIS" },
-  { href: "/brand.html", label: "Untuk Brand" },
-  { href: "/privacy.html", label: "Kebijakan Privasi" },
-];
-
 // Assembled at runtime so the address is not sitting in the page source.
 const USER = "moobejo";
 const DOMAIN = "gmail.com";
@@ -32,7 +26,7 @@ export default function Contact() {
 
   return (
     <>
-      <Header links={links} variant="inner" />
+      <Header variant="inner" />
       <LegalHero
         label="Hubungi kami"
         title="Ada yang mau ditanyakan?"

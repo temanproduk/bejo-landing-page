@@ -19,6 +19,13 @@ const isExternal = (href: string) => /^https?:\/\//.test(href);
 const externalProps = (href: string) =>
   isExternal(href) ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
+/**
+ * The menu is the same everywhere, but its section links belong to the
+ * homepage: away from it they have to travel there first.
+ */
+const resolve = (href: string, variant: "home" | "inner") =>
+  variant === "inner" && href.startsWith("#") ? `/${href}` : href;
+
 export function Header({
   links = homeLinks,
   variant = "home",
@@ -75,7 +82,7 @@ export function Header({
           {links.map((l) => (
             <a
               key={l.href}
-              href={l.href}
+              href={resolve(l.href, variant)}
               className="group relative text-[14px] font-semibold text-ink-soft transition-colors hover:text-green"
             >
               {l.label}
@@ -119,7 +126,7 @@ export function Header({
                 {links.map((l) => (
                   <SheetClose asChild key={l.href}>
                     <a
-                      href={l.href}
+                      href={resolve(l.href, variant)}
                       className="border-b border-line py-4 text-lg font-bold text-ink transition-colors hover:text-green"
                     >
                       {l.label}

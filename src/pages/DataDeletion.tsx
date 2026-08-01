@@ -2,12 +2,6 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LegalHero, EmailCallout, H2, Prose } from "@/components/Legal";
 
-const legalLinks = [
-  { href: "/#uang-masuk", label: "Uang Masuk QRIS" },
-  { href: "/#cara", label: "Cara Pakai" },
-  { href: "/privacy.html", label: "Kebijakan Privasi" },
-];
-
 const emailBody = `Halo Tim BeJo,
 
 Saya mau minta akun dan semua data saya dihapus.
@@ -28,7 +22,7 @@ const steps = [
 export default function DataDeletion() {
   return (
     <>
-      <Header links={legalLinks} variant="inner" />
+      <Header variant="inner" />
       <LegalHero
         title="Hapus Data"
         desc="Data kamu, kamu yang pegang. Halaman ini menjelaskan cara meminta akun dan semua datamu dihapus dari BeJo."

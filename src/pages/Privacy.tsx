@@ -2,16 +2,10 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LegalHero, EmailCallout, H2, Prose } from "@/components/Legal";
 
-const legalLinks = [
-  { href: "/#uang-masuk", label: "Uang Masuk QRIS" },
-  { href: "/#cara", label: "Cara Pakai" },
-  { href: "/data-deletion.html", label: "Hapus Data" },
-];
-
 export default function Privacy() {
   return (
     <>
-      <Header links={legalLinks} variant="inner" />
+      <Header variant="inner" />
       <LegalHero
         title="Kebijakan Privasi"
         desc="Penjelasan soal data apa yang BeJo simpan, dipakai untuk apa, dan hak kamu. Kami hanya mengambil yang memang perlu supaya aplikasinya jalan."

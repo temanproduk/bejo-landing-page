@@ -5,12 +5,6 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { Button } from "@/components/ui/button";
 import { playUrl } from "@/lib/constants";
 
-const links = [
-  { href: "/#uang-masuk", label: "Uang Masuk QRIS" },
-  { href: "/#kirim-qris", label: "Tagih Lewat QRIS" },
-  { href: "/#cara", label: "Cara Pakai" },
-];
-
 type Row = {
   name: string;
   aktivasi: string;
@@ -90,7 +84,7 @@ const COLS = ["Biaya aktivasi", "Uang sewa", "Keandalan notifikasi", "Ubah suara
 export default function Compare() {
   return (
     <>
-      <Header links={links} variant="inner" ctaLabel="Pasang Gratis" ctaHref={playUrl("banding")} />
+      <Header variant="inner" ctaLabel="Pasang Gratis" ctaHref={playUrl("banding")} />
 
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="border-b border-line pb-14 pt-28 md:pb-16 md:pt-32">
