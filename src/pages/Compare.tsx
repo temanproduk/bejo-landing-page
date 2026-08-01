@@ -253,7 +253,7 @@ export default function Compare() {
         <div className="container grid items-center gap-8 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <h2 className="font-display text-[clamp(1.9rem,4.4vw,3rem)] uppercase">
-              HP kamu sudah jadi soundbox
+              HP kamu sudah jadi soundbox!
             </h2>
             <p className="mt-4 max-w-xl text-white/70">
               Pasang BeJo, kasih izin notifikasi, lalu uang masuk langsung

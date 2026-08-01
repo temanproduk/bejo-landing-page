@@ -55,21 +55,21 @@ const voiceDetails = [
 ];
 
 const qrisPoints = [
-  ["Jumlahnya sudah terisi", "Ketik nominal pesanan, QRIS-nya langsung dibuat dengan jumlah itu. Pembeli tidak bisa salah ketik."],
+  ["Jumlahnya sudah terisi", "Ketik nominal pesanan, QRIS-nya langsung dibuat dengan jumlah itu. Pembeli jadi tidak salah ketik."],
   ["Kirim ke chat mana saja", "WhatsApp, Telegram, atau aplikasi chat lain, lewat tombol bagikan yang biasa kamu pakai."],
-  ["Sekalian nomor rekening", "Kalau pembeli mau transfer bank, data rekening usahamu ikut terkirim."],
+  ["Sekalian nomor rekening", "Kalau pembeli mau transfer bank, info data rekening bank kamu ikut dibagikan."],
 ];
 
 const teamPoints = [
-  ["QRIS sendiri per karyawan", "Tiap karyawan bisa dikasih QRIS masing-masing, jadi kamu tahu setoran datang dari lapak siapa."],
-  ["Absen pakai lokasi", "Karyawan absen masuk dan pulang, lengkap dengan titik lokasinya."],
-  ["Rekap kehadiran", "Lihat siapa yang masuk, siapa yang belum, dirapikan per tanggal."],
+  ["QRIS sendiri per karyawan", "Tiap karyawan bisa dikasih QRIS masing-masing di HPnya, jadi kamu tahu setoran datang dari lapak siapa."],
+  ["Absen pakai lokasi", "Karyawan absen masuk dan pulang, lengkap dengan titik lokasinya. Bisa juga Ping sesekali, biar kamu ingetin untuk fokus kerja."],
+  ["Rekap kehadiran", "Lihat siapa yang masuk, siapa yang bolos, dirapikan per tanggal."],
 ];
 
 const recordPoints = [
   ["Total yang gampang dibaca", "Hari ini, kemarin, dan bulan ini langsung kelihatan."],
-  ["Catat penjualan tunai", "Ada tombol angka seperti kalkulator, jadi cepat waktu tangan sibuk."],
-  ["Tahu asal tiap catatan", "Dari QRIS, dicatat sendiri, atau kebaca dari aplikasi lain."],
+  ["Catat penjualan tunai", "Ada tombol input angka seperti kalkulator, jadi cepat waktu tangan sibuk."],
+  ["Tahu asal tiap catatan", "Dari QRIS, dicatat sendiri, atau otomatis terbaca dari aplikasi lain."],
 ];
 
 const attendance = [
@@ -97,16 +97,16 @@ const extras = [
 const steps: { title: string; body: string; cta?: string }[] = [
   {
     title: "Install BeJo",
-    body: "Unduh gratis dari Google Play. Aplikasinya ringan, HP lama pun tetap bisa.",
+    body: "Unduh Gratis dari Google Play. Aplikasinya ringan, HP lama pun tetap bisa pake.",
     cta: "Buka Google Play",
   },
   {
     title: "Pasang QRIS & kasih izin",
-    body: "Bikin akun usahamu, tampilkan atau unggah kode QRIS, lalu kasih izin notifikasi. Ada tuntunan bergambar di dalam aplikasi, ikuti saja sampai selesai.",
+    body: "Bikin akun usahamu, Scan atau Unggah kode QRIS punya kamu, terus kasih izin Notifikasi. ",
   },
   {
     title: "Layani pembeli, dengarkan",
-    body: "Tiap uang masuk langsung dibunyikan. Sat Set! Suaranya pun bisa kamu ganti sesuka hati.",
+    body: "Tiap Uang Masuk langsung dibunyikan. Suaranya pun bisa kamu ganti sesuka hati. Viraal deh Warungmu!",
   },
 ];
 
@@ -129,17 +129,16 @@ export default function Home() {
           />
 
           <div className="relative lg:col-start-1 lg:col-span-7 lg:row-start-1">
-            <Eyebrow>Untuk pemilik warung, kios, dan toko</Eyebrow>
+            <Eyebrow>Untuk Pemilik Warung, Kios, dan Toko</Eyebrow>
             <h1 className="mt-5 font-display text-[clamp(2.4rem,8.5vw,4.6rem)] uppercase">
               Uang Masuk, Warungmu Jadi <span className="struck">Viral!</span>
             </h1>
             <p className="mt-6 max-w-xl text-[17px] text-ink-soft md:text-lg">
-              Setiap pembayaran QRIS yang masuk, langsung dibunyikan bunyinya, berikut dengan suara Jingle. Tangan tetap sibuk melayani
-              pembeli, ga' bakal kena penipuan lagi!
+              Setiap Pembayaran QRIS masuk, langsung ada Bunyinya, berikut Suara unik Jingle. Tangan tetap sibuk melayani
+              pembeli, gak bakal kena penipuan lagi!
             </p>
             <p className="mt-4 max-w-xl text-[17px] text-ink-soft md:text-lg">
-              Suaranya bisa kamu ganti sesuka hati: pilih dari 10+ suara, rekam
-              suaramu sendiri, atau bikin jingle khas warungmu. Bunyi yang beda
+              Suaranya bisa diganti sesuka hati: Pilih dari 10+ suara, atau bikin Suara khas buat warungmu. Bunyi yang Unik
               bikin pembeli hafal, ikut merekam, dan Warungmu jadi terkenal dan makin laris!
             </p>
 
@@ -214,11 +213,11 @@ export default function Home() {
             <Smartphone className="h-11 w-11 flex-none text-gold-dark" aria-hidden="true" />
             <div>
               <h3 className="font-display text-[clamp(1.4rem,2.6vw,1.9rem)] uppercase">
-                HP kamu sudah jadi soundbox
+                HP kamu sudah jadi Soundbox!
               </h3>
               <p className="mt-2 max-w-2xl text-ink-soft">
                 Tidak perlu sewa soundbox atau bayar langganan tiap bulan. Suara
-                uang masuk keluar dari HP yang sudah ada di tanganmu, dan tidak
+                uang masuk langsung bunyi dari HP yang sudah ada di tanganmu, dan tidak
                 ada biaya bulanan sama sekali.
               </p>
             </div>
