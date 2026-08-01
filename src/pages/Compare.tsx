@@ -84,7 +84,7 @@ const COLS = ["Biaya aktivasi", "Uang sewa", "Keandalan notifikasi", "Ubah suara
 export default function Compare() {
   return (
     <>
-      <Header variant="inner" ctaLabel="Pasang Gratis" ctaHref={playUrl("banding")} />
+      <Header variant="inner" ctaHref={playUrl("banding")} />
 
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="border-b border-line pb-14 pt-28 md:pb-16 md:pt-32">

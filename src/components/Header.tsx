@@ -20,11 +20,12 @@ const externalProps = (href: string) =>
   isExternal(href) ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
 /**
- * The menu is the same everywhere, but its section links belong to the
- * homepage: away from it they have to travel there first.
+ * The shared menu's section links belong to the homepage, so away from it they
+ * have to travel there first. A page carrying its own menu points at its own
+ * sections, and those anchors are left alone.
  */
-const resolve = (href: string, variant: "home" | "inner") =>
-  variant === "inner" && href.startsWith("#") ? `/${href}` : href;
+const resolve = (href: string, awayFromHome: boolean) =>
+  awayFromHome && href.startsWith("#") ? `/${href}` : href;
 
 export function Header({
   links = homeLinks,
@@ -44,6 +45,7 @@ export function Header({
   ctaSlot?: React.ReactNode;
 }) {
   const [scrolled, setScrolled] = useState(variant === "inner");
+  const awayFromHome = variant === "inner" && links === homeLinks;
 
   useEffect(() => {
     if (variant === "inner") return;
@@ -53,9 +55,11 @@ export function Header({
     return () => window.removeEventListener("scroll", onScroll);
   }, [variant]);
 
+  // Every page asks for the same thing, so the button reads the same on all of
+  // them. Pages may still point it at their own placement for attribution.
   const cta = {
-    label: ctaLabel ?? (variant === "inner" ? "Beranda" : "Pasang Gratis"),
-    href: ctaHref ?? (variant === "inner" ? "/" : playUrl("header")),
+    label: ctaLabel ?? "Pasang Gratis",
+    href: ctaHref ?? playUrl("header"),
   };
 
   return (
@@ -82,7 +86,7 @@ export function Header({
           {links.map((l) => (
             <a
               key={l.href}
-              href={resolve(l.href, variant)}
+              href={resolve(l.href, awayFromHome)}
               className="group relative text-[14px] font-semibold text-ink-soft transition-colors hover:text-green"
             >
               {l.label}
@@ -126,7 +130,7 @@ export function Header({
                 {links.map((l) => (
                   <SheetClose asChild key={l.href}>
                     <a
-                      href={resolve(l.href, variant)}
+                      href={resolve(l.href, awayFromHome)}
                       className="border-b border-line py-4 text-lg font-bold text-ink transition-colors hover:text-green"
                     >
                       {l.label}
