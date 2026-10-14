@@ -4,15 +4,17 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { playUrl } from "@/lib/constants";
+import { localize, t } from "@/lib/i18n";
+import { LangSwitch } from "@/components/LangSwitch";
 
 type NavLink = { href: string; label: string };
 
 const homeLinks: NavLink[] = [
-  { href: "#uang-masuk", label: "Uang Masuk QRIS" },
-  { href: "#kirim-qris", label: "Tagih Lewat QRIS" },
-  { href: "#tim", label: "Kelola Tim & Absensi" },
-  { href: "#catatan", label: "Catatan Transaksi" },
-  { href: "/brand.html", label: "Untuk Brand" },
+  { href: "#uang-masuk", label: t("Uang Masuk QRIS", "QRIS Payments") },
+  { href: "#kirim-qris", label: t("Tagih Lewat QRIS", "Bill via QRIS") },
+  { href: "#tim", label: t("Kelola Tim & Absensi", "Team & Attendance") },
+  { href: "#catatan", label: t("Catatan Transaksi", "Sales Records") },
+  { href: "/brand.html", label: t("Untuk Brand", "For Brands") },
 ];
 
 const isExternal = (href: string) => /^https?:\/\//.test(href);
@@ -25,7 +27,7 @@ const externalProps = (href: string) =>
  * sections, and those anchors are left alone.
  */
 const resolve = (href: string, awayFromHome: boolean) =>
-  awayFromHome && href.startsWith("#") ? `/${href}` : href;
+  localize(awayFromHome && href.startsWith("#") ? `/${href}` : href);
 
 export function Header({
   links = homeLinks,
@@ -58,7 +60,7 @@ export function Header({
   // Every page asks for the same thing, so the button reads the same on all of
   // them. Pages may still point it at their own placement for attribution.
   const cta = {
-    label: ctaLabel ?? "Pasang Gratis",
+    label: ctaLabel ?? t("Pasang Gratis", "Install Free"),
     href: ctaHref ?? playUrl("header"),
   };
 
@@ -70,7 +72,7 @@ export function Header({
       )}
     >
       <div className="container flex h-[76px] items-center justify-between gap-6">
-        <a href="/" className="group flex items-center gap-3">
+        <a href={localize("/")} className="group flex items-center gap-3">
           <img
             src="/assets/bejo-icon-round.png"
             alt=""
@@ -98,7 +100,8 @@ export function Header({
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-4 lg:flex">
+          <LangSwitch />
           {ctaSlot ?? (
             <Button asChild variant={ctaVariant}>
               <a href={cta.href} {...externalProps(cta.href)}>
@@ -108,12 +111,13 @@ export function Header({
           )}
         </div>
 
-        <div className="lg:hidden">
+        <div className="flex items-center gap-2.5 lg:hidden">
+          <LangSwitch />
           <Sheet>
             <SheetTrigger asChild>
               <button
                 type="button"
-                aria-label="Buka menu"
+                aria-label={t("Buka menu", "Open menu")}
                 className="rounded-control border border-line-strong p-2.5 text-ink"
               >
                 <Menu className="h-5 w-5" />

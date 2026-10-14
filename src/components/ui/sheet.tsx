@@ -2,6 +2,7 @@ import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { t } from "@/lib/i18n";
 
 const Sheet = SheetPrimitive.Root;
 const SheetTrigger = SheetPrimitive.Trigger;
@@ -36,7 +37,7 @@ const SheetContent = React.forwardRef<
     >
       {children}
       <SheetPrimitive.Close
-        aria-label="Tutup menu"
+        aria-label={t("Tutup menu", "Close menu")}
         className="absolute right-5 top-5 p-1 text-ink-faint transition-colors hover:text-green"
       >
         <X className="h-6 w-6" aria-hidden="true" />

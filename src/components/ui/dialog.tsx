@@ -2,6 +2,7 @@ import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { t } from "@/lib/i18n";
 
 const Dialog = DialogPrimitive.Root;
 const DialogTrigger = DialogPrimitive.Trigger;
@@ -23,7 +24,7 @@ const DialogContent = React.forwardRef<
     >
       {children}
       <DialogPrimitive.Close
-        aria-label="Tutup"
+        aria-label={t("Tutup", "Close")}
         className="absolute right-3 top-3 p-1 text-white/70 transition-colors hover:text-white"
       >
         <X className="h-5 w-5" aria-hidden="true" />

@@ -1,12 +1,13 @@
 import { Volume2, Plus, Receipt, QrCode, User } from "lucide-react";
 import { formatRupiah } from "@/lib/rupiah";
+import { t } from "@/lib/i18n";
 
 export type Entry = { id: number; amount: number; issuer: string; fresh?: boolean };
 
 const BASE: Entry[] = [
   { id: 1, amount: 45_000, issuer: "Dana" },
   { id: 2, amount: 128_500, issuer: "BCA" },
-  { id: 3, amount: 15_000, issuer: "Tunai" },
+  { id: 3, amount: 15_000, issuer: t("Tunai", "Cash") },
 ];
 
 /** BeJo's transaction screen, reacting live while an amount is announced. */
@@ -38,10 +39,12 @@ export function AppHomeScreen({
           <Volume2 className="h-4 w-4 flex-none text-gold-dark" aria-hidden="true" />
           <div className="min-w-0">
             <p className="text-[10.5px] font-bold leading-tight text-ink">
-              Pembayaran Terdeteksi
+              {t("Pembayaran Terdeteksi", "Payment Detected")}
             </p>
             <p className="truncate text-[9px] leading-tight text-ink-soft">
-              {soundLabel ? `Dibunyikan · ${soundLabel}` : "Sedang dibunyikan"}
+              {soundLabel
+                ? `${t("Dibunyikan", "Playing")} · ${soundLabel}`
+                : t("Sedang dibunyikan", "Announcing")}
             </p>
           </div>
           <span className="ml-auto flex h-3.5 items-end gap-[2px]" aria-hidden="true">
@@ -61,15 +64,15 @@ export function AppHomeScreen({
         <p className="text-[10px] uppercase tracking-[0.14em] text-white/55">
           Warung Bejo
         </p>
-        <p className="mt-1.5 text-[10px] text-white/70">Masuk hari ini</p>
+        <p className="mt-1.5 text-[10px] text-white/70">{t("Masuk hari ini", "In today")}</p>
         <p className="tnum font-display text-[30px] leading-none">
           Rp {formatRupiah(total)}
         </p>
 
         <div className="mt-3 flex gap-2">
           {[
-            ["Kemarin", "2,21jt"],
-            ["Bulan ini", "58,9jt"],
+            [t("Kemarin", "Yesterday"), t("2,21jt", "2.21M")],
+            [t("Bulan ini", "This month"), t("58,9jt", "58.9M")],
           ].map(([k, v]) => (
             <div key={k} className="flex-1 rounded-[8px] bg-white/10 px-2.5 py-1.5">
               <p className="text-[9px] text-white/60">{k}</p>
@@ -82,7 +85,7 @@ export function AppHomeScreen({
       {/* Transactions */}
       <div className="min-h-0 flex-1 overflow-hidden px-3 pt-3">
         <p className="mb-1.5 px-1 text-[9px] font-bold uppercase tracking-[0.12em] text-green">
-          Transaksi Terbaru
+          {t("Transaksi Terbaru", "Recent Transactions")}
         </p>
         <ul className="overflow-hidden rounded-[10px] bg-white">
           {rows.map((r, i) => (
@@ -100,7 +103,9 @@ export function AppHomeScreen({
                   Rp {formatRupiah(r.amount)}
                 </span>
                 <span className="block text-[9.5px] text-ink-faint">
-                  {r.fresh ? "Baru saja" : `${i * 7 + 4} menit lalu`}
+                  {r.fresh
+                    ? t("Baru saja", "Just now")
+                    : t(`${i * 7 + 4} menit lalu`, `${i * 7 + 4} min ago`)}
                 </span>
               </span>
               <span className="flex-none rounded-[5px] bg-mint px-1.5 py-0.5 text-[8.5px] font-bold text-green-deep">
@@ -115,16 +120,16 @@ export function AppHomeScreen({
           tabIndex={-1}
           className="mt-2.5 flex w-full items-center justify-center gap-1.5 rounded-[10px] bg-green py-2 text-[12px] font-bold text-white"
         >
-          <Plus className="h-3.5 w-3.5" aria-hidden="true" /> Catat Transaksi
+          <Plus className="h-3.5 w-3.5" aria-hidden="true" /> {t("Catat Transaksi", "Add Transaction")}
         </button>
       </div>
 
       {/* Bottom navigation */}
       <nav className="grid grid-cols-3 border-t border-[#E6EBE4] bg-white pb-1.5 pt-2">
         {[
-          { icon: Receipt, label: "Transaksi", active: true },
+          { icon: Receipt, label: t("Transaksi", "Transactions"), active: true },
           { icon: QrCode, label: "QRIS" },
-          { icon: User, label: "Profil" },
+          { icon: User, label: t("Profil", "Profile") },
         ].map((t) => (
           <span
             key={t.label}

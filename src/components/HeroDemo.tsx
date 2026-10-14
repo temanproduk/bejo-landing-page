@@ -3,6 +3,7 @@ import { MessageCircle, Play, Square } from "lucide-react";
 import { PhoneFrame } from "@/components/phone/PhoneFrame";
 import { AppHomeScreen, type Entry } from "@/components/phone/AppHomeScreen";
 import { amountToWords, formatRupiah } from "@/lib/rupiah";
+import { t } from "@/lib/i18n";
 
 const AMOUNTS = [15_000, 20_500, 220_000];
 const ISSUERS = ["GoPay", "OVO", "Dana", "BRI"];
@@ -12,22 +13,33 @@ const WORD_MS = 300;
  * An announcement is a sound pack followed by the amount. Swapping the pack is
  * what turns a plain notice into a sound a warung gets known for, so visitors
  * get to hear the difference rather than read about it.
+ *
+ * The spoken words stay Indonesian on every page: that is what the app says.
  */
 const PACKS = [
   {
-    label: "Jingle warung",
+    label: t("Jingle warung", "Warung jingle"),
     intro: ["Warung", "Bejo", "rezeki", "datang"],
-    note: "Nada khas warungmu. Pembeli hafal, lalu cerita ke temannya.",
+    note: t(
+      "Nada khas warungmu. Pembeli hafal, lalu cerita ke temannya.",
+      "Your warung's signature tune. Customers remember it and tell their friends."
+    ),
   },
   {
-    label: "Suara kamu",
+    label: t("Suara kamu", "Your voice"),
     intro: ["Hei", "bos", "uang", "masuk"],
-    note: "Rekam suaramu sendiri, simpan jadi paket suara.",
+    note: t(
+      "Rekam suaramu sendiri, simpan jadi paket suara.",
+      "Record your own voice and save it as a sound pack."
+    ),
   },
   {
-    label: "Suara asli",
+    label: t("Suara asli", "Plain voice"),
     intro: [],
-    note: "Cuma nominalnya. Jelas, cepat, tanpa basa-basi.",
+    note: t(
+      "Cuma nominalnya. Jelas, cepat, tanpa basa-basi.",
+      "Just the amount. Clear, quick, no frills."
+    ),
   },
 ];
 
@@ -119,10 +131,10 @@ export function HeroDemo() {
         >
           <figcaption className="flex items-center gap-1.5 font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-ink-faint">
             <MessageCircle className="h-3 w-3 text-gold-dark" aria-hidden="true" />
-            Pembeli
+            {t("Pembeli", "Customer")}
           </figcaption>
           <p className="mt-1 text-[12.5px] font-bold leading-snug text-ink">
-            &ldquo;Suaranya lucu! Rekam ah, buat story.&rdquo;
+            &ldquo;{t("Suaranya lucu! Rekam ah, buat story.", "That sound is so fun! Gotta record it for my story.")}&rdquo;
           </p>
         </figure>
       </div>
@@ -130,7 +142,7 @@ export function HeroDemo() {
       {/* Try-it control, clear of the note pinned to the device */}
       <div className="mt-10 w-full max-w-[360px] border border-line-strong bg-white">
         <p className="border-b border-line px-3.5 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-ink-faint">
-          Coba dengar sendiri
+          {t("Coba dengar sendiri", "Hear it yourself · in Indonesian")}
         </p>
 
         <div className="p-3">
@@ -167,7 +179,7 @@ export function HeroDemo() {
                 </>
               ) : (
                 <>
-                  <Play className="h-3.5 w-3.5" aria-hidden="true" /> Bunyikan
+                  <Play className="h-3.5 w-3.5" aria-hidden="true" /> {t("Bunyikan", "Play")}
                 </>
               )}
             </button>
@@ -197,7 +209,7 @@ export function HeroDemo() {
 
         <div className="border-t border-line p-3">
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-ink-faint">
-            Ganti suaranya
+            {t("Ganti suaranya", "Change the voice")}
           </p>
           <div className="mt-2 flex flex-wrap gap-1.5">
             {PACKS.map((p, i) => (

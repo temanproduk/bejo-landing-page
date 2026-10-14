@@ -43,6 +43,10 @@ Contact: moobejo@gmail.com
 - [Hubungi Kami](https://bejo.temanproduk.com/contact.html): how to reach the
   team.
 
+Every page is also available in English under /en/ (for example
+https://bejo.temanproduk.com/en/ and https://bejo.temanproduk.com/en/brand.html).
+Bahasa Indonesia is the default.
+
 ## Legal
 
 - [Kebijakan Privasi](https://bejo.temanproduk.com/privacy.html): what data is

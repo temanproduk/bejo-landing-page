@@ -1,4 +1,5 @@
 import { Share2, Landmark, Copy, Receipt, QrCode, User } from "lucide-react";
+import { t } from "@/lib/i18n";
 
 /** The QRIS tab: a code with the order amount already set, ready to send. */
 export function AppQrisScreen() {
@@ -14,9 +15,11 @@ export function AppQrisScreen() {
         <div className="rounded-[10px] bg-white p-3">
           <div className="flex items-baseline justify-between px-0.5">
             <span className="text-[9px] font-bold uppercase tracking-[0.12em] text-green">
-              Nominal
+              {t("Nominal", "Amount")}
             </span>
-            <span className="tnum text-[15px] font-extrabold text-ink">Rp 75.000</span>
+            <span className="tnum text-[15px] font-extrabold text-ink">
+              {t("Rp 75.000", "Rp 75,000")}
+            </span>
           </div>
 
           <div className="relative mx-auto mt-2 h-[124px] w-[124px] bg-white p-1.5">
@@ -36,7 +39,7 @@ export function AppQrisScreen() {
           </div>
 
           <p className="mt-1 text-center text-[9px] text-ink-faint">
-            Pembeli tinggal scan, jumlahnya sudah terisi
+            {t("Pembeli tinggal scan, jumlahnya sudah terisi", "Customer just scans, the amount is already set")}
           </p>
         </div>
 
@@ -47,7 +50,7 @@ export function AppQrisScreen() {
             <span className="block text-[10.5px] font-bold leading-tight text-ink">
               BCA 1234567890
             </span>
-            <span className="block text-[9px] text-ink-faint">a.n. Warung Bejo</span>
+            <span className="block text-[9px] text-ink-faint">{t("a.n.", "Name:")} Warung Bejo</span>
           </span>
           <Copy className="h-3.5 w-3.5 flex-none text-ink-faint" aria-hidden="true" />
         </div>
@@ -58,11 +61,11 @@ export function AppQrisScreen() {
           tabIndex={-1}
           className="mt-2.5 flex w-full items-center justify-center gap-1.5 rounded-[10px] bg-green py-2.5 text-[12px] font-bold text-white"
         >
-          <Share2 className="h-3.5 w-3.5" aria-hidden="true" /> Bagikan
+          <Share2 className="h-3.5 w-3.5" aria-hidden="true" /> {t("Bagikan", "Share")}
         </button>
 
         <div className="mt-2 flex justify-center gap-2">
-          {["WhatsApp", "Telegram", "Lainnya"].map((app) => (
+          {["WhatsApp", "Telegram", t("Lainnya", "More")].map((app) => (
             <span
               key={app}
               className="rounded-full border border-line bg-white px-2.5 py-1 text-[9px] font-semibold text-ink-soft"
@@ -75,9 +78,9 @@ export function AppQrisScreen() {
 
       <nav className="grid grid-cols-3 border-t border-[#E6EBE4] bg-white pb-1.5 pt-2">
         {[
-          { icon: Receipt, label: "Transaksi" },
+          { icon: Receipt, label: t("Transaksi", "Transactions") },
           { icon: QrCode, label: "QRIS", active: true },
-          { icon: User, label: "Profil" },
+          { icon: User, label: t("Profil", "Profile") },
         ].map((t) => (
           <span
             key={t.label}

@@ -1,3 +1,5 @@
+import { isEn } from "@/lib/i18n";
+
 const ONES = [
   "",
   "satu",
@@ -65,7 +67,7 @@ export function amountToWords(amount: number): string[] {
   return words;
 }
 
-/** 200000 to "200.000" */
+/** 200000 to "200.000", or "200,000" for English readers. */
 export function formatRupiah(amount: number): string {
-  return amount.toLocaleString("id-ID");
+  return amount.toLocaleString(isEn ? "en-US" : "id-ID");
 }

@@ -1,8 +1,9 @@
 import { Mail } from "lucide-react";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { t } from "@/lib/i18n";
 
 export function LegalHero({
-  label = "Ketentuan",
+  label = t("Ketentuan", "Legal"),
   title,
   desc,
   updated,
@@ -21,7 +22,9 @@ export function LegalHero({
         </h1>
         <p className="mt-5 text-[17px] text-ink-soft">{desc}</p>
         {updated && (
-          <p className="eyebrow mt-6 text-ink-faint">Diperbarui {updated}</p>
+          <p className="eyebrow mt-6 text-ink-faint">
+            {t("Diperbarui", "Updated")} {updated}
+          </p>
         )}
       </div>
     </section>

@@ -20,6 +20,20 @@
     line-height: 0.95;
   }
 
+  /* Even line lengths, so a headline never ends on one stranded word in
+     either language. */
+  h1,
+  h2,
+  h3,
+  .eyebrow {
+    text-wrap: balance;
+  }
+  p,
+  dd,
+  li {
+    text-wrap: pretty;
+  }
+
   /* Amounts should never jitter as digits change. */
   .tnum {
     font-variant-numeric: tabular-nums;

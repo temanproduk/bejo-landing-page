@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LegalHero } from "@/components/Legal";
 import { Button } from "@/components/ui/button";
+import { localize, t } from "@/lib/i18n";
 
 // Assembled at runtime so the address is not sitting in the page source.
 const USER = "moobejo";
@@ -28,26 +29,32 @@ export default function Contact() {
     <>
       <Header variant="inner" />
       <LegalHero
-        label="Hubungi kami"
-        title="Ada yang mau ditanyakan?"
-        desc="Kalau ada kendala, masukan, atau mau kerja sama, kirim email ke kami. Dengan senang hati kami bantu."
+        label={t("Hubungi kami", "Contact us")}
+        title={t("Ada yang mau ditanyakan?", "Got a question?")}
+        desc={t(
+          "Kalau ada kendala, masukan, atau mau kerja sama, kirim email ke kami. Dengan senang hati kami bantu.",
+          "Running into a problem, have feedback, or want to work together? Send us an email. We're happy to help."
+        )}
       />
 
       <section className="py-14 md:py-20">
         <div className="container max-w-3xl">
           <div className="border border-line-strong bg-white">
             <div className="border-b border-line px-6 py-3">
-              <span className="eyebrow text-ink-faint">Alamat email</span>
+              <span className="eyebrow text-ink-faint">{t("Alamat email", "Email address")}</span>
             </div>
 
             <div className="p-6 md:p-8">
               {!shown ? (
                 <>
                   <p className="text-[17px] text-ink-soft">
-                    Ketuk tombol di bawah untuk menampilkan alamat email kami.
+                    {t(
+                      "Ketuk tombol di bawah untuk menampilkan alamat email kami.",
+                      "Tap the button below to show our email address."
+                    )}
                   </p>
                   <Button size="lg" className="mt-6" onClick={() => setShown(true)}>
-                    <Mail aria-hidden="true" /> Tampilkan alamat email
+                    <Mail aria-hidden="true" /> {t("Tampilkan alamat email", "Show email address")}
                   </Button>
                 </>
               ) : (
@@ -61,7 +68,7 @@ export default function Contact() {
                   </a>
                   <Button variant="outline" size="lg" onClick={copy}>
                     {copied ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
-                    {copied ? "Tersalin" : "Salin"}
+                    {copied ? t("Tersalin", "Copied") : t("Salin", "Copy")}
                   </Button>
                 </div>
               )}
@@ -70,18 +77,24 @@ export default function Contact() {
                 <div className="flex gap-3">
                   <Clock className="mt-0.5 h-5 w-5 flex-none text-green" aria-hidden="true" />
                   <div>
-                    <dt className="font-bold">Waktu balasan</dt>
+                    <dt className="font-bold">{t("Waktu balasan", "Response time")}</dt>
                     <dd className="mt-1 text-[15px] text-ink-soft">
-                      Kami usahakan balas secepatnya di hari kerja.
+                      {t(
+                        "Kami usahakan balas secepatnya di hari kerja.",
+                        "We aim to reply as soon as we can on working days."
+                      )}
                     </dd>
                   </div>
                 </div>
                 <div className="flex gap-3">
                   <MessageSquare className="mt-0.5 h-5 w-5 flex-none text-green" aria-hidden="true" />
                   <div>
-                    <dt className="font-bold">Biar cepat dibantu</dt>
+                    <dt className="font-bold">{t("Biar cepat dibantu", "For a faster answer")}</dt>
                     <dd className="mt-1 text-[15px] text-ink-soft">
-                      Sebutkan nama usahamu dan ceritakan kendalanya sejelas mungkin.
+                      {t(
+                        "Sebutkan nama usahamu dan ceritakan kendalanya sejelas mungkin.",
+                        "Include your business name and describe the problem as clearly as you can."
+                      )}
                     </dd>
                   </div>
                 </div>
@@ -90,14 +103,14 @@ export default function Contact() {
           </div>
 
           <p className="mt-6 text-sm text-ink-faint">
-            Mau menghapus datamu? Lihat halaman{" "}
+            {t("Mau menghapus datamu? Lihat halaman", "Want your data deleted? See the")}{" "}
             <a
-              href="/data-deletion.html"
+              href={localize("/data-deletion.html")}
               className="font-semibold text-green underline underline-offset-2"
             >
-              Hapus Data
+              {t("Hapus Data", "Delete Data")}
             </a>
-            .
+            {t(".", " page.")}
           </p>
         </div>
       </section>
