@@ -17,35 +17,38 @@ export default {
     },
     extend: {
       fontFamily: {
-        // Condensed poster face, the voice of Indonesian shop signage.
-        display: ["Anton", "Impact", "sans-serif"],
-        // Commissioned for Jakarta's city identity; the right body voice here.
-        sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
-        // Receipt / terminal register for labels and amounts.
-        mono: ['"Space Mono"', "ui-monospace", "monospace"],
+        // The app's wordmark face: Roboto Condensed Bold (the app sets "BeJo" in sans-serif-condensed bold).
+        display: ['"Roboto Condensed"', "Roboto", "sans-serif"],
+        // The app's body face — Roboto, the Android system default its screens use.
+        sans: ["Roboto", "system-ui", "sans-serif"],
+        // Receipt / terminal register for labels and amounts (the app's monospace for IDs).
+        mono: ['"Roboto Mono"', "ui-monospace", "monospace"],
       },
       colors: {
+        // The tokens below are the Android app's colors.xml values (on_surface, background, primary…).
         ink: {
-          DEFAULT: "#0A1710",
-          soft: "#46534A",
-          faint: "#7C877F",
+          DEFAULT: "#16201A",
+          soft: "#59635C",
+          faint: "#6F7A73", // not an app token: the app's #8C968E is too pale for text on paper
         },
         paper: {
-          DEFAULT: "#F2F5EF",
-          warm: "#E8EDE4",
+          DEFAULT: "#F3F6F2",
+          warm: "#E6EBE4",
         },
         green: {
           DEFAULT: "#2E7D57",
-          dark: "#1F6244",
-          deep: "#12402A",
+          dark: "#256B49",
+          deep: "#215F41",
         },
         gold: {
           DEFAULT: "#E0A32E",
-          dark: "#B57C0F",
+          dark: "#C4881C",
         },
-        mint: "#DCEEE2",
-        line: "rgba(10, 23, 16, 0.12)",
-        "line-strong": "rgba(10, 23, 16, 0.28)",
+        mint: "#E4F1E9",
+        // The app's dark surface (brand_night): the splash background.
+        night: "#070E14",
+        line: "rgba(22, 32, 26, 0.12)",
+        "line-strong": "rgba(22, 32, 26, 0.28)",
       },
       borderRadius: {
         panel: "14px",

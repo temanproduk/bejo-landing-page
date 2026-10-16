@@ -221,6 +221,16 @@ export default function Home() {
                 </div>
               ))}
             </dl>
+
+            {/* The BeJo cat, waving from the corner of the hero. Decorative. */}
+            <img
+              src="/assets/bejo-mascot.webp"
+              alt=""
+              aria-hidden="true"
+              width={443}
+              height={558}
+              className="pointer-events-none absolute -bottom-2 right-0 hidden w-[150px] select-none lg:block xl:w-[175px]"
+            />
           </div>
 
           <div className="relative lg:col-start-8 lg:col-span-5 lg:row-start-1">
@@ -230,7 +240,7 @@ export default function Home() {
       </section>
 
       {/* ── APP TICKER ───────────────────────────────────────── */}
-      <section className="border-b border-line bg-ink py-5 text-white">
+      <section className="border-b border-line bg-night py-5 text-white">
         <div className="container mb-4">
           <p className="eyebrow text-white/50">
             {t("Ikut mendengar notifikasi dari aplikasi ini", "Also listens to notifications from these apps")}
@@ -570,7 +580,7 @@ export default function Home() {
       </section>
 
       {/* ── CLOSING ──────────────────────────────────────────── */}
-      <section className="bg-ink py-20 text-white md:py-28">
+      <section className="bg-night py-20 text-white md:py-28">
         <div className="container grid items-center gap-10 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <h2 className="font-display text-[clamp(2.2rem,5vw,3.6rem)] uppercase">
@@ -597,6 +607,15 @@ export default function Home() {
             </ul>
           </div>
           <div className="lg:col-span-4 lg:justify-self-end">
+            <img
+              src="/assets/bejo-mascot.webp"
+              alt=""
+              aria-hidden="true"
+              width={443}
+              height={558}
+              loading="lazy"
+              className="pointer-events-none mb-6 hidden w-36 select-none sm:block lg:mx-auto"
+            />
             <Button asChild size="lg" variant="gold">
               <a href={playUrl("penutup")} target="_blank" rel="noopener noreferrer">
                 {t("Pasang di Google Play", "Get it on Google Play")} <ArrowRight />

@@ -56,7 +56,7 @@ export function WaitlistDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
-        <div className="flex items-center gap-3 bg-ink px-5 py-3.5 text-white">
+        <div className="flex items-center gap-3 bg-night px-5 py-3.5 text-white">
           <Hourglass className="h-4 w-4 flex-none text-gold" aria-hidden="true" />
           <DialogTitle className="font-mono text-[11px] font-bold uppercase tracking-[0.16em]">
             {t("Daftar tunggu", "Waitlist")}
