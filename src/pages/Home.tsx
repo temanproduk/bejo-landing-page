@@ -224,11 +224,11 @@ export default function Home() {
 
             {/* The BeJo cat, waving from the corner of the hero. Decorative. */}
             <img
-              src="/assets/bejo-mascot.webp"
+              src="/assets/bejo-mascot.svg"
               alt=""
               aria-hidden="true"
-              width={443}
-              height={558}
+              width={140}
+              height={140}
               className="pointer-events-none absolute -bottom-2 right-0 hidden w-[150px] select-none lg:block xl:w-[175px]"
             />
           </div>
@@ -608,11 +608,11 @@ export default function Home() {
           </div>
           <div className="lg:col-span-4 lg:justify-self-end">
             <img
-              src="/assets/bejo-mascot.webp"
+              src="/assets/bejo-mascot.svg"
               alt=""
               aria-hidden="true"
-              width={443}
-              height={558}
+              width={140}
+              height={140}
               loading="lazy"
               className="pointer-events-none mb-6 hidden w-36 select-none sm:block lg:mx-auto"
             />
