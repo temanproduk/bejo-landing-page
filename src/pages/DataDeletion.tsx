@@ -110,7 +110,7 @@ export default function DataDeletion() {
                   <li><strong>Kami cek dulu:</strong> demi keamanan, kami cuma proses permintaan yang cocok dengan akun terdaftar.</li>
                   <li><strong>Data tim:</strong> kalau kamu pemilik utama sebuah usaha, menghapus data bisa berpengaruh ke data bersama tim. Kami konfirmasi dulu sebelum lanjut.</li>
                   <li><strong>Aturan hukum:</strong> sebagian data mungkin perlu kami simpan buat memenuhi kewajiban hukum atau pembukuan, sesuai aturan yang berlaku.</li>
-                  <li><strong>Cuma mau bersihin HP:</strong> kalau kamu cuma mau hapus data di HP, cukup <em>keluar (logout)</em> dari aplikasi. Semua data di HP langsung terhapus.</li>
+                  <li><strong>Cuma mau bersihin HP:</strong> kalau kamu cuma mau hapus data di HP, cukup <em>keluar (logout)</em> dari aplikasi. Data pribadimu di HP langsung terhapus. Hanya file model pengolah suara yang sudah diunduh (bukan data pribadi) yang tetap ada; file itu bisa dihapus lewat <em>Hapus suara saya</em> di aplikasi.</li>
                 </ul>
 
                 <H2>Berapa Lama Prosesnya</H2>
@@ -143,7 +143,7 @@ export default function DataDeletion() {
                   <li><strong>We verify first:</strong> for security, we only process requests that match a registered account.</li>
                   <li><strong>Team data:</strong> if you are the main owner of a business, deleting your data may affect data shared with your team. We'll confirm with you before going ahead.</li>
                   <li><strong>Legal requirements:</strong> some data may need to be kept to meet legal or bookkeeping obligations under applicable law.</li>
-                  <li><strong>Just want to clear your phone:</strong> if you only want to remove the data on your phone, simply <em>log out</em> of the app. All data on the phone is deleted right away.</li>
+                  <li><strong>Just want to clear your phone:</strong> if you only want to remove the data on your phone, simply <em>log out</em> of the app. Your personal data on the phone is deleted right away. Only the downloaded speech-model files (not personal data) stay; you can remove them with <em>Hapus suara saya</em> in the app.</li>
                 </ul>
 
                 <H2>How Long It Takes</H2>

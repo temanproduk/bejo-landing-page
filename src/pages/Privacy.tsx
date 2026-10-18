@@ -149,8 +149,11 @@ export default function Privacy() {
                 <H2>11. Berapa Lama Data Disimpan</H2>
                 <p>
                   Kami menyimpan data akun dan transaksi selama akun kamu aktif. Saat kamu{" "}
-                  <strong>keluar (logout)</strong>, semua data di HP dihapus, termasuk sesi,
-                  gambar QRIS, foto profil, paket suara, model suara kamu, dan cache. Data di
+                  <strong>keluar (logout)</strong>, data pribadimu di HP dihapus, termasuk sesi,
+                  gambar QRIS, foto profil, paket suara, model suara kamu, dan cache. Yang
+                  tetap ada hanya file model pengolah suara yang sudah diunduh (bukan data
+                  pribadi); file itu bisa kamu hapus lewat <em>Hapus suara saya</em> di
+                  aplikasi. Data di
                   server disimpan sampai kamu minta akunnya dihapus. Kami tidak menyimpan
                   rekaman suara buat mengisi nominal maupun buat mencatat penjualan, dan tidak
                   menyimpan teks hasil pengenalannya; yang tersimpan hanya transaksi yang kamu
@@ -319,9 +322,11 @@ export default function Privacy() {
                 <H2>11. How Long Data Is Kept</H2>
                 <p>
                   We keep account and transaction data for as long as your account is
-                  active. When you <strong>log out</strong>, all data on the phone is
+                  active. When you <strong>log out</strong>, your personal data on the phone is
                   deleted, including the session, QRIS image, profile photo, sound packs,
-                  your voice model, and cache. Data on the server is kept until you ask for
+                  your voice model, and cache. Only the downloaded speech-model files stay
+                  (they are not personal data); you can remove them with <em>Hapus suara
+                  saya</em> in the app. Data on the server is kept until you ask for
                   your account to be deleted. We do not keep voice recordings used to fill in
                   an amount or to record a sale, or the text they were turned into; the only
                   thing kept is the transaction you confirm yourself. A recording made for a
